@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al-Naser Maritime Sovereignty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════
+       OCEAN DEPTH TOKENS
+       Surface → Abyss: 7 depth stops
+    ═══════════════════════════════════════════ */
+    :root {
+      /* Ocean depth scale */
+      --d0: #0e4a6e;   /* surface – bright teal-navy  */
+      --d1: #0a3a58;   /* shallows                    */
+      --d2: #082d47;   /* mid-water                   */
+      --d3: #062238;   /* twilight zone               */
+      --d4: #041828;   /* midnight zone               */
+      --d5: #030f1b;   /* abyssal                     */
+      --d6: #010810;   /* hadal                       */
+
+      --gold:     #c9a84c;
+      --gold-lt:  #e2c278;
+      --gold-dim: rgba(201,168,76,0.15);
+      --text:     #cddde8;
+      --muted:    #6a92aa;
+      --border:   rgba(201,168,76,0.14);
+      --wave-gap: 5vw;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--d6);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* ─────────────────────────────────
+       SIDEBAR
+    ───────────────────────────────── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 3.4rem;
+      height: 100%;
+      background: rgba(6,34,56,0.88);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.4rem 0;
+      z-index: 200;
+    }
+
+    .sidebar .mark {
+      width: 100%; height: 1.9rem;
+      padding: 0.3rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.42rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .sidebar nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.2rem;
+      margin-top: 2.8rem;
+    }
+
+    .sidebar a {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .sidebar a:hover, .sidebar a.active { color: var(--gold); }
+
+    /* ─────────────────────────────────
+       MAIN
+    ───────────────────────────────── */
+    main { margin-left: 3.4rem; }
+
+    /* ─────────────────────────────────
+       TOP BAR
+    ───────────────────────────────── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 3.4rem; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2.5rem;
+      height: 5rem;
+      background: rgba(8,45,71,0.75);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .topbar-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.15rem;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-sep {
+      width: 1px;
+      height: 0.9rem;
+      background: var(--border);
+      margin: 0 0.2rem;
+      opacity: 0.6;
+    }
+
+    .brand-sub {
+      font-size: 0.58rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .topbar-nav a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .topbar-nav a:hover, .topbar-nav a.active { color: var(--gold); }
+
+    .topbar-nav button {
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); transition: color 0.2s;
+      display: flex; align-items: center;
+    }
+    .topbar-nav button:hover { color: var(--gold); }
+
+    /* ─────────────────────────────────
+       REUSABLE
+    ───────────────────────────────── */
+    .label-tag {
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.9rem;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #010810;
+      padding: 0.78rem 2rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.85);
+      padding: 0.78rem 2rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.4); }
+
+    /* ─────────────────────────────────
+       WAVE DIVIDER  (SVG between sections)
+    ───────────────────────────────── */
+    .wave-divider {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      /* background of this element = "from" color, fill inside SVG = "to" color */
+    }
+    .wave-divider svg { display: block; width: 100%; }
+
+    /* ═══════════════════════════════════════════
+       SECTION 1 — HERO  (--d0 surface)
+    ═══════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      background: var(--d0);
+      display: flex;
+      align-items: center;
+      padding-top: 3.5rem; /* topbar height */
+      overflow: hidden;
+    }
+
+    /* Noise/grid texture overlay */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 120% 80% at 30% 60%, rgba(0,80,130,0.55) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(0,120,180,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-bg-img {
+      position: absolute; inset: 0;
+      z-index: 0;
+    }
+    .hero-bg-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+      mix-blend-mode: luminosity;
+    }
+    .hero-bg-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        110deg,
+        rgba(14,74,110,0.92) 0%,
+        rgba(8,45,71,0.7) 50%,
+        rgba(6,34,56,0.4) 100%
+      );
+    }
+
+    /* Animated grid lines */
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      padding: 4rem 4rem 6rem;
+      max-width: 52rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 6vw, 5rem);
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 1.3rem;
+      font-weight: 600;
+    }
+    .hero-title em { color: var(--gold-lt); font-style: italic; }
+
+    .hero-sub {
+      color: rgba(205,221,232,0.75);
+      font-size: 0.87rem;
+      max-width: 30rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-buttons { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* Floating card */
+    .hero-card {
+      
+      position: absolute;
+      right: 1%;
+      top: 25%;
+      transform: translateY(-40%);
+      z-index: 20;
+      width: min(125px, 35vw);
+      height: min(125px, 30vh);
+      backdrop-filter: blur(14px);
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .hero-card img {
+      width: 100%; height: 100%;
+      object-fit:contain;
+      opacity: 0.65; display: block;
+    }
+    .hero-card-body { padding: 1.4rem; }
+    .hero-card-body p {
+      font-size: 0.58rem; color: var(--gold);
+      text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 0.45rem;
+    }
+    .hero-card-body h3 { font-size: 1.2rem; color: #fff; line-height: 1.3; }
+    .hero-card-body h3 em { color: var(--gold-lt); font-style: italic; }
+    .hero-card-corner {
+      position: absolute; top: 0.7rem; right: 0.7rem;
+      width: 1.8rem; height: 1.8rem;
+      border-top: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    /* Badge stats row */
+    .hero-stats {
+      position: absolute;
+      bottom: 6vw;
+      right: 4rem;
+      z-index: 20;
+      display: flex;
+      gap: 2rem;
+    }
+    .hero-stat {
+      text-align: right;
+      border-right: 1px solid var(--border);
+      padding-right: 1.2rem;
+    }
+    .hero-stat .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+    .hero-stat .lbl {
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    /* Wave: d0 → d1 */
+    .wave-hero-to-cap { background: var(--d0); }
+    .wave-hero-to-cap svg path { fill: var(--d1); }
+
+    /* ═══════════════════════════════════════════
+       SECTION 2 — CAPABILITIES  (--d1 → --d2)
+    ═══════════════════════════════════════════ */
+    #capabilities {
+      background: var(--d1);
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .section-header h2 { font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin-top: 0.4rem; }
+    .section-header .aside-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 24rem;
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .card {
+      background: rgba(6,34,56,0.6);
+      padding: 2.2rem 1.8rem;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px; height: 0;
+      background: var(--gold);
+      transition: height 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    .card:hover::before { height: 100%; }
+    .card:hover { background: rgba(4,24,40,0.85); }
+    .card:hover h3 { color: var(--gold-lt); }
+
+    .card-icon { color: var(--gold); margin-bottom: 1.4rem; opacity: 0.8; }
+    .card h3 { font-size: 1.05rem; color: #fff; margin-bottom: 0.8rem; transition: color 0.25s; font-weight: 600; }
+    .card p  { font-size: 0.76rem; color: var(--muted); line-height: 1.8; }
+
+    /* Wave: d1 → d2 */
+    .wave-cap-to-about { background: var(--d1); }
+    .wave-cap-to-about svg path { fill: var(--d2); }
+
+    /* ═══════════════════════════════════════════
+       SECTION 3 — ABOUT  (--d2 → --d3)
+    ═══════════════════════════════════════════ */
+    #about {
+      background: var(--d2);
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 9;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+    }
+
+    .about-text h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #fff;
+      margin-bottom: 1.4rem;
+      line-height: 1.15;
+    }
+    .about-text > p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 0.9rem;
+    }
+
+    .about-pillars { margin-top: 2.5rem; }
+
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.3rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pillar:first-child { border-top: 1px solid var(--border); }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      opacity: 0.45;
+      line-height: 1;
+      min-width: 2rem;
+      padding-top: 0.05rem;
+    }
+
+    .pillar-body h4 {
+      font-size: 0.9rem;
+      color: #dce6f0;
+      margin-bottom: 0.3rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+    }
+    .pillar-body p { font-size: 0.75rem; color: var(--muted); line-height: 1.75; }
+
+    .about-visual { position: relative; }
+
+    .about-video-wrap {
+        position: relative;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        min-height: 400px;
+    }
+
+    .about-video-wrap video {
+        position: absolute;  
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;         
+    }
+
+    .about-video-wrap::after {
+        content: '';
+        position: absolute; 
+        inset: 0;
+        background: linear-gradient(135deg, rgba(6,34,56,0.6) 0%, transparent 65%);
+        z-index: 1;          
+        pointer-events: none; 
+    }
+    
+    .about-corner {
+      position: absolute;
+      bottom: -1rem; right: -1rem;
+      width: 3.5rem; height: 3.5rem;
+      border-bottom: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    /* Wave: d2 → d3 */
+    .wave-about-to-routes { background: var(--d2); }
+    .wave-about-to-routes svg path { fill: var(--d3); }
+
+    /* ═══════════════════════════════════════════
+       SECTION 4 — ROUTES  (--d3 → --d4)
+    ═══════════════════════════════════════════ */
+    #routes {
+      background: var(--d3);
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 8;
+    }
+
+    .routes-header { text-align: center; margin-bottom: 3rem; }
+    .routes-header h2 { font-size: clamp(2rem, 4vw, 3.2rem); color: #fff; margin-bottom: 0.6rem; }
+    .routes-header p  { font-size: 0.8rem; color: var(--muted); max-width: 38rem; margin: 0 auto; line-height: 1.75; }
+
+    .map-wrap {
+      background: rgba(2,15,27,0.5);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+    .map-svg { width: 100%; height: auto; display: block; }
+
+    @keyframes dash-flow {
+      from { stroke-dashoffset: 300; }
+      to   { stroke-dashoffset: 0; }
+    }
+    .route-primary   { stroke-dasharray: 8 5; animation: dash-flow 2.8s linear infinite; }
+    .route-secondary { stroke-dasharray: 4 6; animation: dash-flow 5s linear infinite; }
+
+    .map-legend {
+      display: flex; gap: 2rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .legend-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.68rem; color: var(--muted); }
+
+    /* Wave: d3 → d4 */
+    .wave-routes-to-contact { background: var(--d3); }
+    .wave-routes-to-contact svg path { fill: var(--d4); }
+
+    /* ═══════════════════════════════════════════
+       SECTION 5 — CONTACT  (--d4 → --d5)
+    ═══════════════════════════════════════════ */
+    #contact {
+      background: var(--d4);
+      padding: 6rem 4rem;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 7;
+    }
+
+    .contact-box {
+      width: 100%;
+      max-width: 44rem;
+      background: rgba(4,24,40,0.7);
+      border: 1px solid var(--border);
+      padding: 4rem;
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+    .contact-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 2rem;
+      width: 5rem; height: 2px;
+      background: var(--gold);
+    }
+
+    .contact-box .label-tag { text-align: center; }
+    .contact-box h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: #fff; text-align: center; margin: 0.5rem 0 0.7rem; }
+    .contact-box > p { font-size: 0.78rem; color: var(--muted); text-align: center; max-width: 28rem; margin: 0 auto 3rem; line-height: 1.8; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+    .field { margin-bottom: 2rem; }
+    .field input, .field textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(201,168,76,0.18);
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 0.6rem 0;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(106,146,170,0.6); }
+    .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); }
+    .field textarea { resize: none; }
+
+    .form-submit { text-align: center; margin-top: 0.5rem; }
+    .form-submit button {
+      background: var(--gold);
+      color: #010810;
+      border: none;
+      padding: 1rem 3.5rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .form-submit button:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+    /* Wave: d4 → d5 */
+    .wave-contact-to-footer { background: var(--d4); }
+    .wave-contact-to-footer svg path { fill: var(--d5); }
+
+    /* ═══════════════════════════════════════════
+       FOOTER  (--d5 → --d6)
+    ═══════════════════════════════════════════ */
+    footer {
+      background: var(--d5);
+      border-top: 1px solid var(--border);
+      padding: 4rem 4rem 2.5rem;
+      position: relative;
+      z-index: 6;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    .footer-brand h4 { font-size: 1.2rem; color: var(--gold); margin-bottom: 0.8rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+    .footer-brand p  { font-size: 0.7rem; color: var(--muted); max-width: 22rem; margin-bottom: 1.5rem; line-height: 1.8; }
+    .footer-contact { font-size: 0.68rem; color: var(--muted); line-height: 2.2; }
+    .footer-contact span { font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(106,146,170,0.5); margin-right: 0.5rem; }
+
+    .footer-col h5 { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.2em; color: #fff; margin-bottom: 1.5rem; font-weight: 600; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.9rem; }
+    .footer-col a  { font-size: 0.7rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p { font-size: 0.6rem; color: var(--muted); }
+
+    
+    /* ─────────────────────────────────
+       SCROLL REVEAL
+    ───────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+        transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Staggered children */
+    .reveal-group > * {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+        transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal-group.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+    .reveal-group.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.08s; }
+    .reveal-group.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.16s; }
+    .reveal-group.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.24s; }
+
+    /* ─────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-card, .hero-stats { display: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 640px) {
+      #capabilities, #about, #routes, #contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero-content { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+    <div class="mark" style="width: 100%;"> <img src="images/upscaledLogo (1).png" style="width: 100%; height: auto;" alt=""></div>
+    <nav>
+      <a href="#hero"         class="active">Home</a>
+      <a href="#capabilities"            >Logistics</a>
+      <a href="#about"                   >About</a>
+      <a href="#routes"                  >Routes</a>
+      <a href="#contact"                 >Contact</a>
+    </nav>
+  </aside>
+
+  <main>
+    <!-- ══ TOP BAR ══ -->
+    <header class="topbar">
+      <div class="topbar-brand">
+        <a href="#hero" style="text-decoration: none;"> 
+            <span class="brand-name" style="font-size:46px;">Al-Naser</span>
+        </a>
+        <div class="brand-sep" style="text-align: center;"></div>
+        <span class="brand-sub" style="font-size:13px;" >For general trading L.L.C.</span>
+      </div>
+      <nav class="topbar-nav">
+        <a href="#about" class="active">About us</a>
+        <a href="#contact">Contact us</a>
+        <button aria-label="Language">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+          </svg>
+        </button>
+   
+      </nav>
+    </header>
+
+    <!-- ══════════════════════════════════════
+         HERO  ·  depth level 0 (surface)
+    ══════════════════════════════════════ -->
+    <section id="hero">
+      <div class="hero-bg-img">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtdNVW4g9XqXEmfVifpZ2Vpu-2-RW1POf6yMv3lu20co11kwHUl93FLLifSJN5J6I6T52snrZUEIidqoKosCgUjrP8ipxRiiX1bwdX6OZ-C2HGy0sdjH2WgSeXcGebJtyUw_C8cNMZEg91gfRtKE7gePOwFm51I8WugOnGvisIPQoAHc9mEynOcFZHc2D4Req8TtH9mHOEozHeQZLIG4Bu2cRZ_2aRh--eIhCHQkAMYNzc4EOphYcDMoiKBD_tE382u2SQrCfKcNa4" alt="" />
+      </div>
+      <div class="hero-grid"></div>
+
+      <div class="hero-content">
+        <span class="label-tag reveal">Institutional Commerce</span>
+        <h1 class="hero-title reveal">
+          Bridging Iraq to the<br>
+          <em>Global Blue</em>
+        </h1>
+        <p class="hero-sub reveal">Al-Naser LLC specializes in global procurement and import of spare parts and agricultural machinery, integrated with professional customs clearance services.</p>
+        <div class="hero-buttons reveal">
+          <a href="#contact" class="btn-primary">Establish Connection</a>
+          <a href="#routes"  class="btn-outline">Our Routes</a>
+        </div>
+      </div>
+
+      <!-- Floating card -->
+      <div class="hero-card" id="heroCard">
+        <img src="/images/upscaledLogo (1).png"alt="" />
+        <div class="hero-card-corner"></div>
+      </div>
+
+      
+    </section>
+
+    <!-- ── WAVE: hero → capabilities ── -->
+    <div class="wave-divider wave-hero-to-cap">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80 Z"/>
+      </svg>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         CAPABILITIES  ·  depth level 1
+    ══════════════════════════════════════ -->
+    <section id="capabilities">
+      <div class="section-header reveal">
+        <div>
+          <span class="label-tag">Our Capabilities</span>
+          <h2>The Trade Wave</h2>
+        </div>
+        <p class="aside-text">Architecting the movement of capital and goods through sophisticated maritime corridors.</p>
+      </div>
+
+      <div class="cards reveal-group">
+        <div class="card">
+          <div class="card-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>Import &amp; Export</h3>
+          <p>Seamlessly facilitate international trade, connecting local businesses to global suppliers across verified corridors.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>Logistics &amp; Distribution</h3>
+          <p>End-to-end solutions ensuring goods reach their destination efficiently and safely across land and sea.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>Global Sourcing</h3>
+          <p>Worldwide network of certified suppliers and manufacturers delivering quality products to local markets.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">
+            <img src="images/custom-clearance.png" alt="" style="height: 40px;">
+          </div>
+          <h3>Customs Clearance</h3>
+          <p>Specialized clearance services from our strategic location, ensuring seamless documentation and regulatory compliance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WAVE: capabilities → about ── -->
+    <div class="wave-divider wave-cap-to-about">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M0,20 C300,70 600,0 900,50 C1050,70 1150,30 1200,20 L1200,80 L0,80 Z"/>
+      </svg>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         ABOUT  ·  depth level 2
+    ══════════════════════════════════════ -->
+    <section id="about">
+      <div class="about-inner">
+        <div class="about-text">
+          <h2 class="reveal" style="color: var(--gold)">About Us</h2>
+         
+          <div class="about-pillars reveal-group">
+            <div class="pillar">
+              <span class="pillar-num">
+                <img src="images/check.png" alt="-" style="width: 30px; height: 30px;">
+              </span>
+              <div class="pillar-body">
+                <h4>Customs Clearance Expertise</h4>
+                <p>Deep regulatory knowledge and established relationships with customs authorities to expedite clearance and minimize delays.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <span class="pillar-num">
+                <img src="images/check.png" alt="-" style="width: 30px; height: 30px;">
+              </span>
+              <div class="pillar-body">
+                <h4>Tailored Shipping Solutions</h4>
+                <p>Bespoke routing strategies — sea, air, and land — matched to the specific cargo, timeline, and budget of each client.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <span class="pillar-num">
+                <img src="images/check.png" alt="-" style="width: 30px; height: 30px;">
+              </span>
+              <div class="pillar-body">
+                <h4>Pre- &amp; Post-Shipment Support</h4>
+                <p>Full-spectrum support from supplier negotiation and procurement to post-delivery quality verification and aftersales coordination.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <span class="pillar-num">
+                <img src="images/check.png" alt="-" style="width: 30px; height: 30px;">
+              </span>
+              <div class="pillar-body">
+                <h4>Risk and Delay Mitigation</h4>
+                <p>Proactive monitoring of geopolitical conditions and port congestion to reroute shipments and protect delivery timelines.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-visual reveal">
+           <div class="about-video-wrap">
+            <video id="myVideo" width="100%" src="images/WhatsApp Video 2026-05-15 at 12.20.22 AM.mp4" type="video/mp4" autoplay muted loop>
+                Your browser does not support the video tag.
+            </video>
+           </div>
+          <div class="about-corner"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WAVE: about → routes (reversed shape) ── -->
+    <div class="wave-divider wave-about-to-routes">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M0,60 C150,20 350,70 600,35 C850,0 1050,60 1200,55 L1200,80 L0,80 Z"/>
+      </svg>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         ROUTES  ·  depth level 3
+    ══════════════════════════════════════ -->
+    <section id="routes">
+      <div class="routes-header reveal">
+        <span class="label-tag">Trade Routes</span>
+        <h2>The Network.</h2>
+        <p>Key corridors connecting Al-Naser to global markets via Iraq's strategic geographic position.</p>
+      </div>
+
+      <div class="map-wrap reveal">
+        <svg class="map-svg" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(201,168,76,0.05)" stroke-width="0.5"/>
+            </pattern>
+            <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(201,168,76,0.4)"/>
+              <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
+            </radialGradient>
+          </defs>
+          <rect width="900" height="420" fill="url(#grid)"/>
+
+          <!-- Landmasses -->
+          <path d="M120 60 Q180 40 240 70 Q260 90 250 120 Q230 145 200 150 Q160 155 130 130 Q105 110 120 60Z"
+                fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.15)" stroke-width="0.5"/>
+          <path d="M380 130 Q440 100 510 115 Q555 125 560 175 Q558 220 520 240 Q480 258 440 245 Q395 228 375 190 Q365 160 380 130Z"
+                fill="rgba(10,58,88,0.95)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+          <path d="M600 130 Q660 110 710 130 Q740 150 735 190 Q725 225 690 235 Q655 242 625 220 Q595 198 600 165 Q598 148 600 130Z"
+                fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
+          <path d="M310 230 Q350 215 375 245 Q385 270 370 300 Q350 325 320 320 Q295 315 285 285 Q278 258 310 230Z"
+                fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+          <path d="M730 80 Q800 60 860 90 Q880 115 870 145 Q850 170 810 175 Q770 178 745 155 Q720 130 730 80Z"
+                fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.15)" stroke-width="0.5"/>
+
+          <!-- Hub glow -->
+          <circle cx="468" cy="175" r="30" fill="url(#hubGlow)"/>
+          <circle cx="468" cy="175" r="14" fill="rgba(201,168,76,0.1)"/>
+          <circle cx="468" cy="175" r="6"  fill="rgba(201,168,76,0.25)"/>
+          <circle cx="468" cy="175" r="3.5" fill="#c9a84c"/>
+          <circle cx="468" cy="175" r="1.8" fill="#fff"/>
+
+          <!-- Primary routes -->
+          <path class="route-primary" d="M468 175 Q380 100 180 110"
+                fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2"/>
+          <path class="route-primary" d="M468 175 Q600 120 790 115"
+                fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2"/>
+
+          <!-- Secondary routes -->
+          <path class="route-secondary" d="M468 175 Q540 155 660 175"
+                fill="none" stroke="rgba(201,168,76,0.38)" stroke-width="1.5"/>
+          <path class="route-secondary" d="M468 175 Q430 210 345 275"
+                fill="none" stroke="rgba(201,168,76,0.32)" stroke-width="1.5"/>
+
+          <!-- City dots -->
+          <circle cx="180" cy="110" r="4" fill="#c9a84c" opacity="0.8"/>
+          <text x="188" y="106" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">Europe</text>
+
+          <circle cx="660" cy="175" r="4" fill="#c9a84c" opacity="0.5"/>
+          <text x="668" y="171" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.5)" letter-spacing="0.05em">S. Asia</text>
+
+          <circle cx="790" cy="115" r="4" fill="#c9a84c" opacity="0.8"/>
+          <text x="798" y="111" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">China</text>
+
+          <circle cx="345" cy="275" r="4" fill="#c9a84c" opacity="0.45"/>
+          <text x="353" y="271" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.45)" letter-spacing="0.05em">Africa</text>
+
+          <text x="480" y="172" font-family="monospace" font-size="9" fill="#c9a84c" letter-spacing="0.1em">BAGHDAD</text>
+        </svg>
+      </div>
+
+      <div class="map-legend reveal">
+        <div class="legend-item">
+          <svg width="36" height="10">
+            <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.8)" stroke-width="2" stroke-dasharray="8 5"/>
+          </svg>
+          Primary Route
+        </div>
+        <div class="legend-item">
+          <svg width="36" height="10">
+            <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.38)" stroke-width="1.5" stroke-dasharray="4 6"/>
+          </svg>
+          Secondary Route
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WAVE: routes → contact ── -->
+    <div class="wave-divider wave-routes-to-contact">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M0,30 C250,75 500,10 750,50 C900,70 1050,25 1200,40 L1200,80 L0,80 Z"/>
+      </svg>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         CONTACT  ·  depth level 4
+    ══════════════════════════════════════ -->
+    <section id="contact">
+      <div class="contact-box reveal">
+        <span class="label-tag">Contact Control</span>
+        <h2>Initiate Commercial Dialogue</h2>
+        <p>Ready to expand your operational horizons? Connect with our trade specialists to blueprint your maritime strategy.</p>
+        <form>
+          <div class="form-row">
+            <div class="field">
+              <input type="text"  name="fullName" placeholder="Full Name" />
+            </div>
+            <div class="field">
+              <input type="email" name="email"    placeholder="Corporate Email Address" />
+            </div>
+          </div>
+          <div class="field">
+            <input type="text" name="company" placeholder="Company Name" />
+          </div>
+          <div class="field">
+            <textarea name="message" rows="3" placeholder="Transmission Details (Message)"></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit">Initiate Transmission</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ── WAVE: contact → footer ── -->
+    <div class="wave-divider wave-contact-to-footer">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,20 C300,55 600,5 900,35 C1050,50 1150,20 1200,25 L1200,60 L0,60 Z"/>
+      </svg>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         FOOTER  ·  depth level 5 (abyss)
+    ══════════════════════════════════════ -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Al-Naser General Trading</h4>
+          <div class="footer-contact">
+            <p><span>Tel</span>PLACE HOLDER</p>
+            <p><span>Loc</span> PLACE HOLDER</p>
+            <p><span>Post</span> PLACE HOLDER</p>
+          </div>
+        </div>
+        <!-- just for pushing map to left --> 
+        <div class="footer-col">
+        </div>
+
+        <div class="footer-col">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d26678.351964970625!2d44.432165!3d33.298052!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDE3JzUzLjAiTiA0NMKwMjUnNTUuOCJF!5e0!3m2!1sen!2sus!4v1778792449908!5m2!1sen!2sus"
+           width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" >failed to load location</iframe>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Al-Naser Maritime Sovereignty. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+  (function () {
+    /* ── Hero card 3-D tilt ── */
+    const card = document.getElementById('heroCard');
+    const hero = document.getElementById('hero');
+    if (card && hero) {
+      hero.addEventListener('mousemove', function (e) {
+        const r = hero.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width  / 2)) / r.width;
+        const dy = (e.clientY - (r.top  + r.height / 2)) / r.height;
+        card.style.transform =
+          'translateY(-40%) rotateY(' + (dx * -8) + 'deg) rotateX(' + (dy * 6) + 'deg) translateZ(10px)';
+      });
+      hero.addEventListener('mouseleave', function () {
+        card.style.transform = 'translateY(-40%) rotateY(0) rotateX(0) translateZ(0)';
+      });
+    }
+
+    /* ── Intersection Observer reveal ── */
+    const reveals = document.querySelectorAll('.reveal, .reveal-group');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(function (el) { io.observe(el); });
+    } else {
+      reveals.forEach(function (el) { el.classList.add('visible'); });
+    }
+
+    /* ── Active sidebar link on scroll ── */
+    const sections = document.querySelectorAll('section[id]');
+    const sidebarLinks = document.querySelectorAll('.sidebar a');
+    window.addEventListener('scroll', function () {
+      let current = '';
+      sections.forEach(function (s) {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      sidebarLinks.forEach(function (a) {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current || (current === 'hero' && a.getAttribute('href') === '#hero'));
+      });
+    }, { passive: true });
+  })();
+  </script>
+
+</body>
+</html>
