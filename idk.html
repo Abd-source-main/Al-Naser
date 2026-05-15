@@ -1,0 +1,524 @@
+<section id="routes" class="section-reactive">
+    <div class="routes-header reveal">
+        <span class="label-tag">Trade Routes</span>
+        <h2>The Network.</h2>
+        <p>Key corridors connecting Al-Naser to global markets via Iraq's strategic geographic position.</p>
+    </div>
+    <div class="map-wrap reveal">
+        <svg class="map-svg" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!-- Grid pattern -->
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(201,168,76,0.05)" stroke-width="0.5"/>
+                    <circle cx="20" cy="20" r="0.6" fill="rgba(201,168,76,0.08)"/>
+                </pattern>
+
+                <!-- Hub glow gradient -->
+                <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="rgba(201,168,76,0.5)"/>
+                    <stop offset="35%" stop-color="rgba(201,168,76,0.18)"/>
+                    <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
+                </radialGradient>
+
+                <!-- Destination glow -->
+                <radialGradient id="destGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="rgba(201,168,76,0.35)"/>
+                    <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
+                </radialGradient>
+
+                <!-- Ship symbol (bow points right for animateMotion rotate="auto") -->
+                <g id="ship">
+                    <path d="M-8,0 Q-5,4 0,4.5 Q5,4 9,0.5 L7,-0.5 Q4,3 0,3 Q-4,3 -7,-0.5 Z" fill="var(--gold)"/>
+                    <line x1="-1" y1="0" x2="-1" y2="-12" stroke="var(--gold)" stroke-width="0.7"/>
+                    <path d="M-1,-11 L-2,-2 L6,-3.5 Z" fill="var(--gold-lt)" opacity="0.9"/>
+                    <line x1="8" y1="0.5" x2="8" y2="-5" stroke="var(--gold)" stroke-width="0.4"/>
+                    <path d="M8,-5 L5,-4 L8,-3" fill="var(--gold-lt)" opacity="0.75"/>
+                    <circle cx="0" cy="0" r="0.8" fill="var(--gold-lt)" opacity="0.6"/>
+                </g>
+
+                <!-- ===== ROUTE PATHS (defined for both display and ship motion) ===== -->
+                <!-- Primary -->
+                <path id="route-europe" d="M468 175 Q380 100 180 110"/>
+                <path id="route-china" d="M468 175 Q600 120 790 115"/>
+                <!-- Secondary -->
+                <path id="route-sasia" d="M468 175 Q540 155 660 175"/>
+                <path id="route-africa" d="M468 175 Q430 210 345 275"/>
+                <!-- Tertiary -->
+                <path id="route-seasia" d="M468 175 Q580 200 720 230"/>
+                <path id="route-eastafrica" d="M468 175 Q400 250 380 320"/>
+                <path id="route-centralasia" d="M468 175 Q500 80 620 60"/>
+                <!-- Cross routes -->
+                <path id="route-china-seasia" d="M790 115 Q760 165 720 230"/>
+                <path id="route-sasia-seasia" d="M660 175 Q700 200 720 230"/>
+                <path id="route-africa-med" d="M345 275 Q300 190 280 125"/>
+                <path id="route-europe-med" d="M180 110 Q230 118 280 125"/>
+                <path id="route-china-sasia" d="M790 115 Q730 145 660 175"/>
+            </defs>
+
+            <!-- Background grid -->
+            <rect width="900" height="420" fill="var(--d4)"/>
+            <rect width="900" height="420" fill="url(#grid)"/>
+
+            <!-- Subtle ocean texture rings -->
+            <g fill="none" stroke="rgba(201,168,76,0.03)" stroke-width="0.5">
+                <circle cx="468" cy="175" r="50"/>
+                <circle cx="468" cy="175" r="100"/>
+                <circle cx="468" cy="175" r="160"/>
+                <circle cx="468" cy="175" r="230"/>
+            </g>
+
+            <!-- ===== LANDMASSES (enhanced, more detailed) ===== -->
+            <!-- Europe / Mediterranean -->
+            <path d="M120 60 Q140 42 175 38 Q210 35 240 55 Q260 70 255 95 Q250 120 230 135 Q200 155 165 150 Q135 146 118 125 Q100 100 110 78 Q115 68 120 60Z"
+            fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.15)" stroke-width="0.5"/>
+            <!-- British Isles hint -->
+            <path d="M100 45 Q115 38 128 48 Q125 58 110 58 Q98 54 100 45Z"
+            fill="rgba(8,45,71,0.8)" stroke="rgba(201,168,76,0.1)" stroke-width="0.4"/>
+
+            <!-- Central Asia / Steppe -->
+            <path d="M500 55 Q540 40 590 42 Q640 45 660 60 Q670 78 660 95 Q640 108 600 110 Q560 112 530 100 Q505 88 500 70 Q498 62 500 55Z"
+            fill="rgba(10,58,88,0.85)" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
+
+            <!-- Middle East / Arabia -->
+            <path d="M380 130 Q420 115 460 118 Q500 122 530 130 Q555 140 560 165 Q558 190 540 205 Q510 220 470 215 Q440 210 420 195 Q395 175 382 155 Q375 142 380 130Z"
+            fill="rgba(10,58,88,0.95)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+
+            <!-- South Asia / India -->
+            <path d="M600 130 Q630 115 665 120 Q690 130 700 150 Q708 170 705 190 Q698 210 680 218 Q655 225 630 215 Q610 205 600 185 Q590 165 592 148 Q594 138 600 130Z"
+            fill="rgba(10,58,88,0.9)" stroke="rgba(201,168,76,0.2)" stroke-width="0.7"/>
+
+            <!-- China / East Asia -->
+            <path d="M730 80 Q760 62 800 58 Q835 56 860 70 Q875 85 875 105 Q872 125 860 138 Q840 152 815 150 Q790 148 770 138 Q748 126 738 108 Q730 92 730 80Z"
+            fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.18)" stroke-width="0.6"/>
+
+            <!-- Southeast Asia -->
+            <path d="M700 225 Q718 215 740 218 Q758 224 765 240 Q768 258 760 270 Q748 280 730 278 Q715 274 705 260 Q696 248 698 235 Q700 228 700 225Z"
+            fill="rgba(8,45,71,0.85)" stroke="rgba(201,168,76,0.14)" stroke-width="0.5"/>
+            <!-- Indonesian isles -->
+            <path d="M745 268 Q758 262 772 268 Q775 278 768 285 Q755 288 745 280 Q740 274 745 268Z"
+            fill="rgba(8,45,71,0.7)" stroke="rgba(201,168,76,0.08)" stroke-width="0.4"/>
+            <path d="M770 275 Q785 270 795 278 Q792 288 780 290 Q770 286 770 275Z"
+            fill="rgba(8,45,71,0.65)" stroke="rgba(201,168,76,0.06)" stroke-width="0.4"/>
+
+            <!-- Africa -->
+            <path d="M310 230 Q335 218 360 225 Q380 235 390 255 Q398 275 392 300 Q382 325 360 335 Q335 342 315 330 Q295 318 285 295 Q276 270 285 250 Q295 236 310 230Z"
+            fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.15)" stroke-width="0.6"/>
+            <!-- East Africa / Horn -->
+            <path d="M375 310 Q388 300 400 305 Q408 315 405 330 Q398 345 385 348 Q372 346 368 332 Q365 320 375 310Z"
+            fill="rgba(8,45,71,0.85)" stroke="rgba(201,168,76,0.1)" stroke-width="0.5"/>
+
+            <!-- Mediterranean island hints -->
+            <circle cx="255" cy="130" r="4" fill="rgba(8,45,71,0.7)" stroke="rgba(201,168,76,0.08)" stroke-width="0.3"/>
+            <circle cx="270" cy="140" r="3" fill="rgba(8,45,71,0.65)" stroke="rgba(201,168,76,0.06)" stroke-width="0.3"/>
+
+            <!-- ===== CROSS ROUTES (subtle web arcs) ===== -->
+            <g fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="0.7" stroke-dasharray="3,8" opacity="0.5">
+                <use href="#route-china-seasia"/>
+                <use href="#route-sasia-seasia"/>
+                <use href="#route-africa-med"/>
+                <use href="#route-europe-med"/>
+                <use href="#route-china-sasia"/>
+            </g>
+
+            <!-- ===== TERTIARY ROUTES ===== -->
+            <g fill="none" stroke="rgba(201,168,76,0.22)" stroke-width="1.2" stroke-dasharray="5,7" opacity="0.7">
+                <use href="#route-seasia"/>
+                <use href="#route-eastafrica"/>
+                <use href="#route-centralasia"/>
+            </g>
+
+            <!-- ===== SECONDARY ROUTES ===== -->
+            <path class="route-secondary" d="M468 175 Q540 155 660 175" fill="none" stroke="rgba(201,168,76,0.38)" stroke-width="1.5"/>
+            <path class="route-secondary" d="M468 175 Q430 210 345 275" fill="none" stroke="rgba(201,168,76,0.32)" stroke-width="1.5"/>
+
+            <!-- Secondary route subtle glow -->
+            <g fill="none" stroke="rgba(201,168,76,0.12)" stroke-width="3" filter="url(#softGlow)" opacity="0.5">
+                <use href="#route-sasia"/>
+                <use href="#route-africa"/>
+            </g>
+
+            <!-- ===== PRIMARY ROUTES ===== -->
+            <path class="route-primary" d="M468 175 Q380 100 180 110" fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2"/>
+            <path class="route-primary" d="M468 175 Q600 120 790 115" fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2"/>
+
+            <!-- Primary route glow -->
+            <g fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="4" opacity="0.45">
+                <use href="#route-europe"/>
+                <use href="#route-china"/>
+            </g>
+
+            <!-- ===== HUB PULSE RINGS ===== -->
+            <circle class="hub-pulse" cx="468" cy="175" r="6" fill="none" stroke="rgba(201,168,76,0.6)" stroke-width="1"/>
+            <circle class="hub-pulse" cx="468" cy="175" r="6" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="0.8"/>
+            <circle class="hub-pulse" cx="468" cy="175" r="6" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+            <!-- Extra pulse rings for complexity -->
+            <circle class="hub-pulse" cx="468" cy="175" r="8" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="0.6"/>
+            <circle class="hub-pulse" cx="468" cy="175" r="10" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="0.4"/>
+
+            <!-- Hub glow -->
+            <circle cx="468" cy="175" r="34" fill="url(#hubGlow)"/>
+            <circle cx="468" cy="175" r="16" fill="rgba(201,168,76,0.1)"/>
+            <circle cx="468" cy="175" r="6" fill="rgba(201,168,76,0.25)"/>
+            <circle cx="468" cy="175" r="3.5" fill="#c9a84c"/>
+            <circle cx="468" cy="175" r="1.8" fill="#fff">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- ===== ANIMATED SHIPS ON PRIMARY ROUTES ===== -->
+            <!-- Europe route ships -->
+            <g><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-europe"/></animateMotion><use href="#ship" transform="scale(0.65)"/></g>
+            <g><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="3s"><mpath href="#route-europe"/></animateMotion><use href="#ship" transform="scale(0.65)"/></g>
+            <g><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="6s"><mpath href="#route-europe"/></animateMotion><use href="#ship" transform="scale(0.65)"/></g>
+
+            <!-- China route ships -->
+            <g><animateMotion dur="11s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-china"/></animateMotion><use href="#ship" transform="scale(0.7)"/></g>
+            <g><animateMotion dur="11s" repeatCount="indefinite" rotate="auto" begin="3.7s"><mpath href="#route-china"/></animateMotion><use href="#ship" transform="scale(0.7)"/></g>
+            <g><animateMotion dur="11s" repeatCount="indefinite" rotate="auto" begin="7.3s"><mpath href="#route-china"/></animateMotion><use href="#ship" transform="scale(0.7)"/></g>
+
+            <!-- ===== ANIMATED SHIPS ON SECONDARY ROUTES ===== -->
+            <!-- South Asia route ships -->
+            <g><animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-sasia"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
+            <g><animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="2.7s"><mpath href="#route-sasia"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
+            <g><animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="5.3s"><mpath href="#route-sasia"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
+
+            <!-- Africa route ships -->
+            <g><animateMotion dur="10s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-africa"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
+            <g><animateMotion dur="10s" repeatCount="indefinite" rotate="auto" begin="3.3s"><mpath href="#route-africa"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
+            <g><animateMotion dur="10s" repeatCount="indefinite" rotate="auto" begin="6.7s"><mpath href="#route-africa"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
+
+            <!-- ===== TRAVELING DOTS ON TERTIARY ROUTES ===== -->
+            <circle r="2.2" fill="#e2c278" opacity="0.7">
+                <animateMotion dur="7s" repeatCount="indefinite" begin="0s"><mpath href="#route-seasia"/></animateMotion>
+            </circle>
+            <circle r="1.8" fill="rgba(201,168,76,0.5)" opacity="0.6">
+                <animateMotion dur="7s" repeatCount="indefinite" begin="2.3s"><mpath href="#route-seasia"/></animateMotion>
+            </circle>
+            <circle r="2" fill="#e2c278" opacity="0.65">
+                <animateMotion dur="7s" repeatCount="indefinite" begin="4.7s"><mpath href="#route-seasia"/></animateMotion>
+            </circle>
+
+            <circle r="2" fill="rgba(201,168,76,0.55)" opacity="0.6">
+                <animateMotion dur="8s" repeatCount="indefinite" begin="0s"><mpath href="#route-eastafrica"/></animateMotion>
+            </circle>
+            <circle r="1.6" fill="#e2c278" opacity="0.5">
+                <animateMotion dur="8s" repeatCount="indefinite" begin="2.7s"><mpath href="#route-eastafrica"/></animateMotion>
+            </circle>
+
+            <circle r="1.8" fill="#e2c278" opacity="0.55">
+                <animateMotion dur="6s" repeatCount="indefinite" begin="0s"><mpath href="#route-centralasia"/></animateMotion>
+            </circle>
+            <circle r="1.5" fill="rgba(201,168,76,0.45)" opacity="0.5">
+                <animateMotion dur="6s" repeatCount="indefinite" begin="2s"><mpath href="#route-centralasia"/></animateMotion>
+            </circle>
+            <circle r="1.8" fill="#e2c278" opacity="0.55">
+                <animateMotion dur="6s" repeatCount="indefinite" begin="4s"><mpath href="#route-centralasia"/></animateMotion>
+            </circle>
+
+            <!-- Cross‑route subtle dots -->
+            <circle r="1.2" fill="rgba(201,168,76,0.25)" opacity="0.4">
+                <animateMotion dur="10s" repeatCount="indefinite" begin="0s"><mpath href="#route-china-seasia"/></animateMotion>
+            </circle>
+            <circle r="1.2" fill="rgba(201,168,76,0.25)" opacity="0.4">
+                <animateMotion dur="10s" repeatCount="indefinite" begin="5s"><mpath href="#route-africa-med"/></animateMotion>
+            </circle>
+
+            <!-- ===== DESTINATION MARKERS ===== -->
+            <!-- Europe -->
+            <circle cx="180" cy="110" r="22" fill="url(#destGlow)" opacity="0.6"/>
+            <circle class="city-ping" cx="180" cy="110" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+            <circle cx="180" cy="110" r="4" fill="#c9a84c" opacity="0.8"/>
+            <circle cx="180" cy="110" r="1.6" fill="#e2c278" opacity="0.9"/>
+            <text x="188" y="106" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">Europe</text>
+
+            <!-- China -->
+            <circle cx="790" cy="115" r="22" fill="url(#destGlow)" opacity="0.6"/>
+            <circle class="city-ping" cx="790" cy="115" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+            <circle cx="790" cy="115" r="4" fill="#c9a84c" opacity="0.8"/>
+            <circle cx="790" cy="115" r="1.6" fill="#e2c278" opacity="0.9"/>
+            <text x="798" y="111" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">China</text>
+
+            <!-- South Asia -->
+            <circle cx="660" cy="175" r="18" fill="url(#destGlow)" opacity="0.5"/>
+            <circle class="city-ping" cx="660" cy="175" r="4" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+            <circle cx="660" cy="175" r="4" fill="#c9a84c" opacity="0.55"/>
+            <circle cx="660" cy="175" r="1.4" fill="#e2c278" opacity="0.7"/>
+            <text x="668" y="171" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.5)" letter-spacing="0.05em">S. Asia</text>
+
+            <!-- Africa -->
+            <circle cx="345" cy="275" r="18" fill="url(#destGlow)" opacity="0.5"/>
+            <circle class="city-ping" cx="345" cy="275" r="4" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+            <circle cx="345" cy="275" r="4" fill="#c9a84c" opacity="0.45"/>
+            <circle cx="345" cy="275" r="1.4" fill="#e2c278" opacity="0.6"/>
+            <text x="353" y="271" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.45)" letter-spacing="0.05em">Africa</text>
+
+            <!-- Southeast Asia (new) -->
+            <circle cx="720" cy="230" r="14" fill="url(#destGlow)" opacity="0.4"/>
+            <circle class="city-ping" cx="720" cy="230" r="3" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="0.8"/>
+            <circle cx="720" cy="230" r="3" fill="#c9a84c" opacity="0.4"/>
+            <circle cx="720" cy="230" r="1.2" fill="#e2c278" opacity="0.5"/>
+            <text x="728" y="226" font-family="monospace" font-size="8" fill="rgba(220,230,240,0.4)" letter-spacing="0.04em">SE Asia</text>
+
+            <!-- East Africa (new) -->
+            <circle cx="380" cy="320" r="12" fill="url(#destGlow)" opacity="0.35"/>
+            <circle class="city-ping" cx="380" cy="320" r="3" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
+            <circle cx="380" cy="320" r="3" fill="#c9a84c" opacity="0.35"/>
+            <text x="388" y="316" font-family="monospace" font-size="8" fill="rgba(220,230,240,0.35)" letter-spacing="0.04em">E Africa</text>
+
+            <!-- Central Asia (new) -->
+            <circle cx="620" cy="60" r="12" fill="url(#destGlow)" opacity="0.35"/>
+            <circle class="city-ping" cx="620" cy="60" r="3" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.7"/>
+            <circle cx="620" cy="60" r="3" fill="#c9a84c" opacity="0.35"/>
+            <text x="628" y="56" font-family="monospace" font-size="8" fill="rgba(220,230,240,0.35)" letter-spacing="0.04em">C Asia</text>
+
+            <!-- Mediterranean node -->
+            <circle cx="280" cy="125" r="10" fill="url(#destGlow)" opacity="0.3"/>
+            <circle cx="280" cy="125" r="2.5" fill="#c9a84c" opacity="0.3"/>
+            <text x="288" y="121" font-family="monospace" font-size="7" fill="rgba(220,230,240,0.3)" letter-spacing="0.03em">Med.</text>
+
+            <!-- ===== BAGHDAD LABEL ===== -->
+            <text x="480" y="172" font-family="monospace" font-size="9" fill="#c9a84c" letter-spacing="0.1em">BAGHDAD</text>
+
+            <!-- ===== COMPASS ROSE (subtle) ===== -->
+            <g transform="translate(850,340)" opacity="0.35">
+                <circle cx="0" cy="0" r="18" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+                <polygon points="0,-16 3,-4 0,-7 -3,-4" fill="#c9a84c" opacity="0.7"/>
+                <polygon points="0,16 3,4 0,7 -3,4" fill="rgba(106,146,170,0.5)"/>
+                <text x="0" y="-20" fill="#e2c278" font-family="monospace" font-size="7" text-anchor="middle" opacity="0.7">N</text>
+            </g>
+        </svg>
+    </div>
+    <div class="map-legend reveal">
+        <div class="legend-item">
+            <svg width="36" height="10">
+                <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.8)" stroke-width="2" stroke-dasharray="8 5"/>
+            </svg>
+            Primary Route
+        </div>
+        <div class="legend-item">
+            <svg width="36" height="10">
+                <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.38)" stroke-width="1.5" stroke-dasharray="4 6"/>
+            </svg>
+            Secondary Route
+        </div>
+        <div class="legend-item">
+            <svg width="36" height="10">
+                <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.22)" stroke-width="1.2" stroke-dasharray="3 5"/>
+            </svg>
+            Tertiary Route
+        </div>
+        <div class="legend-item">
+            <svg width="20" height="14" viewBox="0 0 20 14">
+                <use href="#ship" transform="translate(10,7) scale(0.55)"/>
+            </svg>
+            Trade Vessel
+        </div>
+    </div>
+</section>
+
+<style>
+
+     :root {
+     
+      --d4: #041828;
+     
+      --gold:     #c9a84c;
+      --gold-lt:  #e2c278;
+      --gold-dim: rgba(201,168,76,0.15);
+      --text:     #cddde8;
+      --muted:    #6a92aa;
+      --border:   rgba(201,168,76,0.14);
+    }
+
+    /* ===== PULSE ANIMATIONS ===== */
+    @keyframes hubPulse {
+        0% {
+            r: 6;
+            opacity: 0.9;
+        }
+        60% {
+            r: 38;
+            opacity: 0;
+        }
+        100% {
+            r: 6;
+            opacity: 0;
+        }
+    }
+    @keyframes hubPulse2 {
+        0% {
+            r: 8;
+            opacity: 0.7;
+        }
+        55% {
+            r: 44;
+            opacity: 0;
+        }
+        100% {
+            r: 8;
+            opacity: 0;
+        }
+    }
+    @keyframes hubPulse3 {
+        0% {
+            r: 10;
+            opacity: 0.5;
+        }
+        50% {
+            r: 50;
+            opacity: 0;
+        }
+        100% {
+            r: 10;
+            opacity: 0;
+        }
+    }
+
+    .hub-pulse {
+        animation: hubPulse 3s ease-out infinite;
+    }
+    .hub-pulse:nth-child(2) {
+        animation: hubPulse2 3s ease-out 0.6s infinite;
+    }
+    .hub-pulse:nth-child(3) {
+        animation: hubPulse 3s ease-out 1.2s infinite;
+    }
+    .hub-pulse:nth-child(4) {
+        animation: hubPulse2 3s ease-out 0.3s infinite;
+    }
+    .hub-pulse:nth-child(5) {
+        animation: hubPulse3 3.5s ease-out 0.9s infinite;
+    }
+
+    @keyframes cityPing {
+        0% {
+            r: 4;
+            opacity: 0.8;
+        }
+        70% {
+            r: 18;
+            opacity: 0;
+        }
+        100% {
+            r: 4;
+            opacity: 0;
+        }
+    }
+    @keyframes cityPingSmall {
+        0% {
+            r: 3;
+            opacity: 0.6;
+        }
+        70% {
+            r: 14;
+            opacity: 0;
+        }
+        100% {
+            r: 3;
+            opacity: 0;
+        }
+    }
+
+    .city-ping {
+        animation: cityPing 3.5s ease-out infinite;
+    }
+    /* Stagger city pings */
+    .city-ping:nth-of-type(2) {
+        animation-delay: 0.8s;
+    }
+    .city-ping:nth-of-type(3) {
+        animation-delay: 1.6s;
+    }
+    .city-ping:nth-of-type(4) {
+        animation-delay: 2.4s;
+    }
+    .city-ping:nth-of-type(5) {
+        animation: cityPingSmall 3s ease-out 0.4s infinite;
+    }
+    .city-ping:nth-of-type(6) {
+        animation: cityPingSmall 3s ease-out 1.2s infinite;
+    }
+    .city-ping:nth-of-type(7) {
+        animation: cityPingSmall 3s ease-out 2s infinite;
+    }
+
+    /* ===== LEGEND STYLING ===== */
+    .map-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 22px;
+        justify-content: center;
+        margin-top: 18px;
+        padding: 12px 20px;
+    }
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-family: 'Segoe UI', monospace;
+        font-size: 11px;
+        color: var(--muted, #6a92aa);
+        letter-spacing: 0.04em;
+        opacity: 0.75;
+    }
+    .legend-item svg {
+        flex-shrink: 0;
+    }
+
+    /* ===== MAP WRAPPER ===== */
+    .map-wrap {
+        background: var(--d4, #041828);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow:
+            0 0 60px rgba(201, 168, 76, 0.06),
+            0 0 100px rgba(4, 24, 40, 0.5),
+            inset 0 0 0 1px var(--border, rgba(201, 168, 76, 0.14));
+    }
+    .map-svg {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    /* ===== ROUTE HEADER ===== */
+    .routes-header {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+    .routes-header .label-tag {
+        display: inline-block;
+        font-family: monospace;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        color: var(--gold, #c9a84c);
+        border: 1px solid var(--gold-dim, rgba(201, 168, 76, 0.15));
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+    .routes-header h2 {
+        font-family: 'Segoe UI', 'Georgia', serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text, #cddde8);
+        letter-spacing: 0.04em;
+        margin: 6px 0;
+    }
+    .routes-header p {
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: 13px;
+        color: var(--muted, #6a92aa);
+        letter-spacing: 0.03em;
+        max-width: 500px;
+        margin: 0 auto;
+        line-height: 1.5;
+    }
+
+    /* ===== SECTION ===== */
+    .section-reactive {
+        padding: 40px 24px;
+        max-width: 960px;
+        margin: 0 auto;
+    }
+</style>
