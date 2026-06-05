@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Al-Naser Maritime Sovereignty</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
       --d0: #0e4a6e;
@@ -14,14 +17,15 @@
       --d4: #041828;
       --d5: #030f1b;
       --d6: #010810;
-      --gold:     #c9a84c;
-      --gold-lt:  #e2c278;
-      --gold-dim: rgba(201,168,76,0.15);
-      --text:     #cddde8;
-      --muted:    #6a92aa;
-      --border:   rgba(201,168,76,0.14);
+      --gold: #c9a84c;
+      --gold-lt: #e2c278;
+      --gold-dim: rgba(201, 168, 76, 0.15);
+      --text: #cddde8;
+      --muted: #6a92aa;
+      --border: rgba(201, 168, 76, 0.14);
     }
-     /* Hide all Google Translate UI elements */
+
+    /* Hide all Google Translate UI elements */
     .goog-te-banner-frame,
     .goog-te-gadget,
     .goog-te-gadget-simple,
@@ -32,10 +36,10 @@
     }
 
     /* Custom language menu colors */
-#customLangMenu {
-  background: var(--d2) !important;
-  border-color: var(--border) !important;
-}
+    #customLangMenu {
+      background: var(--d2) !important;
+      border-color: var(--border) !important;
+    }
 
     #customLangMenu div div {
       color: var(--text) !important;
@@ -55,35 +59,53 @@
       top: 0px !important;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--d6);
       color: var(--text);
       overflow-x: hidden;
     }
-    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Cormorant Garamond', serif;
+    }
 
     /* ── SCROLL PROGRESS BAR ── */
     #scroll-bar {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       height: 2px;
       width: 0%;
       background: linear-gradient(90deg, var(--gold), var(--gold-lt));
       z-index: 9999;
-      box-shadow: 0 0 10px rgba(201,168,76,0.6);
+      box-shadow: 0 0 10px rgba(201, 168, 76, 0.6);
       transition: width 0.08s linear;
     }
 
     /* ── SIDEBAR ── */
     .sidebar {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 3.4rem;
       height: 100%;
-      background: rgba(6,34,56,0.88);
+      background: rgba(6, 34, 56, 0.88);
       backdrop-filter: blur(12px);
       border-right: 1px solid var(--border);
       display: flex;
@@ -92,127 +114,252 @@
       padding: 1.4rem 0;
       z-index: 200;
       transform: translateX(-100%);
-      animation: slideInSidebar 0.7s 0.2s cubic-bezier(0.16,1,0.3,1) forwards;
+      animation: slideInSidebar 0.7s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
+
     @keyframes slideInSidebar {
-      to { transform: translateX(0); }
+      to {
+        transform: translateX(0);
+      }
     }
+
     .sidebar .mark {
-      width: 100%; height: 1.9rem;
+      width: 100%;
+      height: 1.9rem;
       padding: 0.3rem;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.42rem; font-weight: 800; letter-spacing: 0.03em;
-      border-radius: 2px; flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.42rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
+
     .sidebar nav {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 2.2rem; margin-top: 2.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.2rem;
+      margin-top: 2.8rem;
     }
+
     .sidebar a {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--muted);
-      text-decoration: none; transition: color 0.25s;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.25s;
       position: relative;
     }
+
     .sidebar a::after {
       content: '';
-      position: absolute; left: -8px; top: 0;
-      width: 2px; height: 0;
+      position: absolute;
+      left: -8px;
+      top: 0;
+      width: 2px;
+      height: 0;
       background: var(--gold);
-      transition: height 0.3s cubic-bezier(0.16,1,0.3,1);
+      transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .sidebar a:hover::after,
-    .sidebar a.active::after { height: 100%; }
-    .sidebar a:hover, .sidebar a.active { color: var(--gold); }
+    .sidebar a.active::after {
+      height: 100%;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: var(--gold);
+    }
 
     /* ── MAIN ── */
-    main { margin-left: 3.4rem; }
+    main {
+      margin-left: 3.4rem;
+    }
 
     /* ── TOP BAR ── */
     .topbar {
       position: fixed;
-      top: 0; left: 3.4rem; right: 0;
+      top: 0;
+      left: 3.4rem;
+      right: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 2.5rem;
       height: 5rem;
-      background: rgba(8,45,71,0.75);
+      background: rgba(8, 45, 71, 0.75);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
       transform: translateY(-100%);
-      animation: slideDownTopbar 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+      animation: slideDownTopbar 0.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
+
     @keyframes slideDownTopbar {
-      to { transform: translateY(0); }
+      to {
+        transform: translateY(0);
+      }
     }
-    .topbar-brand { display: flex; align-items: baseline; gap: 0.7rem; }
+
+    .topbar-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+    }
+
     .brand-name {
       font-family: 'Cormorant Garamond', serif;
-      font-style: italic; color: var(--gold);
-      font-size: 1.15rem; letter-spacing: 0.03em;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.15rem;
+      letter-spacing: 0.03em;
       position: relative;
     }
+
     .brand-name::after {
       content: '';
-      position: absolute; bottom: -2px; left: 0;
-      width: 0%; height: 1px;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 1px;
       background: var(--gold);
       animation: brandUnderline 2.5s 1.5s ease-in-out infinite alternate;
     }
+
     @keyframes brandUnderline {
-      from { width: 0%; opacity: 0.4; }
-      to   { width: 100%; opacity: 1; }
+      from {
+        width: 0%;
+        opacity: 0.4;
+      }
+
+      to {
+        width: 100%;
+        opacity: 1;
+      }
     }
-    .brand-sep { width: 1px; height: 0.9rem; background: var(--border); margin: 0 0.2rem; opacity: 0.6; }
-    .brand-sub { font-size: 0.58rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.18em; }
+
+    .brand-sep {
+      width: 1px;
+      height: 0.9rem;
+      background: var(--border);
+      margin: 0 0.2rem;
+      opacity: 0.6;
+    }
+
+    .brand-sub {
+      font-size: 0.58rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
     .topbar-nav {
-      display: flex; align-items: center; gap: 2rem;
-      font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
     }
-    .topbar-nav a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .topbar-nav a:hover, .topbar-nav a.active { color: var(--gold); }
+
+    .topbar-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .topbar-nav a:hover,
+    .topbar-nav a.active {
+      color: var(--gold);
+    }
+
     .topbar-nav button {
-      background: none; border: none; cursor: pointer;
-      color: var(--muted); transition: color 0.2s;
-      display: flex; align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
     }
-    .topbar-nav button:hover { color: var(--gold); }
+
+    .topbar-nav button:hover {
+      color: var(--gold);
+    }
 
     /* ── REUSABLE ── */
     .label-tag {
-      font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.3em;
-      color: var(--gold); font-weight: 600; display: block; margin-bottom: 0.9rem;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.9rem;
     }
+
     .btn-primary {
-      background: var(--gold); color: #010810;
-      padding: 0.78rem 2rem; font-size: 0.6rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.18em;
-      text-decoration: none; display: inline-block;
+      background: var(--gold);
+      color: #010810;
+      padding: 0.78rem 2rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      display: inline-block;
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     }
-    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
+
+    .btn-primary:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.25);
+    }
+
     .btn-outline {
-      border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.85);
-      padding: 0.78rem 2rem; font-size: 0.6rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.18em;
-      text-decoration: none; display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 0.78rem 2rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      display: inline-block;
       transition: background 0.2s, border-color 0.2s;
     }
-    .btn-outline:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.4); }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
 
     /* ═══════════════════════════════
        ANIMATED WAVE DIVIDERS
     ═══════════════════════════════ */
     .wave-divider {
-      display: block; width: 100%;
-      overflow: hidden; line-height: 0;
-      position: relative; z-index: 11;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      position: relative;
+      z-index: 11;
     }
-    .wave-divider svg { display: block; width: 100%; }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
 
     /* Each wave path gets a gentle transform from JS on scroll */
     .wave-divider svg path {
@@ -223,175 +370,289 @@
     /* Animated shimmer on waves */
     .wave-divider::after {
       content: '';
-      position: absolute; top: 0; left: -100%;
-      width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.04), transparent);
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.04), transparent);
       animation: waveShimmer 4s linear infinite;
       pointer-events: none;
     }
+
     @keyframes waveShimmer {
-      to { left: 140%; }
+      to {
+        left: 140%;
+      }
     }
 
-    .wave-hero-to-cap { background: var(--d0); }
-    .wave-hero-to-cap svg path { fill: var(--d1); }
-    .wave-cap-to-about { background: var(--d1); }
-    .wave-cap-to-about svg path { fill: var(--d2); }
-    .wave-about-to-routes { background: var(--d2); }
-    .wave-about-to-routes svg path { fill: var(--d3); }
-    .wave-routes-to-contact { background: var(--d3); }
-    .wave-routes-to-contact svg path { fill: var(--d4); }
-    .wave-contact-to-footer { background: var(--d4); }
-    .wave-contact-to-footer svg path { fill: var(--d5); }
+    .wave-hero-to-cap {
+      background: var(--d0);
+    }
+
+    .wave-hero-to-cap svg path {
+      fill: var(--d1);
+    }
+
+    .wave-cap-to-about {
+      background: var(--d1);
+    }
+
+    .wave-cap-to-about svg path {
+      fill: var(--d2);
+    }
+
+    .wave-about-to-routes {
+      background: var(--d2);
+    }
+
+    .wave-about-to-routes svg path {
+      fill: var(--d3);
+    }
+
+    .wave-routes-to-contact {
+      background: var(--d3);
+    }
+
+    .wave-routes-to-contact svg path {
+      fill: var(--d4);
+    }
+
+    .wave-contact-to-footer {
+      background: var(--d4);
+    }
+
+    .wave-contact-to-footer svg path {
+      fill: var(--d5);
+    }
 
     /* ═══════════════════════════════
        HERO
     ═══════════════════════════════ */
     #hero {
-      position: relative; min-height: 100vh;
+      position: relative;
+      min-height: 100vh;
       background: var(--d0);
-      display: flex; align-items: center;
-      padding-top: 3.5rem; overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding-top: 3.5rem;
+      overflow: hidden;
     }
+
     #hero::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background-image:
-        radial-gradient(ellipse 120% 80% at 30% 60%, rgba(0,80,130,0.55) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(0,120,180,0.2) 0%, transparent 70%);
+        radial-gradient(ellipse 120% 80% at 30% 60%, rgba(0, 80, 130, 0.55) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(0, 120, 180, 0.2) 0%, transparent 70%);
       pointer-events: none;
       transition: background-position 0.2s ease-out;
     }
 
     /* Reactive background gradient overlay */
     #hero-reactive-bg {
-      position: absolute; inset: 0; z-index: 0;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
       pointer-events: none;
-      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(14,74,110,0.4) 0%, transparent 70%);
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(14, 74, 110, 0.4) 0%, transparent 70%);
       transition: background 0.4s ease;
     }
 
-    .hero-bg-img { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
     .hero-bg-img img {
-      width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.9;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
       mix-blend-mode: luminosity;
       transform: scale(1.05);
       will-change: transform;
     }
+
     .hero-bg-img::after {
       content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(110deg, rgba(14,74,110,0.92) 0%, rgba(8,45,71,0.7) 50%, rgba(6,34,56,0.4) 100%);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(14, 74, 110, 0.92) 0%, rgba(8, 45, 71, 0.7) 50%, rgba(6, 34, 56, 0.4) 100%);
     }
 
     /* Diagonal scan lines */
     .hero-scanlines {
-      position: absolute; inset: 0; z-index: 2;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0,0,0,0.04) 3px,
-        rgba(0,0,0,0.04) 4px
-      );
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 3px,
+          rgba(0, 0, 0, 0.04) 3px,
+          rgba(0, 0, 0, 0.04) 4px);
       pointer-events: none;
     }
 
     /* Animated grid */
     .hero-grid {
-      position: absolute; inset: 0; z-index: 1;
+      position: absolute;
+      inset: 0;
+      z-index: 1;
       background-image:
-        linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
+        linear-gradient(rgba(201, 168, 76, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 168, 76, 0.05) 1px, transparent 1px);
       background-size: 60px 60px;
       animation: gridDrift 20s linear infinite;
       will-change: background-position;
     }
+
     @keyframes gridDrift {
-      from { background-position: 0 0, 0 0; }
-      to   { background-position: 60px 60px, 60px 60px; }
+      from {
+        background-position: 0 0, 0 0;
+      }
+
+      to {
+        background-position: 60px 60px, 60px 60px;
+      }
     }
 
     /* Canvas particles */
     #hero-canvas {
-      position: absolute; inset: 0; z-index: 3;
-      pointer-events: none; opacity: 0.5;
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.5;
     }
 
     /* Rotating rings */
     .hero-ring {
       position: absolute;
       border-radius: 50%;
-      border: 1px solid rgba(201,168,76,0.08);
-      pointer-events: none; z-index: 2;
+      border: 1px solid rgba(201, 168, 76, 0.08);
+      pointer-events: none;
+      z-index: 2;
       animation: ringRotate 30s linear infinite;
     }
+
     .hero-ring:nth-child(1) {
-      width: 500px; height: 500px;
-      top: -80px; right: -60px;
+      width: 500px;
+      height: 500px;
+      top: -80px;
+      right: -60px;
       animation-duration: 40s;
     }
+
     .hero-ring:nth-child(2) {
-      width: 320px; height: 320px;
-      top: 20px; right: 30px;
+      width: 320px;
+      height: 320px;
+      top: 20px;
+      right: 30px;
       animation-direction: reverse;
       animation-duration: 25s;
       border-style: dashed;
     }
+
     @keyframes ringRotate {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Hero content */
     .hero-content {
-      position: relative; z-index: 10;
-      padding: 4rem 4rem 6rem; max-width: 52rem;
+      position: relative;
+      z-index: 10;
+      padding: 4rem 4rem 6rem;
+      max-width: 52rem;
     }
+
     .hero-content .label-tag {
-      opacity: 0; transform: translateY(14px);
-      animation: fadeUp 0.7s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.7s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
+
     .hero-title {
-      font-size: clamp(3rem, 6vw, 5rem); color: #fff;
-      line-height: 1.08; margin-bottom: 1.3rem; font-weight: 600;
-      opacity: 0; transform: translateY(22px);
-      animation: fadeUp 0.75s 0.85s cubic-bezier(0.16,1,0.3,1) forwards;
+      font-size: clamp(3rem, 6vw, 5rem);
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 1.3rem;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: fadeUp 0.75s 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .hero-title em { color: var(--gold-lt); font-style: italic; }
+
+    .hero-title em {
+      color: var(--gold-lt);
+      font-style: italic;
+    }
+
     .hero-sub {
-      color: rgba(205,221,232,0.75); font-size: 0.87rem;
-      max-width: 30rem; line-height: 1.8; margin-bottom: 2.5rem;
-      opacity: 0; transform: translateY(18px);
-      animation: fadeUp 0.75s 1.05s cubic-bezier(0.16,1,0.3,1) forwards;
+      color: rgba(205, 221, 232, 0.75);
+      font-size: 0.87rem;
+      max-width: 30rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.75s 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
+
     .hero-buttons {
-      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-      opacity: 0; transform: translateY(14px);
-      animation: fadeUp 0.7s 1.25s cubic-bezier(0.16,1,0.3,1) forwards;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.7s 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
+
     @keyframes fadeUp {
-      to { opacity: 1; transform: none; }
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* Floating card */
     .hero-card {
-      position: absolute; right: 1%; top: 25%;
+      position: absolute;
+      right: 1%;
+      top: 25%;
       transform: translateY(-40%);
       z-index: 20;
-      width: min(125px, 35vw); height: min(125px, 30vh);
+      width: min(125px, 35vw);
+      height: min(125px, 30vh);
       backdrop-filter: blur(14px);
       overflow: hidden;
       transform-style: preserve-3d;
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       opacity: 0;
-      animation: fadeUp 0.8s 1.5s cubic-bezier(0.16,1,0.3,1) forwards;
+      animation: fadeUp 0.8s 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .hero-card img { width: 100%; height: 100%; object-fit: contain; opacity: 0.65; display: block; }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.65;
+      display: block;
+    }
+
     .hero-card-corner {
-      position: absolute; top: 0.7rem; right: 0.7rem;
-      width: 1.8rem; height: 1.8rem;
-      border-top: 2px solid var(--gold); border-right: 2px solid var(--gold);
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-top: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
     }
 
     /* ═══════════════════════════════
@@ -400,316 +661,967 @@
     #capabilities {
       background: var(--d1);
       padding: 6rem 4rem;
-      position: relative; z-index: 10;
+      position: relative;
+      z-index: 10;
       transition: background 0.5s ease;
     }
+
     .section-header {
-      display: flex; justify-content: space-between;
-      align-items: flex-end; margin-bottom: 3.5rem;
-      gap: 2rem; flex-wrap: wrap;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
-    .section-header h2 { font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin-top: 0.4rem; }
-    .section-header .aside-text { font-size: 0.8rem; color: var(--muted); max-width: 24rem; font-style: italic; line-height: 1.8; }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+      margin-top: 0.4rem;
+    }
+
+    .section-header .aside-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 24rem;
+      font-style: italic;
+      line-height: 1.8;
+    }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 1px; background: var(--border);
+      gap: 1px;
+      background: var(--border);
       border: 1px solid var(--border);
     }
+
     .card {
-      background: rgba(6,34,56,0.6);
+      background: rgba(6, 34, 56, 0.6);
       padding: 2.2rem 1.8rem;
-      transition: background 0.25s, transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
-      position: relative; overflow: hidden;
+      transition: background 0.25s, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
     }
+
     .card::before {
       content: '';
-      position: absolute; top: 0; left: 0;
-      width: 2px; height: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
       background: var(--gold);
-      transition: height 0.35s cubic-bezier(0.16,1,0.3,1);
+      transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .card::after {
       content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.06), transparent 70%);
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(201, 168, 76, 0.06), transparent 70%);
       opacity: 0;
       transition: opacity 0.3s;
       pointer-events: none;
     }
-    .card:hover::before { height: 100%; }
-    .card:hover::after { opacity: 1; }
-    .card:hover { background: rgba(4,24,40,0.85); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
-    .card:hover h3 { color: var(--gold-lt); }
-    .card-icon { color: var(--gold); margin-bottom: 1.4rem; opacity: 0.8; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s; }
-    .card:hover .card-icon { transform: scale(1.12) rotate(-3deg); opacity: 1; }
-    .card h3 { font-size: 1.05rem; color: #fff; margin-bottom: 0.8rem; transition: color 0.25s; font-weight: 600; }
-    .card p  { font-size: 0.76rem; color: var(--muted); line-height: 1.8; }
+
+    .card:hover::before {
+      height: 100%;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card:hover {
+      background: rgba(4, 24, 40, 0.85);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .card:hover h3 {
+      color: var(--gold-lt);
+    }
+
+    .card-icon {
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+      opacity: 0.8;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.12) rotate(-3deg);
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+      transition: color 0.25s;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 0.76rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
 
     /* ═══════════════════════════════
        ABOUT
     ═══════════════════════════════ */
-    #about { background: var(--d2); padding: 6rem 4rem; position: relative; z-index: 9; transition: background 0.5s ease; }
-    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; }
-    .about-text h2 { font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; margin-bottom: 1.4rem; line-height: 1.15; }
-    .about-text > p { font-size: 0.83rem; color: var(--muted); line-height: 1.85; margin-bottom: 0.9rem; }
-    .about-pillars { margin-top: 2.5rem; }
+    #about {
+      background: var(--d2);
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 9;
+      transition: background 0.5s ease;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+    }
+
+    .about-text h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #fff;
+      margin-bottom: 1.4rem;
+      line-height: 1.15;
+    }
+
+    .about-text>p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 0.9rem;
+    }
+
+    .about-pillars {
+      margin-top: 2.5rem;
+    }
+
     .pillar {
-      display: flex; align-items: flex-start; gap: 1.2rem;
-      padding: 1.3rem 0; border-bottom: 1px solid var(--border);
-      transition: padding-left 0.3s cubic-bezier(0.16,1,0.3,1);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.3rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .pillar:first-child { border-top: 1px solid var(--border); }
-    .pillar:hover { padding-left: 0.5rem; }
-    .pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold); opacity: 0.45; line-height: 1; min-width: 2rem; padding-top: 0.05rem; transition: opacity 0.3s; }
-    .pillar:hover .pillar-num { opacity: 0.9; }
-    .pillar-body h4 { font-size: 0.9rem; color: #dce6f0; margin-bottom: 0.3rem; font-family: 'DM Sans', sans-serif; font-weight: 600; }
-    .pillar-body p  { font-size: 0.75rem; color: var(--muted); line-height: 1.75; }
-    .about-visual { position: relative; }
+
+    .pillar:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .pillar:hover {
+      padding-left: 0.5rem;
+    }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      opacity: 0.45;
+      line-height: 1;
+      min-width: 2rem;
+      padding-top: 0.05rem;
+      transition: opacity 0.3s;
+    }
+
+    .pillar:hover .pillar-num {
+      opacity: 0.9;
+    }
+
+    .pillar-body h4 {
+      font-size: 0.9rem;
+      color: #dce6f0;
+      margin-bottom: 0.3rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+    }
+
+    .pillar-body p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
     .about-video-wrap {
-      position: relative; border: 1px solid var(--border);
-      overflow: hidden; min-height: 400px;
+      position: relative;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      min-height: 400px;
     }
+
     /* Animated border shimmer around video */
     .about-video-wrap::before {
       content: '';
-      position: absolute; inset: 0; z-index: 2;
+      position: absolute;
+      inset: 0;
+      z-index: 2;
       border: 1px solid transparent;
-     
+
       animation: borderSlide 3s linear infinite;
       pointer-events: none;
     }
+
     @keyframes borderSlide {
-      from { background-position: -200% 0, -200% 0; }
-      to   { background-position: 200% 0, 200% 0; }
+      from {
+        background-position: -200% 0, -200% 0;
+      }
+
+      to {
+        background-position: 200% 0, 200% 0;
+      }
     }
-    .about-video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+
+    .about-video-wrap video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
     .about-video-wrap::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(6,34,56,0.6) 0%, transparent 65%);
-      z-index: 1; pointer-events: none;
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(6, 34, 56, 0.6) 0%, transparent 65%);
+      z-index: 1;
+      pointer-events: none;
     }
+
     .about-corner {
-      position: absolute; bottom: -1rem; right: -1rem;
-      width: 3.5rem; height: 3.5rem;
-      border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold);
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-bottom: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
       animation: cornerPulse 2.5s ease-in-out infinite;
     }
+
     @keyframes cornerPulse {
-      0%, 100% { opacity: 0.5; }
-      50%       { opacity: 1; }
+
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
 
-    
+
 
     /* ══ PROCESS ══ */
-    step-circle-wrap{
-      position:relative;display:flex;align-items:center;justify-content:center;
-      margin:0 auto 2rem;width:6.2rem;height:6.2rem;
+    step-circle-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      width: 6.2rem;
+      height: 6.2rem;
     }
-     .wave-about-to-process{background:var(--d2);}.wave-about-to-process svg path{fill:var(--d3);}
-    .wave-process-to-routes{background:var(--d3);}.wave-process-to-routes svg path{fill:var(--d3);}
-    
-    
-    #process{background:var(--d3);padding:6rem 4rem;position:relative;z-index:8;}
-    .process-header{text-align:center;margin-bottom:4rem;}
-    .process-header h2{font-size:clamp(2rem,4vw,3rem);color:#fff;}
-    .process-header p{font-size:.8rem;color:var(--muted);max-width:38rem;margin:.6rem auto 0;line-height:1.8;}
-    .process-steps{
-      display:grid;grid-template-columns:repeat(4,1fr);
-      position:relative;max-width:1100px;gap:0;
+
+    .wave-about-to-process {
+      background: var(--d2);
     }
-    .process-steps::before{
-      content:'';position:absolute;
-      top:3.15rem;left:12.5%;right:12.5%;height:1px;
-      background:linear-gradient(90deg,transparent,rgba(201,168,76,.45) 15%,rgba(201,168,76,.45) 85%,transparent);
-      z-index:0;
+
+    .wave-about-to-process svg path {
+      fill: var(--d3);
     }
-    .process-step{text-align:center;padding:0 1.4rem;position:relative;z-index:1;}
-    .step-circle-wrap{
-      position:relative;display:flex;align-items:center;justify-content:center;
-      margin:0 auto 2rem;width:6.2rem;height:6.2rem;
+
+    .wave-process-to-routes {
+      background: var(--d3);
     }
-    .step-outer{
-      position:absolute;inset:0;border:1px solid rgba(201,168,76,.2);border-radius:50%;
-      transition:border-color .35s,transform .4s cubic-bezier(.16,1,.3,1);
+
+    .wave-process-to-routes svg path {
+      fill: var(--d3);
     }
-    .process-step:hover .step-outer{border-color:rgba(201,168,76,.6);transform:scale(1.06);}
-    .step-inner{
-      width:4.6rem;height:4.6rem;background:rgba(8,45,71,.85);
-      border:1px solid rgba(201,168,76,.35);border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--gold);font-weight:600;
-      transition:background .3s,border-color .3s;
+
+
+    #process {
+      background: var(--d3);
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 8;
     }
-    .process-step:hover .step-inner{background:rgba(201,168,76,.08);border-color:var(--gold);}
-    .step-tag{font-size:.52rem;text-transform:uppercase;letter-spacing:.25em;color:var(--gold);opacity:.65;display:block;margin-bottom:.4rem;}
-    .step-title{font-size:1.05rem;color:#fff;font-weight:600;margin-bottom:.6rem;font-family:'DM Sans',sans-serif;}
-    .step-desc{font-size:.72rem;color:var(--muted);line-height:1.8;}
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .process-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+    }
+
+    .process-header p {
+      font-size: .8rem;
+      color: var(--muted);
+      max-width: 38rem;
+      margin: .6rem auto 0;
+      line-height: 1.8;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+      max-width: 1100px;
+      gap: 0;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 3.15rem;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 168, 76, .45) 15%, rgba(201, 168, 76, .45) 85%, transparent);
+      z-index: 0;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 1.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      width: 6.2rem;
+      height: 6.2rem;
+    }
+
+    .step-outer {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(201, 168, 76, .2);
+      border-radius: 50%;
+      transition: border-color .35s, transform .4s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .process-step:hover .step-outer {
+      border-color: rgba(201, 168, 76, .6);
+      transform: scale(1.06);
+    }
+
+    .step-inner {
+      width: 4.6rem;
+      height: 4.6rem;
+      background: rgba(8, 45, 71, .85);
+      border: 1px solid rgba(201, 168, 76, .35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      color: var(--gold);
+      font-weight: 600;
+      transition: background .3s, border-color .3s;
+    }
+
+    .process-step:hover .step-inner {
+      background: rgba(201, 168, 76, .08);
+      border-color: var(--gold);
+    }
+
+    .step-tag {
+      font-size: .52rem;
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      color: var(--gold);
+      opacity: .65;
+      display: block;
+      margin-bottom: .4rem;
+    }
+
+    .step-title {
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: .6rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .step-desc {
+      font-size: .72rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
 
 
     /* ═══════════════════════════════
        ROUTES
     ═══════════════════════════════ */
-    #routes { background: var(--d3); padding: 6rem 4rem; position: relative; z-index: 8; transition: background 0.5s ease; }
-    .routes-header { text-align: center; margin-bottom: 3rem; }
-    .routes-header h2 { font-size: clamp(2rem, 4vw, 3.2rem); color: #fff; margin-bottom: 0.6rem; }
-    .routes-header p  { font-size: 0.8rem; color: var(--muted); max-width: 38rem; margin: 0 auto; line-height: 1.75; }
-    .map-wrap { background: rgba(2,15,27,0.5); border: 1px solid var(--border); overflow: hidden; position: relative; }
-    .map-svg { width: 100%; height: auto; display: block; }
-    @keyframes dash-flow { from { stroke-dashoffset: 300; } to { stroke-dashoffset: 0; } }
-    @keyframes dash-flow-rev { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -300; } }
-    .route-primary   { stroke-dasharray: 8 5; animation: dash-flow 2.8s linear infinite; }
-    .route-secondary { stroke-dasharray: 4 6; animation: dash-flow 5s linear infinite; }
+    #routes {
+      background: var(--d3);
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 8;
+      transition: background 0.5s ease;
+    }
+
+    .routes-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .routes-header h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .routes-header p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 38rem;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .map-wrap {
+      background: rgba(2, 15, 27, 0.5);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .map-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @keyframes dash-flow {
+      from {
+        stroke-dashoffset: 300;
+      }
+
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes dash-flow-rev {
+      from {
+        stroke-dashoffset: 0;
+      }
+
+      to {
+        stroke-dashoffset: -300;
+      }
+    }
+
+    .route-primary {
+      stroke-dasharray: 8 5;
+      animation: dash-flow 2.8s linear infinite;
+    }
+
+    .route-secondary {
+      stroke-dasharray: 4 6;
+      animation: dash-flow 5s linear infinite;
+    }
+
     /* Hub pulse rings */
     @keyframes hubPulse {
-      0%   { r: 6; opacity: 0.8; }
-      100% { r: 36; opacity: 0; }
+      0% {
+        r: 6;
+        opacity: 0.8;
+      }
+
+      100% {
+        r: 36;
+        opacity: 0;
+      }
     }
-    .hub-pulse { animation: hubPulse 2.4s ease-out infinite; }
-    .hub-pulse:nth-child(2) { animation-delay: 0.8s; }
-    .hub-pulse:nth-child(3) { animation-delay: 1.6s; }
+
+    .hub-pulse {
+      animation: hubPulse 2.4s ease-out infinite;
+    }
+
+    .hub-pulse:nth-child(2) {
+      animation-delay: 0.8s;
+    }
+
+    .hub-pulse:nth-child(3) {
+      animation-delay: 1.6s;
+    }
+
     /* Traveling dot */
-    @keyframes travelRoute1 { 0% { offset-distance: 0%; } 100% { offset-distance: 100%; } }
-    @keyframes travelRoute2 { 0% { offset-distance: 0%; } 100% { offset-distance: 100%; } }
+    @keyframes travelRoute1 {
+      0% {
+        offset-distance: 0%;
+      }
+
+      100% {
+        offset-distance: 100%;
+      }
+    }
+
+    @keyframes travelRoute2 {
+      0% {
+        offset-distance: 0%;
+      }
+
+      100% {
+        offset-distance: 100%;
+      }
+    }
+
     /* City ping */
     @keyframes cityPing {
-      0%   { r: 4; opacity: 0.7; }
-      100% { r: 14; opacity: 0; }
-    }
-    .city-ping { animation: cityPing 2s ease-out infinite; }
-    .city-ping:nth-child(2) { animation-delay: 0.5s; }
-    .city-ping:nth-child(3) { animation-delay: 1s; }
-    .city-ping:nth-child(4) { animation-delay: 1.5s; }
+      0% {
+        r: 4;
+        opacity: 0.7;
+      }
 
-    .map-legend { display: flex; gap: 2rem; margin-top: 1.5rem; justify-content: center; flex-wrap: wrap; }
-    .legend-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.68rem; color: var(--muted); }
+      100% {
+        r: 14;
+        opacity: 0;
+      }
+    }
+
+    .city-ping {
+      animation: cityPing 2s ease-out infinite;
+    }
+
+    .city-ping:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .city-ping:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    .city-ping:nth-child(4) {
+      animation-delay: 1.5s;
+    }
+
+    .map-legend {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
 
     /* ═══════════════════════════════
        CONTACT
     ═══════════════════════════════ */
-    #contact { background: var(--d4); padding: 6rem 4rem; display: flex; justify-content: center; position: relative; z-index: 7; transition: background 0.5s ease; }
+    #contact {
+      background: var(--d4);
+      padding: 6rem 4rem;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 7;
+      transition: background 0.5s ease;
+    }
+
     .contact-box {
-      width: 100%; max-width: 44rem;
-      background: rgba(4,24,40,0.7);
+      width: 100%;
+      max-width: 44rem;
+      background: rgba(4, 24, 40, 0.7);
       border: 1px solid var(--border);
-      padding: 4rem; position: relative;
+      padding: 4rem;
+      position: relative;
       backdrop-filter: blur(10px);
       transition: box-shadow 0.4s;
     }
-    .contact-box:hover { box-shadow: 0 0 40px rgba(201,168,76,0.06); }
+
+    .contact-box:hover {
+      box-shadow: 0 0 40px rgba(201, 168, 76, 0.06);
+    }
+
     .contact-box::before {
-      content: ''; position: absolute; top: 0; left: 2rem;
-      width: 5rem; height: 2px; background: var(--gold);
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      width: 5rem;
+      height: 2px;
+      background: var(--gold);
     }
-    .contact-box .label-tag { text-align: center; }
-    .contact-box h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: #fff; text-align: center; margin: 0.5rem 0 0.7rem; }
-    .contact-box > p { font-size: 0.78rem; color: var(--muted); text-align: center; max-width: 28rem; margin: 0 auto 3rem; line-height: 1.8; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
-    .field { margin-bottom: 2rem; position: relative; }
-    .field input, .field textarea {
-      width: 100%; background: transparent; border: none;
-      border-bottom: 1px solid rgba(201,168,76,0.18);
-      color: #fff; font-size: 0.8rem; padding: 0.6rem 0;
-      font-family: 'DM Sans', sans-serif; transition: border-color 0.2s;
+
+    .contact-box .label-tag {
+      text-align: center;
     }
-    .field::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0%; height: 1px; background: var(--gold);
-      transition: width 0.35s cubic-bezier(0.16,1,0.3,1);
+
+    .contact-box h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: #fff;
+      text-align: center;
+      margin: 0.5rem 0 0.7rem;
     }
-    .field:focus-within::after { width: 100%; }
-    .field input::placeholder, .field textarea::placeholder { color: rgba(106,146,170,0.6); }
-    .field input:focus, .field textarea:focus { outline: none; border-bottom-color: transparent; }
-    .field textarea { resize: none; }
-    .form-submit { text-align: center; margin-top: 0.5rem; }
-    .form-submit button {
-      background: var(--gold); color: #010810;
-      border: none; padding: 1rem 3.5rem;
-      font-size: 0.6rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.2em;
-      cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+
+    .contact-box>p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      max-width: 28rem;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 560px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 0.6rem 0;
       font-family: 'DM Sans', sans-serif;
-      position: relative; overflow: hidden;
+      transition: border-color 0.2s;
     }
+
+    .field::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .field:focus-within::after {
+      width: 100%;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(106, 146, 170, 0.6);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-bottom-color: transparent;
+    }
+
+    .field textarea {
+      resize: none;
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit button {
+      background: var(--gold);
+      color: #010810;
+      border: none;
+      padding: 1rem 3.5rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      font-family: 'DM Sans', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
     .form-submit button::after {
-      content: ''; position: absolute;
-      top: 50%; left: 50%;
-      width: 0; height: 0;
-      background: rgba(255,255,255,0.15);
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.15);
       border-radius: 50%;
       transform: translate(-50%, -50%);
       transition: width 0.5s ease, height 0.5s ease, opacity 0.5s;
       opacity: 0;
     }
-    .form-submit button:hover::after { width: 300px; height: 300px; opacity: 1; }
-    .form-submit button:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+
+    .form-submit button:hover::after {
+      width: 300px;
+      height: 300px;
+      opacity: 1;
+    }
+
+    .form-submit button:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+    }
 
 
-        /* ══ FLOATING CTA ══ */
-    #float-cta{
-      position:fixed;bottom:2.5rem;right:2rem;z-index:500;
-      opacity:0;transform:translateY(16px) scale(.95);
-      transition:opacity .4s,transform .4s cubic-bezier(.16,1,.3,1);
-      pointer-events:none;
+    /* ══ FLOATING CTA ══ */
+    #float-cta {
+      position: fixed;
+      bottom: 2.5rem;
+      right: 2rem;
+      z-index: 500;
+      opacity: 0;
+      transform: translateY(16px) scale(.95);
+      transition: opacity .4s, transform .4s cubic-bezier(.16, 1, .3, 1);
+      pointer-events: none;
     }
-    #float-cta.visible{opacity:1;transform:none;pointer-events:auto;}
-    #float-cta a{
-      display:flex;align-items:center;gap:.7rem;
-      background:var(--gold);color:#010810;
-      padding:.85rem 1.6rem;font-size:.58rem;font-weight:700;
-      text-transform:uppercase;letter-spacing:.18em;text-decoration:none;
-      box-shadow:0 8px 32px rgba(201,168,76,.28);
-      transition:background .2s,transform .2s,box-shadow .2s;
+
+    #float-cta.visible {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
     }
-    #float-cta a:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 14px 42px rgba(201,168,76,.38);}
-    .cta-dot{width:7px;height:7px;background:#010810;border-radius:50%;position:relative;flex-shrink:0;}
-    .cta-dot::after{
-      content:'';position:absolute;inset:-4px;
-      border:1.5px solid #010810;border-radius:50%;
-      animation:cta-ping 1.6s ease-in-out infinite;
+
+    #float-cta a {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      background: var(--gold);
+      color: #010810;
+      padding: .85rem 1.6rem;
+      font-size: .58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(201, 168, 76, .28);
+      transition: background .2s, transform .2s, box-shadow .2s;
     }
-    @keyframes cta-ping{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:0;transform:scale(1.7);}}
+
+    #float-cta a:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 42px rgba(201, 168, 76, .38);
+    }
+
+    .cta-dot {
+      width: 7px;
+      height: 7px;
+      background: #010810;
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .cta-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 1.5px solid #010810;
+      border-radius: 50%;
+      animation: cta-ping 1.6s ease-in-out infinite;
+    }
+
+    @keyframes cta-ping {
+
+      0%,
+      100% {
+        opacity: .5;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0;
+        transform: scale(1.7);
+      }
+    }
 
 
 
     /* ═══════════════════════════════
        FOOTER
     ═══════════════════════════════ */
-    footer { background: var(--d5); border-top: 1px solid var(--border); padding: 4rem 4rem 2.5rem; position: relative; z-index: 6; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
-    .footer-brand h4 { font-size: 1.2rem; color: var(--gold); margin-bottom: 0.8rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
-    .footer-brand p  { font-size: 0.7rem; color: var(--muted); max-width: 22rem; margin-bottom: 1.5rem; line-height: 1.8; }
-    .footer-contact { font-size: 0.68rem; color: var(--muted); line-height: 2.2; }
-    .footer-contact span { font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(106,146,170,0.5); margin-right: 0.5rem; }
-    .footer-col h5 { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.2em; color: #fff; margin-bottom: 1.5rem; font-weight: 600; }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 0.9rem; }
-    .footer-col a  { font-size: 0.7rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--gold); }
-    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-    .footer-bottom p { font-size: 0.6rem; color: var(--muted); }
+    footer {
+      background: var(--d5);
+      border-top: 1px solid var(--border);
+      padding: 4rem 4rem 2.5rem;
+      position: relative;
+      z-index: 6;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand h4 {
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+
+    .footer-brand p {
+      font-size: 0.7rem;
+      color: var(--muted);
+      max-width: 22rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .footer-contact {
+      font-size: 0.68rem;
+      color: var(--muted);
+      line-height: 2.2;
+    }
+
+    .footer-contact span {
+      font-size: 0.56rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(106, 146, 170, 0.5);
+      margin-right: 0.5rem;
+    }
+
+    .footer-col h5 {
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-col a {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p {
+      font-size: 0.6rem;
+      color: var(--muted);
+    }
 
     /* ═══════════════════════════════
        SCROLL REVEAL
     ═══════════════════════════════ */
     .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-group > * {
-      opacity: 0; transform: translateY(18px);
-      transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
     }
-    .reveal-group.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
-    .reveal-group.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.08s; }
-    .reveal-group.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.16s; }
-    .reveal-group.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.24s; }
+
+    .reveal-group>* {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-group.visible>*:nth-child(1) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0s;
+    }
+
+    .reveal-group.visible>*:nth-child(2) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.08s;
+    }
+
+    .reveal-group.visible>*:nth-child(3) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.16s;
+    }
+
+    .reveal-group.visible>*:nth-child(4) {
+      opacity: 1;
+      transform: none;
+      transition-delay: 0.24s;
+    }
 
     /* ═══════════════════════════════
        REACTIVE SECTION BG PULSE
@@ -719,15 +1631,35 @@
     }
 
     @media (max-width: 900px) {
-      .hero-card { display: none; }
-      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-card {
+        display: none;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
     }
+
     @media (max-width: 640px) {
-      #capabilities, #about, #routes, #contact, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .hero-content { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+      #capabilities,
+      #about,
+      #routes,
+      #contact,
+      footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .hero-content {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Scroll progress bar -->
@@ -739,12 +1671,12 @@
       <img src="images/upscaledLogo (1).png" style="width: 100%; height: auto;" alt="">
     </div>
     <nav>
-      <a href="#hero"          class="active">Home</a>
-      <a href="#capabilities"             >Logistics</a>
-      <a href="#about"                    >About</a>
-      <a href="#process"                  >Process</a>
-      <a href="#routes"                   >Routes</a>
-      <a href="#contact"                  >Contact</a>
+      <a href="#hero" class="active">Home</a>
+      <a href="#capabilities">Logistics</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#routes">Routes</a>
+      <a href="#contact">Contact</a>
     </nav>
   </aside>
 
@@ -763,14 +1695,16 @@
         <a href="#contact">Contact us</a>
         <button aria-label="Language">
           <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+            <path
+              d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" />
           </svg>
         </button>
-        
+
       </nav>
     </header>
 
-        <!-- ══ FLOATING CTA ══ -->
+    <!-- ══ FLOATING CTA ══ -->
     <div id="float-cta">
       <a href="#contact">
         <div class="cta-dot"></div>
@@ -782,7 +1716,9 @@
     <section id="hero">
       <div id="hero-reactive-bg"></div>
       <div class="hero-bg-img">
-        <img id="heroBgImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtdNVW4g9XqXEmfVifpZ2Vpu-2-RW1POf6yMv3lu20co11kwHUl93FLLifSJN5J6I6T52snrZUEIidqoKosCgUjrP8ipxRiiX1bwdX6OZ-C2HGy0sdjH2WgSeXcGebJtyUw_C8cNMZEg91gfRtKE7gePOwFm51I8WugOnGvisIPQoAHc9mEynOcFZHc2D4Req8TtH9mHOEozHeQZLIG4Bu2cRZ_2aRh--eIhCHQkAMYNzc4EOphYcDMoiKBD_tE382u2SQrCfKcNa4" alt="" />
+        <img id="heroBgImg"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtdNVW4g9XqXEmfVifpZ2Vpu-2-RW1POf6yMv3lu20co11kwHUl93FLLifSJN5J6I6T52snrZUEIidqoKosCgUjrP8ipxRiiX1bwdX6OZ-C2HGy0sdjH2WgSeXcGebJtyUw_C8cNMZEg91gfRtKE7gePOwFm51I8WugOnGvisIPQoAHc9mEynOcFZHc2D4Req8TtH9mHOEozHeQZLIG4Bu2cRZ_2aRh--eIhCHQkAMYNzc4EOphYcDMoiKBD_tE382u2SQrCfKcNa4"
+          alt="" />
       </div>
       <div class="hero-grid"></div>
       <div class="hero-scanlines"></div>
@@ -796,10 +1732,11 @@
           Bridging Iraq to the<br>
           <em>Global Blue</em>
         </h1>
-        <p class="hero-sub">Al-Naser LLC specializes in global procurement and import of spare parts and agricultural machinery, integrated with professional customs clearance services.</p>
+        <p class="hero-sub">Al-Naser LLC specializes in global procurement and import of spare parts and agricultural
+          machinery, integrated with professional customs clearance services.</p>
         <div class="hero-buttons">
           <a href="#contact" class="btn-primary">Establish Connection</a>
-          <a href="#process"  class="btn-outline">Our Workflow</a>
+          <a href="#process" class="btn-outline">Our Workflow</a>
         </div>
       </div>
 
@@ -812,7 +1749,7 @@
     <!-- WAVE 1: hero → capabilities -->
     <div class="wave-divider wave-hero-to-cap" id="wave1">
       <svg viewBox="0 0 1200 90" preserveAspectRatio="none" style="height:90px;">
-        <path id="wave1path" d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,90 L0,90 Z"/>
+        <path id="wave1path" d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,90 L0,90 Z" />
       </svg>
     </div>
 
@@ -823,22 +1760,26 @@
           <span class="label-tag">Our Capabilities</span>
           <h2>The Trade Wave</h2>
         </div>
-        <p class="aside-text">Architecting the movement of capital and goods through sophisticated maritime corridors.</p>
+        <p class="aside-text">Architecting the movement of capital and goods through sophisticated maritime corridors.
+        </p>
       </div>
       <div class="cards reveal-group">
         <div class="card">
           <div class="card-icon">
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="1.5" />
             </svg>
           </div>
-          <h3>Import &amp; Export</h3>
-          <p>Seamlessly facilitate international trade, connecting local businesses to global suppliers across verified corridors.</p>
+          <h3>Import </h3>
+          <p>Seamlessly facilitate international trade, connecting local businesses to global suppliers across verified
+            corridors.</p>
         </div>
         <div class="card">
           <div class="card-icon">
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="1.5" />
             </svg>
           </div>
           <h3>Logistics &amp; Distribution</h3>
@@ -847,18 +1788,22 @@
         <div class="card">
           <div class="card-icon">
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+              <path
+                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
             </svg>
           </div>
           <h3>Global Sourcing</h3>
-          <p>Worldwide network of certified suppliers and manufacturers delivering quality products to local markets.</p>
+          <p>Worldwide network of certified suppliers and manufacturers delivering quality products to local markets.
+          </p>
         </div>
         <div class="card">
           <div class="card-icon">
             <img src="images/custom-clearance.png" alt="" style="height:40px;">
           </div>
           <h3>Customs Clearance</h3>
-          <p>Specialized clearance services from our strategic location, ensuring seamless documentation and regulatory compliance.</p>
+          <p>Specialized clearance services from our strategic location, ensuring seamless documentation and regulatory
+            compliance.</p>
         </div>
       </div>
     </section>
@@ -866,7 +1811,7 @@
     <!-- WAVE 2: capabilities → about -->
     <div class="wave-divider wave-cap-to-about" id="wave2">
       <svg viewBox="0 0 1200 90" preserveAspectRatio="none" style="height:90px;">
-        <path id="wave2path" d="M0,20 C300,70 600,0 900,50 C1050,70 1150,30 1200,20 L1200,90 L0,90 Z"/>
+        <path id="wave2path" d="M0,20 C300,70 600,0 900,50 C1050,70 1150,30 1200,20 L1200,90 L0,90 Z" />
       </svg>
     </div>
 
@@ -882,7 +1827,8 @@
               </span>
               <div class="pillar-body">
                 <h4>Customs Clearance Expertise</h4>
-                <p>Deep regulatory knowledge and established relationships with customs authorities to expedite clearance and minimize delays.</p>
+                <p>Deep regulatory knowledge and established relationships with customs authorities to expedite
+                  clearance and minimize delays.</p>
               </div>
             </div>
             <div class="pillar">
@@ -891,7 +1837,8 @@
               </span>
               <div class="pillar-body">
                 <h4>Tailored Shipping Solutions</h4>
-                <p>Bespoke routing strategies — sea, air, and land — matched to the specific cargo, timeline, and budget of each client.</p>
+                <p>Bespoke routing strategies — sea, air, and land — matched to the specific cargo, timeline, and budget
+                  of each client.</p>
               </div>
             </div>
             <div class="pillar">
@@ -900,7 +1847,8 @@
               </span>
               <div class="pillar-body">
                 <h4>Pre- &amp; Post-Shipment Support</h4>
-                <p>Full-spectrum support from supplier negotiation and procurement to post-delivery quality verification and aftersales coordination.</p>
+                <p>Full-spectrum support from supplier negotiation and procurement to post-delivery quality verification
+                  and aftersales coordination.</p>
               </div>
             </div>
             <div class="pillar">
@@ -909,14 +1857,16 @@
               </span>
               <div class="pillar-body">
                 <h4>Risk and Delay Mitigation</h4>
-                <p>Proactive monitoring of geopolitical conditions and port congestion to reroute shipments and protect delivery timelines.</p>
+                <p>Proactive monitoring of geopolitical conditions and port congestion to reroute shipments and protect
+                  delivery timelines.</p>
               </div>
             </div>
           </div>
         </div>
         <div class="about-visual reveal">
           <div class="about-video-wrap">
-            <video id="myVideo" width="100%" src="images/WhatsApp Video 2026-05-15 at 12.20.22 AM.mp4" type="video/mp4" autoplay muted loop>
+            <video id="myVideo" width="100%" src="images/WhatsApp Video 2026-05-15 at 12.20.22 AM.mp4" type="video/mp4"
+              autoplay muted loop>
               Your browser does not support the video tag.
             </video>
           </div>
@@ -926,406 +1876,343 @@
     </section>
 
     <!-- WAVE 3: about → process → routes -->
-    
+
 
 
     <div class="wave-divider wave-about-to-routes" id="wave3">
       <svg viewBox="0 0 1200 90" preserveAspectRatio="none" style="height:90px;">
-        <path id="wave3path" d="M0,60 C150,20 350,70 600,35 C850,0 1050,60 1200,55 L1200,90 L0,90 Z"/>
+        <path id="wave3path" d="M0,60 C150,20 350,70 600,35 C850,0 1050,60 1200,55 L1200,90 L0,90 Z" />
       </svg>
     </div>
 
-       <!-- ══ PROCESS SECTION ══ -->
-  <section id="process">
-    <div class="process-header reveal">
-      <span class="label-tag" style="display:block;text-align:center;">Our Workflow</span>
-      <h2>From Source to Shore</h2>
-      <p>A precision-engineered process that transforms complex global trade into seamless delivery.</p>
-    </div>
-    <div class="process-steps reveal-group">
-      <div class="process-step">
-        <div class="step-circle-wrap">
-          <div class="step-outer"></div>
-          <div class="step-inner">01</div>
-        </div>
-        <span class="step-tag">Discovery</span>
-        <h3 class="step-title">Global Sourcing</h3>
-        <p class="step-desc">We identify and vet certified international suppliers to match your exact machinery and spare parts specifications.</p>
+    <!-- ══ PROCESS SECTION ══ -->
+    <section id="process">
+      <div class="process-header reveal">
+        <span class="label-tag" style="display:block;text-align:center;">Our Workflow</span>
+        <h2>From Source to Shore</h2>
+        <p>A precision-engineered process that transforms complex global trade into seamless delivery.</p>
       </div>
-      <div class="process-step">
-        <div class="step-circle-wrap">
-          <div class="step-outer"></div>
-          <div class="step-inner">02</div>
+      <div class="process-steps reveal-group">
+        <div class="process-step">
+          <div class="step-circle-wrap">
+            <div class="step-outer"></div>
+            <div class="step-inner">01</div>
+          </div>
+          <span class="step-tag">Discovery</span>
+          <h3 class="step-title">Global Sourcing</h3>
+          <p class="step-desc">We identify and vet certified international suppliers to match your exact machinery and
+            spare parts specifications.</p>
         </div>
-        <span class="step-tag">Acquisition</span>
-        <h3 class="step-title">Procurement</h3>
-        <p class="step-desc">Expert negotiation and purchase management, securing optimal pricing and quality compliance before dispatch.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-circle-wrap">
-          <div class="step-outer"></div>
-          <div class="step-inner">03</div>
+        <div class="process-step">
+          <div class="step-circle-wrap">
+            <div class="step-outer"></div>
+            <div class="step-inner">02</div>
+          </div>
+          <span class="step-tag">Acquisition</span>
+          <h3 class="step-title">Procurement</h3>
+          <p class="step-desc">Expert negotiation and purchase management, securing optimal pricing and quality
+            compliance before dispatch.</p>
         </div>
-        <span class="step-tag">Compliance</span>
-        <h3 class="step-title">Customs Clearance</h3>
-        <p class="step-desc">Complete documentation management through our established authority relationships in Baghdad and beyond.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-circle-wrap">
-          <div class="step-outer"></div>
-          <div class="step-inner">04</div>
+        <div class="process-step">
+          <div class="step-circle-wrap">
+            <div class="step-outer"></div>
+            <div class="step-inner">03</div>
+          </div>
+          <span class="step-tag">Compliance</span>
+          <h3 class="step-title">Customs Clearance</h3>
+          <p class="step-desc">Complete documentation management through our established authority relationships in
+            Baghdad and beyond.</p>
         </div>
-        <span class="step-tag">Fulfillment</span>
-        <h3 class="step-title">Final Delivery</h3>
-        <p class="step-desc">Last-mile coordination ensuring goods arrive safely, on schedule, and fully documented at their destination.</p>
+        <div class="process-step">
+          <div class="step-circle-wrap">
+            <div class="step-outer"></div>
+            <div class="step-inner">04</div>
+          </div>
+          <span class="step-tag">Fulfillment</span>
+          <h3 class="step-title">Final Delivery</h3>
+          <p class="step-desc">Last-mile coordination ensuring goods arrive safely, on schedule, and fully documented at
+            their destination.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
 
     <!-- ══ ROUTES ══ -->
-  <section id="routes" class="section-reactive">
-  <div class="routes-header reveal">
-    <span class="label-tag">Trade Routes</span>
-    <h2>The Network.</h2>
-    <p>Key corridors connecting Al-Naser to global markets via Iraq's strategic geographic position.</p>
-  </div>
-  <div class="map-wrap reveal">
-    <svg class="map-svg" viewBox="0 0 1100 450" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <!-- Grid pattern -->
-        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(201,168,76,0.05)" stroke-width="0.5"/>
-          <circle cx="20" cy="20" r="0.6" fill="rgba(201,168,76,0.08)"/>
-        </pattern>
+    <section id="routes" class="section-reactive">
+      <div class="routes-header reveal">
+        <span class="label-tag">Trade Routes</span>
+        <h2>The Network.</h2>
+        <p>Key corridors connecting Al-Naser to global markets via Iraq's strategic geographic position.</p>
+      </div>
+   
+<div class="map-wrap reveal">
+  <svg class="map-svg" viewBox="0 0 1100 450" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(201,168,76,0.05)" stroke-width="0.5" />
+        <circle cx="20" cy="20" r="0.6" fill="rgba(201,168,76,0.08)" />
+      </pattern>
 
-        <!-- Hub glow gradient -->
-        <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="rgba(201,168,76,0.5)"/>
-          <stop offset="35%" stop-color="rgba(201,168,76,0.18)"/>
-          <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
-        </radialGradient>
+      <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="rgba(201,168,76,0.5)" />
+        <stop offset="35%" stop-color="rgba(201,168,76,0.18)" />
+        <stop offset="100%" stop-color="rgba(201,168,76,0)" />
+      </radialGradient>
 
-        <!-- Destination glow -->
-        <radialGradient id="destGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="rgba(201,168,76,0.35)"/>
-          <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
-        </radialGradient>
+      <radialGradient id="destGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="rgba(201,168,76,0.35)" />
+        <stop offset="100%" stop-color="rgba(201,168,76,0)" />
+      </radialGradient>
 
-        <!-- Ship symbol (bow points right for animateMotion rotate="auto") -->
-        <g id="ship">
-          <path d="M-8,0 Q-5,4 0,4.5 Q5,4 9,0.5 L7,-0.5 Q4,3 0,3 Q-4,3 -7,-0.5 Z" fill="var(--gold)"/>
-          <line x1="-1" y1="0" x2="-1" y2="-12" stroke="var(--gold)" stroke-width="0.7"/>
-          <path d="M-1,-11 L-2,-2 L6,-3.5 Z" fill="var(--gold-lt)" opacity="0.9"/>
-          <line x1="8" y1="0.5" x2="8" y2="-5" stroke="var(--gold)" stroke-width="0.4"/>
-          <path d="M8,-5 L5,-4 L8,-3" fill="var(--gold-lt)" opacity="0.75"/>
-          <circle cx="0" cy="0" r="0.8" fill="var(--gold-lt)" opacity="0.6"/>
-        </g>
-
-        <!-- ===== ROUTE PATHS ===== -->
-        <!-- Primary: Europe & China -->
-        <path id="route-europe" d="M560 230 Q480 140 320 120"/>
-        <path id="route-china" d="M560 230 Q700 150 880 140"/>
-
-        <!-- Secondary: India, Africa, SE Asia, N.America, S.America -->
-        <path id="route-india" d="M560 230 Q640 210 720 210"/>
-        <path id="route-africa" d="M560 230 Q520 300 430 320"/>
-        <path id="route-seasia" d="M560 230 Q680 270 820 280"/>
-        <path id="route-namerica" d="M560 230 Q480 140 320 120 Q200 100 110 90"/>
-        <path id="route-samerica" d="M560 230 Q520 300 430 320 Q280 340 180 340"/>
-
-        <!-- Tertiary: Central Asia & East Africa -->
-        <path id="route-centralasia" d="M560 230 Q600 160 650 100"/>
-        <path id="route-eastafrica" d="M560 230 Q540 280 520 340"/>
-
-        <!-- Cross routes (inter‑regional) -->
-        <path id="route-namerica-europe" d="M110 90 Q180 110 320 120"/>
-        <path id="route-samerica-africa" d="M180 340 Q280 320 430 320"/>
-        <path id="route-namerica-samerica" d="M110 90 Q140 200 180 340"/>
-        <path id="route-china-seasia" d="M880 140 Q850 210 820 280"/>
-        <path id="route-india-seasia" d="M720 210 Q770 240 820 280"/>
-        <path id="route-africa-med" d="M430 320 Q380 240 320 120"/>
-        <path id="route-europe-centralasia" d="M320 120 Q480 130 650 100"/>
-        <path id="route-china-centralasia" d="M880 140 Q770 110 650 100"/>
-      </defs>
-
-      <!-- Background -->
-      <rect width="1100" height="450" fill="var(--d4)"/>
-      <rect width="1100" height="450" fill="url(#grid)"/>
-
-      <!-- Ocean rings -->
-      <g fill="none" stroke="rgba(201,168,76,0.03)" stroke-width="0.5">
-        <circle cx="560" cy="230" r="60"/>
-        <circle cx="560" cy="230" r="120"/>
-        <circle cx="560" cy="230" r="200"/>
-        <circle cx="560" cy="230" r="300"/>
-        <circle cx="560" cy="230" r="380"/>
+      <g id="ship">
+        <path d="M-8,0 Q-5,4 0,4.5 Q5,4 9,0.5 L7,-0.5 Q4,3 0,3 Q-4,3 -7,-0.5 Z" fill="var(--gold)" />
+        <line x1="-1" y1="0" x2="-1" y2="-12" stroke="var(--gold)" stroke-width="0.7" />
+        <path d="M-1,-11 L-2,-2 L6,-3.5 Z" fill="var(--gold-lt)" opacity="0.9" />
+        <line x1="8" y1="0.5" x2="8" y2="-5" stroke="var(--gold)" stroke-width="0.4" />
+        <path d="M8,-5 L5,-4 L8,-3" fill="var(--gold-lt)" opacity="0.75" />
+        <circle cx="0" cy="0" r="0.8" fill="var(--gold-lt)" opacity="0.6" />
       </g>
 
-      <!-- ===== LANDMASSES ===== -->
-      <!-- North America -->
-      <path d="M40 40 Q70 30 100 40 Q130 50 150 70 Q170 90 165 120 Q155 160 130 180 Q100 195 70 185 Q45 175 35 150 Q25 120 30 90 Q32 60 40 40Z"
-        fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
-      <circle cx="55" cy="30" r="10" fill="rgba(8,45,71,0.8)" stroke="rgba(201,168,76,0.1)" stroke-width="0.4"/>
+      <path id="route-europe" d="M320 120 Q480 140 560 230" />
+      <path id="route-china" d="M880 140 Q700 150 560 230" />
+      <path id="route-turkey" d="M450 180 Q500 205 560 230" />
+      <path id="route-uae" d="M600 260 Q580 245 560 230" />
 
-      <!-- South America -->
-      <path d="M130 200 Q160 195 190 205 Q220 220 225 250 Q228 280 215 310 Q200 335 180 350 Q160 360 140 350 Q120 335 110 310 Q100 280 105 250 Q110 220 130 200Z"
-        fill="rgba(8,45,71,0.88)" stroke="rgba(201,168,76,0.12)" stroke-width="0.5"/>
-      <circle cx="130" cy="175" r="4" fill="rgba(8,45,71,0.7)"/>
+      <path id="route-india" d="M720 210 Q640 210 560 230" />
+    </defs>
 
-      <!-- Europe -->
-      <path d="M270 70 Q290 55 315 50 Q340 48 360 60 Q380 75 370 100 Q360 130 335 145 Q310 155 285 150 Q260 142 250 125 Q235 105 245 90 Q255 78 270 70Z"
-        fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.15)" stroke-width="0.5"/>
-      <circle cx="260" cy="60" r="8" fill="rgba(8,45,71,0.8)"/>
+    <rect width="1100" height="450" fill="var(--d4)" />
+    <rect width="1100" height="450" fill="url(#grid)" />
 
-      <!-- Africa -->
-      <path d="M380 250 Q410 240 440 250 Q460 265 465 290 Q468 320 455 350 Q440 370 415 375 Q385 375 365 355 Q348 330 345 305 Q343 280 355 260 Q365 250 380 250Z"
-        fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.15)" stroke-width="0.6"/>
+    <g fill="none" stroke="rgba(201,168,76,0.03)" stroke-width="0.5">
+      <circle cx="560" cy="230" r="60" />
+      <circle cx="560" cy="230" r="120" />
+      <circle cx="560" cy="230" r="200" />
+      <circle cx="560" cy="230" r="300" />
+      <circle cx="560" cy="230" r="380" />
+    </g>
 
-      <!-- Middle East / Arabia -->
-      <path d="M520 170 Q550 158 580 165 Q600 175 605 200 Q605 225 590 240 Q565 255 535 250 Q510 242 500 220 Q490 200 495 185 Q500 175 520 170Z"
-        fill="rgba(10,58,88,0.95)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+    <path d="M270 70 Q290 55 315 50 Q340 48 360 60 Q380 75 370 100 Q360 130 335 145 Q310 155 285 150 Q260 142 250 125 Q235 105 245 90 Q255 78 270 70Z"
+          fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.15)" stroke-width="0.5" />
+    <circle cx="260" cy="60" r="8" fill="rgba(8,45,71,0.8)" />
 
-      <!-- South Asia / India -->
-      <path d="M670 180 Q695 165 720 170 Q740 180 745 200 Q748 225 740 245 Q725 260 705 260 Q685 258 675 240 Q665 225 665 205 Q667 190 670 180Z"
-        fill="rgba(10,58,88,0.9)" stroke="rgba(201,168,76,0.2)" stroke-width="0.7"/>
+    <path d="M520 170 Q550 158 580 165 Q600 175 605 200 Q605 225 590 240 Q565 255 535 250 Q510 242 500 220 Q490 200 495 185 Q500 175 520 170Z"
+          fill="rgba(10,58,88,0.95)" stroke="rgba(201,168,76,0.3)" stroke-width="1" />
 
-      <!-- China / East Asia -->
-      <path d="M810 100 Q840 85 875 82 Q905 85 920 100 Q930 115 925 135 Q915 155 895 160 Q875 163 855 158 Q835 150 825 135 Q815 120 810 100Z"
-        fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.18)" stroke-width="0.6"/>
+    <path d="M670 180 Q695 165 720 170 Q740 180 745 200 Q748 225 740 245 Q725 260 705 260 Q685 258 675 240 Q665 225 665 205 Q667 190 670 180Z"
+          fill="rgba(10,58,88,0.9)" stroke="rgba(201,168,76,0.2)" stroke-width="0.7" />
 
-      <!-- Southeast Asia -->
-      <path d="M780 260 Q795 250 815 255 Q830 265 830 285 Q825 305 810 310 Q790 310 780 298 Q770 285 775 270 Z"
-        fill="rgba(8,45,71,0.85)" stroke="rgba(201,168,76,0.14)" stroke-width="0.5"/>
+    <path d="M810 100 Q840 85 875 82 Q905 85 920 100 Q930 115 925 135 Q915 155 895 160 Q875 163 855 158 Q835 150 825 135 Q815 120 810 100Z"
+          fill="rgba(8,45,71,0.9)" stroke="rgba(201,168,76,0.18)" stroke-width="0.6" />
 
-      <!-- Japan -->
-      <path d="M940 120 Q950 108 965 112 Q970 125 960 135 Q948 138 940 130 Z"
-        fill="rgba(8,45,71,0.8)" stroke="rgba(201,168,76,0.1)" stroke-width="0.4"/>
+    <path d="M940 120 Q950 108 965 112 Q970 125 960 135 Q948 138 940 130 Z" fill="rgba(8,45,71,0.8)"
+          stroke="rgba(201,168,76,0.1)" stroke-width="0.4" />
 
-      <!-- Central Asia landmass hint -->
-      <path d="M620 80 Q640 70 665 80 Q680 95 675 115 Q660 130 640 130 Q620 128 610 110 Q605 95 620 80Z"
-        fill="rgba(10,58,88,0.8)" stroke="rgba(201,168,76,0.12)" stroke-width="0.4"/>
+    <path d="M 430,174 Q 450,168 472,171 Q 476,183 468,191 Q 448,193 434,187 Q 426,181 430,174 Z" 
+          fill="rgba(10,58,88,0.95)" stroke="rgba(201,168,76,0.2)" stroke-width="0.6" />
 
-      <!-- ===== CROSS ROUTES (subtle web) ===== -->
-      <g fill="none" stroke="rgba(201,168,76,0.1)" stroke-width="0.7" stroke-dasharray="3,8" opacity="0.5">
-        <use href="#route-namerica-europe"/>
-        <use href="#route-samerica-africa"/>
-        <use href="#route-namerica-samerica"/>
-        <use href="#route-china-seasia"/>
-        <use href="#route-india-seasia"/>
-        <use href="#route-africa-med"/>
-        <use href="#route-europe-centralasia"/>
-        <use href="#route-china-centralasia"/>
-      </g>
+    <path class="route-secondary" d="M720 210 Q640 210 560 230" fill="none" stroke="rgba(201,168,76,0.38)" stroke-width="1.5" />
 
-      <!-- ===== TERTIARY ROUTES (dimmer) ===== -->
-      <g fill="none" stroke="rgba(201,168,76,0.22)" stroke-width="1.2" stroke-dasharray="5,7" opacity="0.7">
-        <use href="#route-centralasia"/>
-        <use href="#route-eastafrica"/>
-      </g>
+    <g fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="4" opacity="0.4">
+      <use href="#route-india" />
+    </g>
 
-      <!-- ===== SECONDARY ROUTES ===== -->
-      <path class="route-secondary" d="M560 230 Q640 210 720 210" fill="none" stroke="rgba(201,168,76,0.38)" stroke-width="1.5"/>
-      <path class="route-secondary" d="M560 230 Q520 300 430 320" fill="none" stroke="rgba(201,168,76,0.32)" stroke-width="1.5"/>
-      <!-- SE Asia route (previously missing) -->
-      <path class="route-secondary" d="M560 230 Q680 270 820 280" fill="none" stroke="rgba(201,168,76,0.36)" stroke-width="1.5"/>
-      <path class="route-secondary" d="M560 230 Q480 140 320 120 Q200 100 110 90" fill="none" stroke="rgba(201,168,76,0.28)" stroke-width="1.5"/>
-      <path class="route-secondary" d="M560 230 Q520 300 430 320 Q280 340 180 340" fill="none" stroke="rgba(201,168,76,0.28)" stroke-width="1.5"/>
+    <path class="route-primary" d="M320 120 Q480 140 560 230" fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2" />
+    <path class="route-primary" d="M880 140 Q700 150 560 230" fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2" />
+    <path class="route-primary" d="M450 180 Q500 205 560 230" fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2" />
+    <path class="route-primary" d="M600 260 Q580 245 560 230" fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2" />
 
-      <!-- Secondary route subtle glow -->
-      <g fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="4" opacity="0.4">
-        <use href="#route-india"/>
-        <use href="#route-africa"/>
-        <use href="#route-seasia"/>
-        <use href="#route-namerica"/>
-        <use href="#route-samerica"/>
-      </g>
+    <g fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="4" opacity="0.45">
+      <use href="#route-europe" />
+      <use href="#route-china" />
+      <use href="#route-turkey" />
+      <use href="#route-uae" />
+    </g>
 
-      <!-- ===== PRIMARY ROUTES ===== -->
-      <path class="route-primary" d="M560 230 Q480 140 320 120" fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2"/>
-      <path class="route-primary" d="M560 230 Q700 150 880 140" fill="none" stroke="rgba(201,168,76,0.8)" stroke-width="2"/>
+    <circle class="hub-pulse" cx="560" cy="230" r="6" fill="none" stroke="rgba(201,168,76,0.6)" stroke-width="1" />
+    <circle class="hub-pulse" cx="560" cy="230" r="6" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="0.8" />
+    <circle class="hub-pulse" cx="560" cy="230" r="6" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.5" />
+    <circle class="hub-pulse" cx="560" cy="230" r="8" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="0.6" />
+    <circle class="hub-pulse" cx="560" cy="230" r="10" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="0.4" />
 
-      <!-- Primary route glow -->
-      <g fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="4" opacity="0.45">
-        <use href="#route-europe"/>
-        <use href="#route-china"/>
-      </g>
+    <circle cx="560" cy="230" r="34" fill="url(#hubGlow)" />
+    <circle cx="560" cy="230" r="16" fill="rgba(201,168,76,0.1)" />
+    <circle cx="560" cy="230" r="6" fill="rgba(201,168,76,0.25)" />
+    <circle cx="560" cy="230" r="3.5" fill="#c9a84c" />
+    <circle cx="560" cy="230" r="1.8" fill="#fff">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+    </circle>
 
-      <!-- ===== HUB PULSE RINGS ===== -->
-      <circle class="hub-pulse" cx="560" cy="230" r="6" fill="none" stroke="rgba(201,168,76,0.6)" stroke-width="1"/>
-      <circle class="hub-pulse" cx="560" cy="230" r="6" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="0.8"/>
-      <circle class="hub-pulse" cx="560" cy="230" r="6" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
-      <circle class="hub-pulse" cx="560" cy="230" r="8" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="0.6"/>
-      <circle class="hub-pulse" cx="560" cy="230" r="10" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="0.4"/>
+    <g>
+      <animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="0s">
+        <mpath href="#route-europe" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.65)" />
+    </g>
+    <g>
+      <animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="3s">
+        <mpath href="#route-europe" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.65)" />
+    </g>
+    <g>
+      <animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="6s">
+        <mpath href="#route-europe" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.65)" />
+    </g>
 
-      <!-- Hub glow -->
-      <circle cx="560" cy="230" r="34" fill="url(#hubGlow)"/>
-      <circle cx="560" cy="230" r="16" fill="rgba(201,168,76,0.1)"/>
-      <circle cx="560" cy="230" r="6" fill="rgba(201,168,76,0.25)"/>
-      <circle cx="560" cy="230" r="3.5" fill="#c9a84c"/>
-      <circle cx="560" cy="230" r="1.8" fill="#fff">
-        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
-      </circle>
+    <g>
+      <animateMotion dur="11s" repeatCount="indefinite" rotate="auto" begin="0s">
+        <mpath href="#route-china" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.7)" />
+    </g>
+    <g>
+      <animateMotion dur="11s" repeatCount="indefinite" rotate="auto" begin="3.7s">
+        <mpath href="#route-china" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.7)" />
+    </g>
+    <g>
+      <animateMotion dur="11s" repeatCount="indefinite" rotate="auto" begin="7.3s">
+        <mpath href="#route-china" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.7)" />
+    </g>
 
-      <!-- ===== ANIMATED SHIPS ===== -->
-      <!-- Primary: Europe -->
-      <g><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-europe"/></animateMotion><use href="#ship" transform="scale(0.65)"/></g>
-      <g><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="3s"><mpath href="#route-europe"/></animateMotion><use href="#ship" transform="scale(0.65)"/></g>
-      <g><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="6s"><mpath href="#route-europe"/></animateMotion><use href="#ship" transform="scale(0.65)"/></g>
+    <g>
+      <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="0s">
+        <mpath href="#route-turkey" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.6)" />
+    </g>
+    <g>
+      <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="3.5s">
+        <mpath href="#route-turkey" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.6)" />
+    </g>
 
-      <!-- Primary: China -->
-      <g><animateMotion dur="11s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-china"/></animateMotion><use href="#ship" transform="scale(0.7)"/></g>
-      <g><animateMotion dur="11s" repeatCount="indefinite" rotate="auto" begin="3.7s"><mpath href="#route-china"/></animateMotion><use href="#ship" transform="scale(0.7)"/></g>
-      <g><animateMotion dur="11s" repeatCount="indefinite" rotate="auto" begin="7.3s"><mpath href="#route-china"/></animateMotion><use href="#ship" transform="scale(0.7)"/></g>
+    <g>
+      <animateMotion dur="5s" repeatCount="indefinite" rotate="auto" begin="0s">
+        <mpath href="#route-uae" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.55)" />
+    </g>
+    <g>
+      <animateMotion dur="5s" repeatCount="indefinite" rotate="auto" begin="2.5s">
+        <mpath href="#route-uae" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.55)" />
+    </g>
 
-      <!-- Secondary: India -->
-      <g><animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-india"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
-      <g><animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="2.7s"><mpath href="#route-india"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
-      <g><animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="5.3s"><mpath href="#route-india"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
+    <g>
+      <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="0s">
+        <mpath href="#route-india" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.55)" />
+    </g>
+    <g>
+      <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="2.7s">
+        <mpath href="#route-india" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.55)" />
+    </g>
+    <g>
+      <animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="5.3s">
+        <mpath href="#route-india" />
+      </animateMotion>
+      <use href="#ship" transform="scale(0.55)" />
+    </g>
 
-      <!-- Secondary: Africa -->
-      <g><animateMotion dur="10s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-africa"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
-      <g><animateMotion dur="10s" repeatCount="indefinite" rotate="auto" begin="3.3s"><mpath href="#route-africa"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
-      <g><animateMotion dur="10s" repeatCount="indefinite" rotate="auto" begin="6.7s"><mpath href="#route-africa"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
+    <circle r="2" fill="#e2c278" opacity="0.8">
+      <animateMotion dur="6s" repeatCount="indefinite" path="M880 140 Q700 150 560 230" />
+    </circle>
+    <circle r="2" fill="#e2c278" opacity="0.8">
+      <animateMotion dur="5s" repeatCount="indefinite" path="M320 120 Q480 140 560 230" />
+    </circle>
+    <circle r="2" fill="#e2c278" opacity="0.7">
+      <animateMotion dur="7s" repeatCount="indefinite" path="M720 210 Q640 210 560 230" />
+    </circle>
 
-      <!-- Secondary: SE Asia (now with visible ships) -->
-      <g><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-seasia"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
-      <g><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="3s"><mpath href="#route-seasia"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
-      <g><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" begin="6s"><mpath href="#route-seasia"/></animateMotion><use href="#ship" transform="scale(0.55)"/></g>
+    <circle cx="320" cy="120" r="18" fill="url(#destGlow)" opacity="0.6" />
+    <circle class="city-ping" cx="320" cy="120" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1" />
+    <circle cx="320" cy="120" r="4" fill="#c9a84c" opacity="0.8" />
+    <circle cx="320" cy="120" r="1.6" fill="#e2c278" opacity="0.9" />
+    <text x="328" y="116" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">Europe</text>
 
-      <!-- Secondary: North America -->
-      <g><animateMotion dur="14s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-namerica"/></animateMotion><use href="#ship" transform="scale(0.6)"/></g>
-      <g><animateMotion dur="14s" repeatCount="indefinite" rotate="auto" begin="4.7s"><mpath href="#route-namerica"/></animateMotion><use href="#ship" transform="scale(0.6)"/></g>
-      <g><animateMotion dur="14s" repeatCount="indefinite" rotate="auto" begin="9.3s"><mpath href="#route-namerica"/></animateMotion><use href="#ship" transform="scale(0.6)"/></g>
+    <circle cx="720" cy="210" r="18" fill="url(#destGlow)" opacity="0.5" />
+    <circle class="city-ping" cx="720" cy="210" r="4" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1" />
+    <circle cx="720" cy="210" r="4" fill="#c9a84c" opacity="0.55" />
+    <circle cx="720" cy="210" r="1.4" fill="#e2c278" opacity="0.7" />
+    <text x="728" y="206" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.5)" letter-spacing="0.05em">S. Asia</text>
 
-      <!-- Secondary: South America -->
-      <g><animateMotion dur="15s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-samerica"/></animateMotion><use href="#ship" transform="scale(0.6)"/></g>
-      <g><animateMotion dur="15s" repeatCount="indefinite" rotate="auto" begin="5s"><mpath href="#route-samerica"/></animateMotion><use href="#ship" transform="scale(0.6)"/></g>
-      <g><animateMotion dur="15s" repeatCount="indefinite" rotate="auto" begin="10s"><mpath href="#route-samerica"/></animateMotion><use href="#ship" transform="scale(0.6)"/></g>
+    <circle cx="880" cy="140" r="18" fill="url(#destGlow)" opacity="0.6" />
+    <circle class="city-ping" cx="880" cy="140" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1" />
+    <circle cx="880" cy="140" r="4" fill="#c9a84c" opacity="0.8" />
+    <circle cx="880" cy="140" r="1.6" fill="#e2c278" opacity="0.9" />
+    <text x="888" y="136" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">China</text>
 
-      <!-- Tertiary: Central Asia -->
-      <g><animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-centralasia"/></animateMotion><use href="#ship" transform="scale(0.5)"/></g>
-      <g><animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="3.5s"><mpath href="#route-centralasia"/></animateMotion><use href="#ship" transform="scale(0.5)"/></g>
+    <circle cx="450" cy="180" r="20" fill="url(#destGlow)" opacity="0.6" />
+    <circle class="city-ping" cx="450" cy="180" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1" />
+    <circle cx="450" cy="180" r="4" fill="#c9a84c" opacity="0.8" />
+    <circle cx="450" cy="180" r="1.6" fill="#e2c278" opacity="0.9" />
+    <text x="458" y="176" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">Turkey</text>
 
-      <!-- Tertiary: East Africa -->
-      <g><animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="0s"><mpath href="#route-eastafrica"/></animateMotion><use href="#ship" transform="scale(0.5)"/></g>
-      <g><animateMotion dur="8s" repeatCount="indefinite" rotate="auto" begin="4s"><mpath href="#route-eastafrica"/></animateMotion><use href="#ship" transform="scale(0.5)"/></g>
+    <g id="uae-region">
+      <path d="M 588,256 Q 595,248 612,252 Q 616,264 608,270 Q 596,272 590,264 Z" 
+            fill="rgba(10,58,88,0.95)" 
+            stroke="rgba(201,168,76,0.3)" 
+            stroke-width="1" />
 
-      <!-- ===== TRAVELING DOTS (additional pulse) ===== -->
-      <circle r="2" fill="#e2c278" opacity="0.8"><animateMotion dur="6s" repeatCount="indefinite" path="M560 230 Q700 150 880 140"/></circle>
-      <circle r="2" fill="#e2c278" opacity="0.8"><animateMotion dur="5s" repeatCount="indefinite" path="M560 230 Q480 140 320 120"/></circle>
-      <circle r="2" fill="#e2c278" opacity="0.7"><animateMotion dur="7s" repeatCount="indefinite" path="M560 230 Q640 210 720 210"/></circle>
-      <circle r="2" fill="#e2c278" opacity="0.7"><animateMotion dur="9s" repeatCount="indefinite" path="M560 230 Q520 300 430 320"/></circle>
-      <circle r="2" fill="#e2c278" opacity="0.7"><animateMotion dur="9s" repeatCount="indefinite" path="M560 230 Q680 270 820 280"/></circle>
-      <circle r="2" fill="#e2c278" opacity="0.7"><animateMotion dur="13s" repeatCount="indefinite" path="M560 230 Q480 140 320 120 Q200 100 110 90"/></circle>
-      <circle r="2" fill="#e2c278" opacity="0.7"><animateMotion dur="14s" repeatCount="indefinite" path="M560 230 Q520 300 430 320 Q280 340 180 340"/></circle>
+      <circle cx="600" cy="260" r="18" fill="url(#destGlow)" opacity="0.6" />
+      <circle class="city-ping" cx="600" cy="260" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1" />
+      <circle cx="600" cy="260" r="4" fill="#c9a84c" opacity="0.8" />
+      <circle cx="600" cy="260" r="1.6" fill="#e2c278" opacity="0.9" />
+      <text x="608" y="256" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">UAE</text>
+    </g>
 
-      <!-- ===== DESTINATION MARKERS ===== -->
-      <!-- North America -->
-      <circle cx="110" cy="90" r="18" fill="url(#destGlow)" opacity="0.6"/>
-      <circle class="city-ping" cx="110" cy="90" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
-      <circle cx="110" cy="90" r="4" fill="#c9a84c" opacity="0.8"/>
-      <circle cx="110" cy="90" r="1.6" fill="#e2c278" opacity="0.9"/>
-      <text x="118" y="86" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.65)" letter-spacing="0.05em">N. America</text>
+    <text x="572" y="226" font-family="monospace" font-size="10" fill="#c9a84c" letter-spacing="0.12em">BAGHDAD</text>
 
-      <!-- South America -->
-      <circle cx="180" cy="340" r="18" fill="url(#destGlow)" opacity="0.6"/>
-      <circle class="city-ping" cx="180" cy="340" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
-      <circle cx="180" cy="340" r="4" fill="#c9a84c" opacity="0.8"/>
-      <circle cx="180" cy="340" r="1.6" fill="#e2c278" opacity="0.9"/>
-      <text x="188" y="336" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.65)" letter-spacing="0.05em">S. America</text>
+    <g transform="translate(1020,370)" opacity="0.35">
+      <circle cx="0" cy="0" r="18" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.5" />
+      <polygon points="0,-16 3,-4 0,-7 -3,-4" fill="#c9a84c" opacity="0.7" />
+      <polygon points="0,16 3,4 0,7 -3,4" fill="rgba(106,146,170,0.5)" />
+      <text x="0" y="-20" fill="#e2c278" font-family="monospace" font-size="7" text-anchor="middle" opacity="0.7">N</text>
+    </g>
+  </svg>
+</div>
 
-      <!-- Europe -->
-      <circle cx="320" cy="120" r="18" fill="url(#destGlow)" opacity="0.6"/>
-      <circle class="city-ping" cx="320" cy="120" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
-      <circle cx="320" cy="120" r="4" fill="#c9a84c" opacity="0.8"/>
-      <circle cx="320" cy="120" r="1.6" fill="#e2c278" opacity="0.9"/>
-      <text x="328" y="116" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">Europe</text>
 
-      <!-- Africa -->
-      <circle cx="430" cy="320" r="18" fill="url(#destGlow)" opacity="0.6"/>
-      <circle class="city-ping" cx="430" cy="320" r="4" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
-      <circle cx="430" cy="320" r="4" fill="#c9a84c" opacity="0.45"/>
-      <circle cx="430" cy="320" r="1.4" fill="#e2c278" opacity="0.6"/>
-      <text x="438" y="316" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.45)" letter-spacing="0.05em">Africa</text>
+      <div class="map-legend reveal">
+        <div class="legend-item">
+          <svg width="36" height="10">
+            <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.8)" stroke-width="2" stroke-dasharray="8 5" />
+          </svg>
+          Primary Route
+        </div>
+        <div class="legend-item">
+          <svg width="36" height="10">
+            <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.38)" stroke-width="1.5"
+              stroke-dasharray="4 6" />
+          </svg>
+          Secondary Route
+        </div>
 
-      <!-- India (S. Asia) -->
-      <circle cx="720" cy="210" r="18" fill="url(#destGlow)" opacity="0.5"/>
-      <circle class="city-ping" cx="720" cy="210" r="4" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
-      <circle cx="720" cy="210" r="4" fill="#c9a84c" opacity="0.55"/>
-      <circle cx="720" cy="210" r="1.4" fill="#e2c278" opacity="0.7"/>
-      <text x="728" y="206" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.5)" letter-spacing="0.05em">S. Asia</text>
-
-      <!-- China -->
-      <circle cx="880" cy="140" r="18" fill="url(#destGlow)" opacity="0.6"/>
-      <circle class="city-ping" cx="880" cy="140" r="4" fill="none" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
-      <circle cx="880" cy="140" r="4" fill="#c9a84c" opacity="0.8"/>
-      <circle cx="880" cy="140" r="1.6" fill="#e2c278" opacity="0.9"/>
-      <text x="888" y="136" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.6)" letter-spacing="0.05em">China</text>
-
-      <!-- SE Asia -->
-      <circle cx="820" cy="280" r="16" fill="url(#destGlow)" opacity="0.5"/>
-      <circle class="city-ping" cx="820" cy="280" r="4" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
-      <circle cx="820" cy="280" r="4" fill="#c9a84c" opacity="0.55"/>
-      <circle cx="820" cy="280" r="1.4" fill="#e2c278" opacity="0.7"/>
-      <text x="828" y="276" font-family="monospace" font-size="9" fill="rgba(220,230,240,0.5)" letter-spacing="0.05em">SE Asia</text>
-
-      <!-- Central Asia (new) -->
-      <circle cx="650" cy="100" r="14" fill="url(#destGlow)" opacity="0.45"/>
-      <circle class="city-ping" cx="650" cy="100" r="3" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
-      <circle cx="650" cy="100" r="3" fill="#c9a84c" opacity="0.5"/>
-      <text x="658" y="96" font-family="monospace" font-size="8" fill="rgba(220,230,240,0.45)" letter-spacing="0.04em">C. Asia</text>
-
-      <!-- East Africa (new) -->
-      <circle cx="520" cy="340" r="14" fill="url(#destGlow)" opacity="0.45"/>
-      <circle class="city-ping" cx="520" cy="340" r="3" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
-      <circle cx="520" cy="340" r="3" fill="#c9a84c" opacity="0.5"/>
-      <text x="528" y="336" font-family="monospace" font-size="8" fill="rgba(220,230,240,0.45)" letter-spacing="0.04em">E. Africa</text>
-
-      <!-- BAGHDAD label -->
-      <text x="572" y="226" font-family="monospace" font-size="10" fill="#c9a84c" letter-spacing="0.12em">BAGHDAD</text>
-
-      <!-- Compass rose -->
-      <g transform="translate(1020,370)" opacity="0.35">
-        <circle cx="0" cy="0" r="18" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
-        <polygon points="0,-16 3,-4 0,-7 -3,-4" fill="#c9a84c" opacity="0.7"/>
-        <polygon points="0,16 3,4 0,7 -3,4" fill="rgba(106,146,170,0.5)"/>
-        <text x="0" y="-20" fill="#e2c278" font-family="monospace" font-size="7" text-anchor="middle" opacity="0.7">N</text>
-      </g>
-    </svg>
-  </div>
-  <div class="map-legend reveal">
-    <div class="legend-item">
-      <svg width="36" height="10">
-        <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.8)" stroke-width="2" stroke-dasharray="8 5"/>
-      </svg>
-      Primary Route
-    </div>
-    <div class="legend-item">
-      <svg width="36" height="10">
-        <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.38)" stroke-width="1.5" stroke-dasharray="4 6"/>
-      </svg>
-      Secondary Route
-    </div>
-    <div class="legend-item">
-      <svg width="36" height="10">
-        <line x1="0" y1="5" x2="36" y2="5" stroke="rgba(201,168,76,0.22)" stroke-width="1.2" stroke-dasharray="5 7"/>
-      </svg>
-      Tertiary Route
-    </div>
-    <div class="legend-item">
-      <svg width="20" height="14" viewBox="0 0 20 14">
-        <use href="#ship" transform="translate(10,7) scale(0.55)"/>
-      </svg>
-      Trade Vessel
-    </div>
-  </div>
-</section>
+        <div class="legend-item">
+          <svg width="20" height="14" viewBox="0 0 20 14">
+            <use href="#ship" transform="translate(10,7) scale(0.55)" />
+          </svg>
+          Trade Vessel
+        </div>
+      </div>
+    </section>
 
     <!-- WAVE 4: routes → contact -->
     <div class="wave-divider wave-routes-to-contact" id="wave4">
       <svg viewBox="0 0 1200 90" preserveAspectRatio="none" style="height:90px;">
-        <path id="wave4path" d="M0,30 C250,75 500,10 750,50 C900,70 1050,25 1200,40 L1200,90 L0,90 Z"/>
+        <path id="wave4path" d="M0,30 C250,75 500,10 750,50 C900,70 1050,25 1200,40 L1200,90 L0,90 Z" />
       </svg>
     </div>
 
@@ -1334,14 +2221,15 @@
       <div class="contact-box reveal">
         <span class="label-tag">Contact Control</span>
         <h2>Initiate Commercial Dialogue</h2>
-        <p>Ready to expand your operational horizons? Connect with our trade specialists to blueprint your maritime strategy.</p>
+        <p>Ready to expand your operational horizons? Connect with our trade specialists to blueprint your maritime
+          strategy.</p>
         <form>
           <div class="form-row">
             <div class="field">
-              <input type="text"  name="fullName" placeholder="Full Name" />
+              <input type="text" name="fullName" placeholder="Full Name" />
             </div>
             <div class="field">
-              <input type="email" name="email"    placeholder="Corporate Email Address" />
+              <input type="email" name="email" placeholder="Corporate Email Address" />
             </div>
           </div>
           <div class="field">
@@ -1360,7 +2248,7 @@
     <!-- WAVE 5: contact → footer -->
     <div class="wave-divider wave-contact-to-footer" id="wave5">
       <svg viewBox="0 0 1200 70" preserveAspectRatio="none" style="height:70px;">
-        <path id="wave5path" d="M0,20 C300,55 600,5 900,35 C1050,50 1150,20 1200,25 L1200,70 L0,70 Z"/>
+        <path id="wave5path" d="M0,20 C300,55 600,5 900,35 C1050,50 1150,20 1200,25 L1200,70 L0,70 Z" />
       </svg>
     </div>
 
@@ -1377,8 +2265,10 @@
         </div>
         <div class="footer-col"></div>
         <div class="footer-col">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d26678.351964970625!2d44.432165!3d33.298052!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDE3JzUzLjAiTiA0NMKwMjUnNTUuOCJF!5e0!3m2!1sen!2sus!4v1778792449908!5m2!1sen!2sus"
-            width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">failed to load location</iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d26678.351964970625!2d44.432165!3d33.298052!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDE3JzUzLjAiTiA0NMKwMjUnNTUuOCJF!5e0!3m2!1sen!2sus!4v1778792449908!5m2!1sen!2sus"
+            width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">failed to load location</iframe>
         </div>
       </div>
       <div class="footer-bottom">
@@ -1388,352 +2278,353 @@
   </main>
 
   <script>
-  (function () {
-    /* ══════════════════════════════
-       SCROLL PROGRESS BAR
-    ══════════════════════════════ */
-    var bar = document.getElementById('scroll-bar');
-    function updateBar() {
-      var scrollTop = window.scrollY || document.documentElement.scrollTop;
-      var docH = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = (docH > 0 ? (scrollTop / docH) * 100 : 0) + '%';
-    }
-
-    /* ══════════════════════════════
-       ANIMATED WAVES ON SCROLL
-       Each wave gets a unique phase offset and amplitude so they 
-       undulate independently as you scroll the page
-    ══════════════════════════════ */
-    var waveConfigs = [
-      {
-        pathId: 'wave1path',
-        divId:  'wave1',
-        baseD:  'M0,{A} C200,{B} 400,{C} 600,{A} C800,{B} 1000,{C} 1200,{A} L1200,90 L0,90 Z',
-        a0: 40, b0: 80, c0: 0,
-        amp: 18, phase: 0, speed: 0.0012
-      },
-      {
-        pathId: 'wave2path',
-        divId:  'wave2',
-        baseD:  'M0,{C} C300,{B} 600,{C2} 900,{A} C1050,{B} 1150,{C} 1200,{C2} L1200,90 L0,90 Z',
-        a0: 20, b0: 70, c0: 0, c20: 50,
-        amp: 14, phase: 1.2, speed: 0.001
-      },
-      {
-        pathId: 'wave3path',
-        divId:  'wave3',
-        baseD:  'M0,{B} C150,{C} 350,{B2} 600,{A} C850,{C} 1050,{B} 1200,{A2} L1200,90 L0,90 Z',
-        a0: 60, b0: 20, c0: 70, a20: 55, b20: 35,
-        amp: 16, phase: 2.5, speed: 0.0014
-      },
-      {
-        pathId: 'wave4path',
-        divId:  'wave4',
-        baseD:  'M0,{A} C250,{B} 500,{C} 750,{A2} C900,{B} 1050,{C} 1200,{A} L1200,90 L0,90 Z',
-        a0: 30, b0: 75, c0: 10, a20: 50,
-        amp: 20, phase: 0.7, speed: 0.0011
-      },
-      {
-        pathId: 'wave5path',
-        divId:  'wave5',
-        baseD:  'M0,{A} C300,{B} 600,{C} 900,{A2} C1050,{B} 1150,{A} 1200,{C} L1200,70 L0,70 Z',
-        a0: 20, b0: 55, c0: 5, a20: 35,
-        amp: 12, phase: 3.1, speed: 0.0016
+    (function () {
+      /* ══════════════════════════════
+         SCROLL PROGRESS BAR
+      ══════════════════════════════ */
+      var bar = document.getElementById('scroll-bar');
+      function updateBar() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docH = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (docH > 0 ? (scrollTop / docH) * 100 : 0) + '%';
       }
-    ];
 
-    var waveElements = waveConfigs.map(function(cfg) {
-      return {
-        path: document.getElementById(cfg.pathId),
-        div:  document.getElementById(cfg.divId),
-        cfg:  cfg
-      };
-    });
+      /* ══════════════════════════════
+         ANIMATED WAVES ON SCROLL
+         Each wave gets a unique phase offset and amplitude so they 
+         undulate independently as you scroll the page
+      ══════════════════════════════ */
+      var waveConfigs = [
+        {
+          pathId: 'wave1path',
+          divId: 'wave1',
+          baseD: 'M0,{A} C200,{B} 400,{C} 600,{A} C800,{B} 1000,{C} 1200,{A} L1200,90 L0,90 Z',
+          a0: 40, b0: 80, c0: 0,
+          amp: 18, phase: 0, speed: 0.0012
+        },
+        {
+          pathId: 'wave2path',
+          divId: 'wave2',
+          baseD: 'M0,{C} C300,{B} 600,{C2} 900,{A} C1050,{B} 1150,{C} 1200,{C2} L1200,90 L0,90 Z',
+          a0: 20, b0: 70, c0: 0, c20: 50,
+          amp: 14, phase: 1.2, speed: 0.001
+        },
+        {
+          pathId: 'wave3path',
+          divId: 'wave3',
+          baseD: 'M0,{B} C150,{C} 350,{B2} 600,{A} C850,{C} 1050,{B} 1200,{A2} L1200,90 L0,90 Z',
+          a0: 60, b0: 20, c0: 70, a20: 55, b20: 35,
+          amp: 16, phase: 2.5, speed: 0.0014
+        },
+        {
+          pathId: 'wave4path',
+          divId: 'wave4',
+          baseD: 'M0,{A} C250,{B} 500,{C} 750,{A2} C900,{B} 1050,{C} 1200,{A} L1200,90 L0,90 Z',
+          a0: 30, b0: 75, c0: 10, a20: 50,
+          amp: 20, phase: 0.7, speed: 0.0011
+        },
+        {
+          pathId: 'wave5path',
+          divId: 'wave5',
+          baseD: 'M0,{A} C300,{B} 600,{C} 900,{A2} C1050,{B} 1150,{A} 1200,{C} L1200,70 L0,70 Z',
+          a0: 20, b0: 55, c0: 5, a20: 35,
+          amp: 12, phase: 3.1, speed: 0.0016
+        }
+      ];
 
-    /* Check if wave is near/in viewport */
-    function isWaveNearViewport(divEl) {
-      if (!divEl) return false;
-      var rect = divEl.getBoundingClientRect();
-      return rect.top < window.innerHeight + 200 && rect.bottom > -200;
-    }
-
-    var tNow = 0;
-    function animateWaves(ts) {
-      tNow = ts * 0.001; // seconds
-      waveElements.forEach(function(we) {
-        if (!we.path) return;
-        if (!isWaveNearViewport(we.div)) return;
-        var cfg = we.cfg;
-        var t = tNow * cfg.speed * 1000 + cfg.phase;
-        var s = Math.sin(t);
-        var s2 = Math.sin(t + 1.0);
-        var s3 = Math.cos(t * 0.7);
-
-        /* Compute shifted control points */
-        var A  = cfg.a0  + s  * cfg.amp;
-        var B  = cfg.b0  + s2 * cfg.amp * 0.8;
-        var C  = (cfg.c0  !== undefined  ? cfg.c0  : 0) + s3 * cfg.amp * 0.7;
-        var A2 = (cfg.a20 !== undefined  ? cfg.a20 : cfg.a0) + s  * cfg.amp * 0.9;
-        var B2 = (cfg.b20 !== undefined  ? cfg.b20 : cfg.b0) + s2 * cfg.amp;
-        var C2 = (cfg.c20 !== undefined  ? cfg.c20 : cfg.c0) + s3 * cfg.amp * 0.6;
-
-        var d = cfg.baseD
-          .replace(/{A2}/g, A2.toFixed(1))
-          .replace(/{B2}/g, B2.toFixed(1))
-          .replace(/{C2}/g, C2.toFixed(1))
-          .replace(/{A}/g,  A.toFixed(1))
-          .replace(/{B}/g,  B.toFixed(1))
-          .replace(/{C}/g,  C.toFixed(1));
-
-        we.path.setAttribute('d', d);
+      var waveElements = waveConfigs.map(function (cfg) {
+        return {
+          path: document.getElementById(cfg.pathId),
+          div: document.getElementById(cfg.divId),
+          cfg: cfg
+        };
       });
+
+      /* Check if wave is near/in viewport */
+      function isWaveNearViewport(divEl) {
+        if (!divEl) return false;
+        var rect = divEl.getBoundingClientRect();
+        return rect.top < window.innerHeight + 200 && rect.bottom > -200;
+      }
+
+      var tNow = 0;
+      function animateWaves(ts) {
+        tNow = ts * 0.001; // seconds
+        waveElements.forEach(function (we) {
+          if (!we.path) return;
+          if (!isWaveNearViewport(we.div)) return;
+          var cfg = we.cfg;
+          var t = tNow * cfg.speed * 1000 + cfg.phase;
+          var s = Math.sin(t);
+          var s2 = Math.sin(t + 1.0);
+          var s3 = Math.cos(t * 0.7);
+
+          /* Compute shifted control points */
+          var A = cfg.a0 + s * cfg.amp;
+          var B = cfg.b0 + s2 * cfg.amp * 0.8;
+          var C = (cfg.c0 !== undefined ? cfg.c0 : 0) + s3 * cfg.amp * 0.7;
+          var A2 = (cfg.a20 !== undefined ? cfg.a20 : cfg.a0) + s * cfg.amp * 0.9;
+          var B2 = (cfg.b20 !== undefined ? cfg.b20 : cfg.b0) + s2 * cfg.amp;
+          var C2 = (cfg.c20 !== undefined ? cfg.c20 : cfg.c0) + s3 * cfg.amp * 0.6;
+
+          var d = cfg.baseD
+            .replace(/{A2}/g, A2.toFixed(1))
+            .replace(/{B2}/g, B2.toFixed(1))
+            .replace(/{C2}/g, C2.toFixed(1))
+            .replace(/{A}/g, A.toFixed(1))
+            .replace(/{B}/g, B.toFixed(1))
+            .replace(/{C}/g, C.toFixed(1));
+
+          we.path.setAttribute('d', d);
+        });
+        requestAnimationFrame(animateWaves);
+      }
       requestAnimationFrame(animateWaves);
-    }
-    requestAnimationFrame(animateWaves);
 
-    /* ══════════════════════════════
-       HERO BACKGROUND — REACTIVE TO SCROLL
-       As user scrolls down, the hero image lifts and darkens
-    ══════════════════════════════ */
-    var heroBgImg = document.getElementById('heroBgImg');
-    var heroReactiveBg = document.getElementById('hero-reactive-bg');
-    var hero = document.getElementById('hero');
+      /* ══════════════════════════════
+         HERO BACKGROUND — REACTIVE TO SCROLL
+         As user scrolls down, the hero image lifts and darkens
+      ══════════════════════════════ */
+      var heroBgImg = document.getElementById('heroBgImg');
+      var heroReactiveBg = document.getElementById('hero-reactive-bg');
+      var hero = document.getElementById('hero');
 
-    function updateHeroParallax() {
-      if (!hero || !heroBgImg) return;
-      var heroH = hero.offsetHeight;
-      var scrollY = window.scrollY;
-      var progress = Math.min(scrollY / heroH, 1); // 0..1
+      function updateHeroParallax() {
+        if (!hero || !heroBgImg) return;
+        var heroH = hero.offsetHeight;
+        var scrollY = window.scrollY;
+        var progress = Math.min(scrollY / heroH, 1); // 0..1
 
-      /* Parallax lift */
-      var shift = scrollY * 0.35;
-      heroBgImg.style.transform = 'scale(1.05) translateY(' + shift + 'px)';
+        /* Parallax lift */
+        var shift = scrollY * 0.35;
+        heroBgImg.style.transform = 'scale(1.05) translateY(' + shift + 'px)';
 
-      /* Reactive background tint shifts hue as you scroll */
-      var hue1 = Math.round(200 + progress * 20);
-      var hue2 = Math.round(180 + progress * 40);
-      var glow = 0.4 + progress * 0.35;
-      heroReactiveBg.style.background =
-        'radial-gradient(ellipse 60% 70% at ' + (50 - progress * 20) + '% 50%, ' +
-        'hsla(' + hue1 + ',60%,' + (20 + progress * 10) + '%,' + glow + ') 0%, transparent 70%)';
-    }
-
-    /* ══════════════════════════════
-       SECTION BACKGROUNDS — REACTIVE
-       Sections subtly shift their bg tone based on scroll progress within them
-    ══════════════════════════════ */
-    var sectionReactive = document.querySelectorAll('.section-reactive');
-
-    function updateSectionBgs() {
-      sectionReactive.forEach(function(sec) {
-        var rect = sec.getBoundingClientRect();
-        var vh = window.innerHeight;
-        var progress = 1 - Math.max(0, Math.min(1, (rect.top) / vh)); // 0 at top, 1 when fully entered
-        /* Subtle brightness shift */
-        var brightness = 1 + progress * 0.04;
-        sec.style.filter = 'brightness(' + brightness + ')';
-      });
-    }
-
-    /* ══════════════════════════════
-       HERO CANVAS PARTICLES
-    ══════════════════════════════ */
-    var canvas = document.getElementById('hero-canvas');
-    if (canvas) {
-      var ctx = canvas.getContext('2d');
-      var particles = [];
-      var NUM = 55;
-
-      function resizeCanvas() {
-        canvas.width  = hero.offsetWidth;
-        canvas.height = hero.offsetHeight;
+        /* Reactive background tint shifts hue as you scroll */
+        var hue1 = Math.round(200 + progress * 20);
+        var hue2 = Math.round(180 + progress * 40);
+        var glow = 0.4 + progress * 0.35;
+        heroReactiveBg.style.background =
+          'radial-gradient(ellipse 60% 70% at ' + (50 - progress * 20) + '% 50%, ' +
+          'hsla(' + hue1 + ',60%,' + (20 + progress * 10) + '%,' + glow + ') 0%, transparent 70%)';
       }
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
 
-      for (var i = 0; i < NUM; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.35,
-          vy: (Math.random() - 0.5) * 0.35,
-          r: Math.random() * 1.8 + 0.5,
-          alpha: Math.random() * 0.5 + 0.15
+      /* ══════════════════════════════
+         SECTION BACKGROUNDS — REACTIVE
+         Sections subtly shift their bg tone based on scroll progress within them
+      ══════════════════════════════ */
+      var sectionReactive = document.querySelectorAll('.section-reactive');
+
+      function updateSectionBgs() {
+        sectionReactive.forEach(function (sec) {
+          var rect = sec.getBoundingClientRect();
+          var vh = window.innerHeight;
+          var progress = 1 - Math.max(0, Math.min(1, (rect.top) / vh)); // 0 at top, 1 when fully entered
+          /* Subtle brightness shift */
+          var brightness = 1 + progress * 0.04;
+          sec.style.filter = 'brightness(' + brightness + ')';
         });
       }
 
-      function drawParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(function(p) {
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < 0) p.x = canvas.width;
-          if (p.x > canvas.width) p.x = 0;
-          if (p.y < 0) p.y = canvas.height;
-          if (p.y > canvas.height) p.y = 0;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(201,168,76,' + p.alpha + ')';
-          ctx.fill();
-        });
-        /* Connecting lines between nearby particles */
-        for (var a = 0; a < particles.length; a++) {
-          for (var b = a + 1; b < particles.length; b++) {
-            var dx = particles[a].x - particles[b].x;
-            var dy = particles[a].y - particles[b].y;
-            var dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 90) {
-              ctx.beginPath();
-              ctx.moveTo(particles[a].x, particles[a].y);
-              ctx.lineTo(particles[b].x, particles[b].y);
-              ctx.strokeStyle = 'rgba(201,168,76,' + (0.06 * (1 - dist / 90)) + ')';
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
+      /* ══════════════════════════════
+         HERO CANVAS PARTICLES
+      ══════════════════════════════ */
+      var canvas = document.getElementById('hero-canvas');
+      if (canvas) {
+        var ctx = canvas.getContext('2d');
+        var particles = [];
+        var NUM = 55;
+
+        function resizeCanvas() {
+          canvas.width = hero.offsetWidth;
+          canvas.height = hero.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        for (var i = 0; i < NUM; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            r: Math.random() * 1.8 + 0.5,
+            alpha: Math.random() * 0.5 + 0.15
+          });
+        }
+
+        function drawParticles() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach(function (p) {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0) p.x = canvas.width;
+            if (p.x > canvas.width) p.x = 0;
+            if (p.y < 0) p.y = canvas.height;
+            if (p.y > canvas.height) p.y = 0;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(201,168,76,' + p.alpha + ')';
+            ctx.fill();
+          });
+          /* Connecting lines between nearby particles */
+          for (var a = 0; a < particles.length; a++) {
+            for (var b = a + 1; b < particles.length; b++) {
+              var dx = particles[a].x - particles[b].x;
+              var dy = particles[a].y - particles[b].y;
+              var dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 90) {
+                ctx.beginPath();
+                ctx.moveTo(particles[a].x, particles[a].y);
+                ctx.lineTo(particles[b].x, particles[b].y);
+                ctx.strokeStyle = 'rgba(201,168,76,' + (0.06 * (1 - dist / 90)) + ')';
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+              }
             }
           }
+          requestAnimationFrame(drawParticles);
         }
-        requestAnimationFrame(drawParticles);
+        drawParticles();
       }
-      drawParticles();
-    }
 
-    /* ══════════════════════════════
-       HERO CARD 3D TILT
-    ══════════════════════════════ */
-    var card = document.getElementById('heroCard');
-    if (card && hero) {
-      hero.addEventListener('mousemove', function(e) {
-        var r = hero.getBoundingClientRect();
-        var dx = (e.clientX - (r.left + r.width  / 2)) / r.width;
-        var dy = (e.clientY - (r.top  + r.height / 2)) / r.height;
-        card.style.transform =
-          'translateY(-40%) rotateY(' + (dx * -8) + 'deg) rotateX(' + (dy * 6) + 'deg) translateZ(10px)';
-      });
-      hero.addEventListener('mouseleave', function() {
-        card.style.transform = 'translateY(-40%) rotateY(0) rotateX(0) translateZ(0)';
-      });
-    }
-
-    /* ══════════════════════════════
-       INTERSECTION OBSERVER — REVEAL
-    ══════════════════════════════ */
-    var reveals = document.querySelectorAll('.reveal, .reveal-group');
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-          }
+      /* ══════════════════════════════
+         HERO CARD 3D TILT
+      ══════════════════════════════ */
+      var card = document.getElementById('heroCard');
+      if (card && hero) {
+        hero.addEventListener('mousemove', function (e) {
+          var r = hero.getBoundingClientRect();
+          var dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+          var dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+          card.style.transform =
+            'translateY(-40%) rotateY(' + (dx * -8) + 'deg) rotateX(' + (dy * 6) + 'deg) translateZ(10px)';
         });
-      }, { threshold: 0.1 });
-      reveals.forEach(function(el) { io.observe(el); });
-    } else {
-      reveals.forEach(function(el) { el.classList.add('visible'); });
-    }
+        hero.addEventListener('mouseleave', function () {
+          card.style.transform = 'translateY(-40%) rotateY(0) rotateX(0) translateZ(0)';
+        });
+      }
+
+      /* ══════════════════════════════
+         INTERSECTION OBSERVER — REVEAL
+      ══════════════════════════════ */
+      var reveals = document.querySelectorAll('.reveal, .reveal-group');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
 
       /* ═══ FLOATING CTA ═══ */
-    var floatCta = document.getElementById('float-cta');
-    window.addEventListener('scroll', function(){
-      floatCta.classList.toggle('visible', window.scrollY > window.innerHeight * 0.55);
-    }, {passive:true});
+      var floatCta = document.getElementById('float-cta');
+      window.addEventListener('scroll', function () {
+        floatCta.classList.toggle('visible', window.scrollY > window.innerHeight * 0.55);
+      }, { passive: true });
 
-    /* ══════════════════════════════
-       ACTIVE SIDEBAR ON SCROLL
-    ══════════════════════════════ */
-    var sections     = document.querySelectorAll('section[id]');
-    var sidebarLinks = document.querySelectorAll('.sidebar a');
-    var topbarLinks  = document.querySelectorAll('.topbar-nav a');
+      /* ══════════════════════════════
+         ACTIVE SIDEBAR ON SCROLL
+      ══════════════════════════════ */
+      var sections = document.querySelectorAll('section[id]');
+      var sidebarLinks = document.querySelectorAll('.sidebar a');
+      var topbarLinks = document.querySelectorAll('.topbar-nav a');
 
-    function onScroll() {
-      updateBar();
-      updateHeroParallax();
-      updateSectionBgs();
+      function onScroll() {
+        updateBar();
+        updateHeroParallax();
+        updateSectionBgs();
 
-      var current = '';
-      sections.forEach(function(s) {
-        if (window.scrollY >= s.offsetTop - 140) current = s.id;
-      });
-      sidebarLinks.forEach(function(a) {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-      });
-    }
+        var current = '';
+        sections.forEach(function (s) {
+          if (window.scrollY >= s.offsetTop - 140) current = s.id;
+        });
+        sidebarLinks.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+      }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // run once on load
-  })();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); // run once on load
+    })();
   </script>
 
   <div id="google_translate_element" style="display:none"></div>
 
-<script>
-// Force Google Translate to load properly
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en',
-    includedLanguages: 'en,ar,zh-CN'
-  }, 'google_translate_element');
-}
-
-// Wait for full page load
-window.addEventListener('load', function() {
-  // Remove Google's banner
-  setTimeout(function() {
-    var banner = document.querySelector('.goog-te-banner-frame');
-    if (banner) banner.style.display = 'none';
-    document.body.style.top = '0px';
-  }, 1000);
-  
-  // Your button handler
-  const langBtn = document.querySelector('button[aria-label="Language"]');
-  if (langBtn) {
-    langBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      let menu = document.getElementById('customLangMenu');
-      if (!menu) {
-        menu = document.createElement('div');
-        menu.id = 'customLangMenu';
-        menu.style.cssText = 'position:fixed;background:white;border:1px solid #ccc;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:10000;min-width:140px';
-        menu.innerHTML = '<div style="padding:5px 0"><div onclick="window.changeLang(\'en\')" style="padding:8px 20px;cursor:pointer">🇬🇧 English</div><div onclick="window.changeLang(\'ar\')" style="padding:8px 20px;cursor:pointer">🇸🇦 Arabic</div><div onclick="window.changeLang(\'zh-CN\')" style="padding:8px 20px;cursor:pointer">🇨🇳 Chinese</div></div>';
-        document.body.appendChild(menu);
-      }
-      
-      const rect = langBtn.getBoundingClientRect();
-      menu.style.top = rect.bottom + 5 + 'px';
-      menu.style.right = window.innerWidth - rect.right + 'px';
-      menu.style.left = 'auto';
-      menu.style.display = 'block';
-      
-      function closeHandler(e) {
-        if (!menu.contains(e.target) && e.target !== langBtn) {
-          menu.style.display = 'none';
-          document.removeEventListener('click', closeHandler);
-        }
-      }
-      setTimeout(() => document.addEventListener('click', closeHandler), 0);
-    });
-  }
-});
-
-// Global function for language change
-window.changeLang = function(lang) {
-  const checkExist = setInterval(function() {
-    const select = document.querySelector('.goog-te-combo');
-    if (select) {
-      select.value = lang;
-      select.dispatchEvent(new Event('change'));
-      clearInterval(checkExist);
+  <script>
+    // Force Google Translate to load properly
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ar,zh-CN'
+      }, 'google_translate_element');
     }
-  }, 100);
-  
-  setTimeout(function() {
-    const menu = document.getElementById('customLangMenu');
-    if (menu) menu.style.display = 'none';
-  }, 100);
-};
-</script>
 
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    // Wait for full page load
+    window.addEventListener('load', function () {
+      // Remove Google's banner
+      setTimeout(function () {
+        var banner = document.querySelector('.goog-te-banner-frame');
+        if (banner) banner.style.display = 'none';
+        document.body.style.top = '0px';
+      }, 1000);
+
+      // Your button handler
+      const langBtn = document.querySelector('button[aria-label="Language"]');
+      if (langBtn) {
+        langBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          let menu = document.getElementById('customLangMenu');
+          if (!menu) {
+            menu = document.createElement('div');
+            menu.id = 'customLangMenu';
+            menu.style.cssText = 'position:fixed;background:white;border:1px solid #ccc;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:10000;min-width:140px';
+            menu.innerHTML = '<div style="padding:5px 0"><div onclick="window.changeLang(\'en\')" style="padding:8px 20px;cursor:pointer">🇬🇧 English</div><div onclick="window.changeLang(\'ar\')" style="padding:8px 20px;cursor:pointer">🇸🇦 Arabic</div><div onclick="window.changeLang(\'zh-CN\')" style="padding:8px 20px;cursor:pointer">🇨🇳 Chinese</div></div>';
+            document.body.appendChild(menu);
+          }
+
+          const rect = langBtn.getBoundingClientRect();
+          menu.style.top = rect.bottom + 5 + 'px';
+          menu.style.right = window.innerWidth - rect.right + 'px';
+          menu.style.left = 'auto';
+          menu.style.display = 'block';
+
+          function closeHandler(e) {
+            if (!menu.contains(e.target) && e.target !== langBtn) {
+              menu.style.display = 'none';
+              document.removeEventListener('click', closeHandler);
+            }
+          }
+          setTimeout(() => document.addEventListener('click', closeHandler), 0);
+        });
+      }
+    });
+
+    // Global function for language change
+    window.changeLang = function (lang) {
+      const checkExist = setInterval(function () {
+        const select = document.querySelector('.goog-te-combo');
+        if (select) {
+          select.value = lang;
+          select.dispatchEvent(new Event('change'));
+          clearInterval(checkExist);
+        }
+      }, 100);
+
+      setTimeout(function () {
+        const menu = document.getElementById('customLangMenu');
+        if (menu) menu.style.display = 'none';
+      }, 100);
+    };
+  </script>
+
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
+
 </html>
