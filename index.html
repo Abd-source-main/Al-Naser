@@ -229,22 +229,10 @@
       position: absolute;
       bottom: -2px;
       left: 0;
-      width: 0%;
+      width: 100%;
       height: 1px;
       background: var(--gold);
-      animation: brandUnderline 2.5s 1.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes brandUnderline {
-      from {
-        width: 0%;
-        opacity: 0.4;
-      }
-
-      to {
-        width: 100%;
-        opacity: 1;
-      }
+      opacity: 1;
     }
 
     .brand-sep {
@@ -464,6 +452,13 @@
       position: absolute;
       inset: 0;
       z-index: 0;
+      display: flex;
+    }
+
+    .hero-bg-img-half {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
     }
 
     .hero-bg-img img {
@@ -757,17 +752,102 @@
     }
 
     .card h3 {
-      font-size: 1.05rem;
-      color: #fff;
+      font-size: 1.5rem;
+      color: var(--gold);
       margin-bottom: 0.8rem;
       transition: color 0.25s;
       font-weight: 600;
+      font-family: 'Cormorant Garamond', serif;
     }
 
     .card p {
       font-size: 0.76rem;
       color: var(--muted);
       line-height: 1.8;
+    }
+
+    /* ── CARD IMAGE SLIDER ── */
+    .card-slider {
+      position: relative;
+      width: calc(100% + 3.6rem);
+      margin-left: -1.8rem;
+      margin-top: -2.2rem;
+      margin-bottom: 1.4rem;
+      height: 155px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .card-slider img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+
+    .card-slider img.active {
+      opacity: 1;
+    }
+
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(4, 24, 40, 0.72);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      color: var(--gold);
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      font-size: 1.1rem;
+      line-height: 1;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.2s, border-color 0.2s;
+      padding: 0;
+    }
+
+    .card:hover .slider-arrow {
+      opacity: 1;
+    }
+
+    .slider-arrow:hover {
+      background: rgba(201, 168, 76, 0.18);
+      border-color: var(--gold);
+    }
+
+    .slider-arrow.prev { left: 6px; }
+    .slider-arrow.next { right: 6px; }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 5;
+    }
+
+    .slider-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+    }
+
+    .slider-dot.active {
+      background: var(--gold);
+      transform: scale(1.35);
     }
 
     /* ═══════════════════════════════
@@ -1672,7 +1752,7 @@
     </div>
     <nav>
       <a href="#hero" class="active">Home</a>
-      <a href="#capabilities">Logistics</a>
+      <a href="#capabilities">Products</a>
       <a href="#about">About</a>
       <a href="#process">Process</a>
       <a href="#routes">Routes</a>
@@ -1716,9 +1796,12 @@
     <section id="hero">
       <div id="hero-reactive-bg"></div>
       <div class="hero-bg-img">
-        <img id="heroBgImg"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtdNVW4g9XqXEmfVifpZ2Vpu-2-RW1POf6yMv3lu20co11kwHUl93FLLifSJN5J6I6T52snrZUEIidqoKosCgUjrP8ipxRiiX1bwdX6OZ-C2HGy0sdjH2WgSeXcGebJtyUw_C8cNMZEg91gfRtKE7gePOwFm51I8WugOnGvisIPQoAHc9mEynOcFZHc2D4Req8TtH9mHOEozHeQZLIG4Bu2cRZ_2aRh--eIhCHQkAMYNzc4EOphYcDMoiKBD_tE382u2SQrCfKcNa4"
-          alt="" />
+        <div class="hero-bg-img-half">
+          <img id="heroBgImg" src="images/Farm-tractor-pesticides-crops.jpg" alt="" />
+        </div>
+        <div class="hero-bg-img-half">
+          <img id="heroBgImg2" src="images/Solar_field.jpg" alt="" />
+        </div>
       </div>
       <div class="hero-grid"></div>
       <div class="hero-scanlines"></div>
@@ -1729,11 +1812,11 @@
       <div class="hero-content">
         <span class="label-tag">Institutional Commerce</span>
         <h1 class="hero-title">
-          Bridging Iraq to the<br>
-          <em>Global Blue</em>
+          Al-Naser<br>
+          <em>For General Trading</em>
         </h1>
-        <p class="hero-sub">Al-Naser LLC specializes in global procurement and import of spare parts, agricultural
-          machinery and solar panels and its supplements.</p>
+        <p class="hero-sub">Al-Naser LLC specializes in global procurement and import of  agricultural
+          machinery ,spare parts and solar panels and its supplements.</p>
         <div class="hero-buttons">
           <a href="#contact" class="btn-primary">Establish Connection</a>
           <a href="#process" class="btn-outline">Our Workflow</a>
@@ -1757,56 +1840,91 @@
     <section id="capabilities" class="section-reactive">
       <div class="section-header reveal">
         <div>
-          <span class="label-tag">Our Capabilities</span>
-          <h2>The Trade Wave</h2>
+          <span class="label-tag">Our Products</span>
+          <h2>Agricultural &amp; Solar panels</h2>
         </div>
-        <p class="aside-text">Architecting the movement of capital and goods through sophisticated maritime corridors.
-        </p>
+
       </div>
       <div class="cards reveal-group">
+
+        <!-- Card 1: Agricultural Machinery -->
         <div class="card">
-          <div class="card-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="1.5" />
-            </svg>
+          <div class="card-slider">
+            <img src="images/items/machine/John_Deere.webp" class="active" alt="John Deere tractor">
+            <img src="images/items/machine/6-disc-mower.jpg" alt="Disc mower">
+            <img src="images/items/machine/1719485704-0.jpg" alt="Agricultural machinery">
+            <img src="images/items/machine/enefits_2.png" alt="Farm equipment">
+            <button class="slider-arrow prev" aria-label="Previous">&#8249;</button>
+            <button class="slider-arrow next" aria-label="Next">&#8250;</button>
+            <div class="slider-dots">
+              <div class="slider-dot active"></div>
+              <div class="slider-dot"></div>
+              <div class="slider-dot"></div>
+              <div class="slider-dot"></div>
+            </div>
           </div>
-          <h3>Import </h3>
-          <p>Seamlessly facilitate international trade, connecting local businesses to global suppliers across verified
-            corridors.</p>
+          <h3>Agricultural Machinery</h3>
+          <p>Premium tractors, disc mowers, harvesters, and field equipment sourced from leading global manufacturers to power modern farming operations.</p>
         </div>
+
+        <!-- Card 2: Spare Parts -->
         <div class="card">
-          <div class="card-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" stroke-linecap="round"
-                stroke-linejoin="round" stroke-width="1.5" />
-            </svg>
+          <div class="card-slider">
+            <img src="images/items/spare_parts/SPARE-PARTS-FOR-MACHINES.jpg" class="active" alt="Spare parts for machines">
+            <img src="images/items/spare_parts/top-agricultural-spare-parts-farm-equipment-generative-ai_1285683-2418.jpg" alt="Agricultural spare parts">
+            <img src="images/items/spare_parts/tractor-starter-motors-new-electric-agricultural-machinery-tractors-spare-parts-455369093.webp" alt="Tractor starter motors">
+            <img src="images/items/spare_parts/7c4ec1ef-8b1a-4b8a-b32a-dfce4f958463.webp" alt="Machine spare parts">
+            <button class="slider-arrow prev" aria-label="Previous">&#8249;</button>
+            <button class="slider-arrow next" aria-label="Next">&#8250;</button>
+            <div class="slider-dots">
+              <div class="slider-dot active"></div>
+              <div class="slider-dot"></div>
+              <div class="slider-dot"></div>
+              <div class="slider-dot"></div>
+            </div>
           </div>
-          <h3>Logistics &amp; Distribution</h3>
-          <p>End-to-end solutions ensuring goods reach their destination efficiently and safely across land and sea.</p>
+          <h3>Spare Parts</h3>
+          <p>Genuine and aftermarket spare parts for tractors and agricultural machinery, sourced from certified suppliers to minimize downtime and maximize operational reliability.</p>
         </div>
+
+        <!-- Card 3: Solar Panels -->
         <div class="card">
-          <div class="card-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-            </svg>
+          <div class="card-slider">
+            <img src="images/items/solar_panels/alrawasmarwan_83477_12613114_photovoltaic-system-2742302_1920-868x556.jpg" class="active" alt="Photovoltaic system">
+            <img src="images/items/solar_panels/installing-solar-panels.webp" alt="Installing solar panels">
+            <img src="images/items/solar_panels/solar-panels-and-wind-turbines-in-the-background-photo.jpg" alt="Solar panels field">
+            <img src="images/items/solar_panels/images (2).jpg" alt="Solar panels">
+            <button class="slider-arrow prev" aria-label="Previous">&#8249;</button>
+            <button class="slider-arrow next" aria-label="Next">&#8250;</button>
+            <div class="slider-dots">
+              <div class="slider-dot active"></div>
+              <div class="slider-dot"></div>
+              <div class="slider-dot"></div>
+              <div class="slider-dot"></div>
+            </div>
           </div>
-          <h3>Experience in Global Trade</h3>
-          <p> solar panels, agricultural machinery, and spare parts, with a proven track record of successful international
-            transactions and satisfied clients.
-          </p>
+          <h3>Solar Panels</h3>
+          <p>High-efficiency monocrystalline and polycrystalline solar panels for residential, commercial, and industrial installations, ensuring reliable clean energy output.</p>
         </div>
+
+        <!-- Card 4: Solar Equipment -->
         <div class="card">
-          <div class="card-icon">
-            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
-            </svg>
+          <div class="card-slider">
+            <img src="images/items/solar_equipment/What-are-the-main-components-of-a-solar-power-system.webp" class="active" alt="Solar power system components">
+            <img src="images/items/solar_equipment/Equipo_solar_aislada_2_1500_3000_w.jpg" alt="Solar equipment">
+            <img src="images/items/solar_equipment/pngtree-solar-powered-industrial-pump-system-on-rooftop-with-machinery-and-equipment-image_21781972.webp" alt="Industrial solar pump system">
+            <button class="slider-arrow prev" aria-label="Previous">&#8249;</button>
+            <button class="slider-arrow next" aria-label="Next">&#8250;</button>
+            <div class="slider-dots">
+              <div class="slider-dot active"></div>
+              <div class="slider-dot"></div>
+              <div class="slider-dot"></div>
+            </div>
           </div>
-          <h3>Customer Success</h3>
-          <p>Delivering personalized support and dedicated relationship management, ensuring client satisfaction across all logistical phases.</p>
+          <h3>Solar Equipment</h3>
+          <p>Complete solar system accessories — inverters, charge controllers, mounting structures, and storage batteries — to build and sustain any solar application.</p>
         </div>
+
       </div>
     </section>
 
@@ -1830,7 +1948,7 @@
               <div class="pillar-body">
                 <h4>Experience in Global Trade</h4>
                 <p>solar panels, agricultural machinery, and spare parts, with a proven track record of successful international
-            transactions and satisfied clients.</p>
+                 transactions and satisfied clients.</p>
               </div>
             </div>
             <div class="pillar">
@@ -1838,9 +1956,10 @@
                 <img src="images/check.png" alt="-" style="width:30px;height:30px;">
               </span>
               <div class="pillar-body">
-                <h4>Tailored Shipping Solutions</h4>
-                <p>Bespoke routing strategies — sea, air, and land — matched to the specific cargo, timeline, and budget
-                  of each client.</p>
+                <h4>Agricultural Solutions</h4>
+                <p>We provid integrated agricultural solutions, offering high-quality equipment
+                   to support farmers and agricultural projects. We are committed to providing modern
+                    machinery and spare parts to ensure robust performance and continuous operation.</p>
               </div>
             </div>
             <div class="pillar">
@@ -1848,19 +1967,20 @@
                 <img src="images/check.png" alt="-" style="width:30px;height:30px;">
               </span>
               <div class="pillar-body">
-                <h4>Pre- &amp; Post-Shipment Support</h4>
-                <p>Full-spectrum support from supplier negotiation and procurement to post-delivery quality verification
-                  and aftersales coordination.</p>
-              </div>
+                <h4>Energy Storage Solutions</h4>
+                <p>We offer a full range of energy storage solutions — from home and 
+                  commercial systems to intelligent power management and starting batteries
+                   — ensuring reliable performance across every application.
+                </div>
             </div>
             <div class="pillar">
               <span class="pillar-num">
                 <img src="images/check.png" alt="-" style="width:30px;height:30px;">
               </span>
               <div class="pillar-body">
-                <h4>Risk and Delay Mitigation</h4>
-                <p>Proactive monitoring of geopolitical conditions and port congestion to reroute shipments and protect
-                  delivery timelines.</p>
+                <h4>Customer Success</h4>
+                <p>Delivering personalized support and dedicated relationship management,
+                   ensuring client satisfaction across all logistical phases.</p>
               </div>
             </div>
           </div>
@@ -2259,9 +2379,11 @@
         <div class="footer-brand">
           <h4>Al-Naser General Trading</h4>
           <div class="footer-contact">
-            <p><span>Tel</span>PLACE HOLDER</p>
-            <p><span>Loc</span> PLACE HOLDER</p>
+            <p><span>Tel</span> +964 771 878 6432</p>
+            <p><span>Loc</span> Iraq-Baghdad, Karrada Kharij <br>
+            Dist. (929), Aly. (7), Bldg. (808/377)</p>
             <p><span>Post</span> PLACE HOLDER</p>
+            <p><span>Email</span> info@alnaser-company.com</p>
           </div>
         </div>
         <div class="footer-col"></div>
@@ -2387,6 +2509,7 @@
          As user scrolls down, the hero image lifts and darkens
       ══════════════════════════════ */
       var heroBgImg = document.getElementById('heroBgImg');
+      var heroBgImg2 = document.getElementById('heroBgImg2');
       var heroReactiveBg = document.getElementById('hero-reactive-bg');
       var hero = document.getElementById('hero');
 
@@ -2399,6 +2522,7 @@
         /* Parallax lift */
         var shift = scrollY * 0.35;
         heroBgImg.style.transform = 'scale(1.05) translateY(' + shift + 'px)';
+        if (heroBgImg2) heroBgImg2.style.transform = 'scale(1.05) translateY(' + shift + 'px)';
 
         /* Reactive background tint shifts hue as you scroll */
         var hue1 = Math.round(200 + progress * 20);
@@ -2551,6 +2675,46 @@
 
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll(); // run once on load
+
+      /* ══════════════════════════════
+         CARD IMAGE SLIDERS
+      ══════════════════════════════ */
+      document.querySelectorAll('.card-slider').forEach(function (slider, sliderIndex) {
+        var imgs = slider.querySelectorAll('img');
+        var dots = slider.querySelectorAll('.slider-dot');
+        var current = 0;
+
+        function goTo(idx) {
+          imgs[current].classList.remove('active');
+          if (dots[current]) dots[current].classList.remove('active');
+          current = (idx + imgs.length) % imgs.length;
+          imgs[current].classList.add('active');
+          if (dots[current]) dots[current].classList.add('active');
+        }
+
+        var prevBtn = slider.querySelector('.prev');
+        var nextBtn = slider.querySelector('.next');
+
+        if (prevBtn) prevBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          goTo(current - 1);
+        });
+
+        if (nextBtn) nextBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          goTo(current + 1);
+        });
+
+        dots.forEach(function (dot, i) {
+          dot.addEventListener('click', function (e) {
+            e.stopPropagation();
+            goTo(i);
+          });
+        });
+
+        /* Auto-advance with staggered start so cards don't all flip at once */
+        setInterval(function () { goTo(current + 1); }, 4000 + sliderIndex * 800);
+      });
     })();
   </script>
 
