@@ -1,0 +1,253 @@
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE
+   Phones, tablets and varied aspect ratios. Loaded LAST so these
+   rules win the cascade. All other CSS targets the desktop layout;
+   everything mobile/tablet-specific lives here.
+
+   Breakpoints:
+     ≤ 1024px  small laptop / tablet landscape
+     ≤ 768px   tablet portrait & large phones  → hamburger menu
+     ≤ 560px   phones
+     ≤ 460px   small phones
+   Plus: touch devices, short landscape, reduced motion.
+   ════════════════════════════════════════════════════════════ */
+
+/* Fill the screen correctly on mobile browsers whose toolbars
+   expand/collapse. Falls back to the 100vh declared in sections.css. */
+@supports (min-height: 100dvh) {
+  #hero {
+    min-height: 100dvh;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   TABLET / SMALL LAPTOP  ≤ 1024px
+   ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  #capabilities,
+  #about,
+  #process,
+  #routes,
+  #contact,
+  footer {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  #hero {
+    padding-top: 4.5rem;
+  }
+
+  .hero-content {
+    padding: 3rem 2.5rem 4rem;
+  }
+
+  .about-inner {
+    gap: 3.5rem;
+  }
+
+  /* 4 → 2 columns; drop the horizontal connecting line */
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 3rem;
+  }
+
+  .process-steps::before {
+    display: none;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   TABLET PORTRAIT & LARGE PHONES  ≤ 768px
+   Swap the fixed left rail for a top hamburger drawer.
+   ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .sidebar {
+    display: none;
+  }
+
+  main {
+    margin-left: 0;
+  }
+
+  .topbar {
+    left: 0;
+    height: 4.25rem;
+    padding: 0 1.25rem;
+    z-index: 200;
+    /* keep the bar (and its close button) above the drawer */
+  }
+
+  /* inline text links move into the drawer */
+  .topbar-nav a {
+    display: none;
+  }
+
+  .topbar .nav-toggle {
+    display: inline-flex;
+  }
+
+  .mobile-nav {
+    display: block;
+  }
+
+  /* prevent background scroll while the drawer is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* tighten vertical rhythm */
+  #capabilities,
+  #about,
+  #process,
+  #routes,
+  #contact,
+  footer {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  /* hero floating card is decorative — hide on small screens */
+  .hero-card {
+    display: none;
+  }
+
+  /* about stacks to a single column */
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-video-wrap {
+    min-height: 280px;
+  }
+
+  /* contact box no longer needs huge padding */
+  .contact-box {
+    padding: 2.5rem 1.75rem;
+  }
+
+  /* footer stacks; map fills the column */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-col iframe {
+    width: 100%;
+    height: 220px;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   PHONES  ≤ 560px
+   ─────────────────────────────────────────────── */
+@media (max-width: 560px) {
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* process steps stack to a single column */
+  .process-steps {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+  }
+
+  #hero {
+    padding-top: 4rem;
+  }
+
+  .hero-content {
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  #capabilities,
+  #about,
+  #process,
+  #routes,
+  #contact,
+  footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .map-legend {
+    gap: 1rem;
+  }
+
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   SMALL PHONES  ≤ 460px
+   Drop the brand sub-text so the top bar never overflows.
+   ─────────────────────────────────────────────── */
+@media (max-width: 460px) {
+
+  .brand-sep,
+  .brand-sub {
+    display: none;
+  }
+
+  .contact-box {
+    padding: 2rem 1.25rem;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   TOUCH DEVICES (no hover)
+   Hover-only controls are unusable — reveal & enlarge them.
+   ─────────────────────────────────────────────── */
+@media (hover: none) {
+
+  .card .slider-arrow {
+    opacity: 1;
+    width: 34px;
+    height: 34px;
+    font-size: 1.3rem;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   SHORT LANDSCAPE (e.g. phone rotated)
+   Let the hero grow with its content instead of being
+   pinned to the viewport height.
+   ─────────────────────────────────────────────── */
+@media (orientation: landscape) and (max-height: 500px) {
+
+  #hero {
+    min-height: auto;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* ───────────────────────────────────────────────
+   ACCESSIBILITY — respect reduced-motion preference
+   Animations resolve instantly to their final state, so
+   content stays visible without motion.
+   ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

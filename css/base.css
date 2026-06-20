@@ -1,0 +1,193 @@
+/* ════════════════════════════════════════════════════════════
+   BASE
+   CSS variables, reset, typography, shared utilities & buttons,
+   scroll progress bar, scroll-reveal animations.
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  --d0: #0e4a6e;
+  --d1: #0a3a58;
+  --d2: #082d47;
+  --d3: #062238;
+  --d4: #041828;
+  --d5: #030f1b;
+  --d6: #010810;
+  --gold: #c9a84c;
+  --gold-lt: #e2c278;
+  --gold-dim: rgba(201, 168, 76, 0.15);
+  --text: #cddde8;
+  --muted: #6a92aa;
+  --border: rgba(201, 168, 76, 0.14);
+}
+
+/* Hide all Google Translate UI elements */
+.goog-te-banner-frame,
+.goog-te-gadget,
+.goog-te-gadget-simple,
+.goog-te-menu-frame,
+.goog-te-menu2,
+.skiptranslate {
+  display: none !important;
+}
+
+/* Custom language menu colors */
+#customLangMenu {
+  background: var(--d2) !important;
+  border-color: var(--border) !important;
+}
+
+#customLangMenu div div {
+  color: var(--text) !important;
+  border-bottom-color: var(--border) !important;
+}
+
+#customLangMenu div div:hover {
+  background: var(--gold-dim) !important;
+  color: var(--gold-lt) !important;
+}
+
+#customLangMenu div div:last-child {
+  border-bottom: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--d6);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.6);
+  transition: width 0.08s linear;
+}
+
+/* ── REUSABLE ── */
+.label-tag {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: #010810;
+  padding: 0.78rem 2rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--gold-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.25);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.78rem 2rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ═══════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-group>* {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-group.visible>*:nth-child(1) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.reveal-group.visible>*:nth-child(2) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.08s;
+}
+
+.reveal-group.visible>*:nth-child(3) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.16s;
+}
+
+.reveal-group.visible>*:nth-child(4) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.24s;
+}
+
+/* ═══════════════════════════════
+   REACTIVE SECTION BG PULSE
+═══════════════════════════════ */
+.section-reactive {
+  transition: background 0.6s ease;
+}

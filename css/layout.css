@@ -1,0 +1,368 @@
+/* ════════════════════════════════════════════════════════════
+   LAYOUT
+   Page chrome: left rail sidebar, top bar, mobile drawer menu,
+   main content wrapper, footer.
+   (Show/hide of the mobile nav is handled in responsive.css)
+   ════════════════════════════════════════════════════════════ */
+
+/* ── SIDEBAR ── */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 3.4rem;
+  height: 100%;
+  background: rgba(6, 34, 56, 0.88);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.4rem 0;
+  z-index: 200;
+  transform: translateX(-100%);
+  animation: slideInSidebar 0.7s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInSidebar {
+  to {
+    transform: translateX(0);
+  }
+}
+
+.sidebar .mark {
+  width: 100%;
+  height: 1.9rem;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.42rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+  margin-top: 2.8rem;
+}
+
+.sidebar a {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.25s;
+  position: relative;
+}
+
+.sidebar a::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 2px;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar a:hover::after,
+.sidebar a.active::after {
+  height: 100%;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  color: var(--gold);
+}
+
+/* ── MAIN ── */
+main {
+  margin-left: 3.4rem;
+}
+
+/* ── TOP BAR ── */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 3.4rem;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.5rem;
+  height: 5rem;
+  background: rgba(8, 45, 71, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  transform: translateY(-100%);
+  animation: slideDownTopbar 0.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDownTopbar {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: clamp(1.5rem, 4.5vw, 2.85rem);
+  letter-spacing: 0.03em;
+  position: relative;
+}
+
+.brand-name::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gold);
+  opacity: 1;
+}
+
+.brand-sep {
+  width: 1px;
+  height: 0.9rem;
+  background: var(--border);
+  margin: 0 0.2rem;
+  opacity: 0.6;
+}
+
+.brand-sub {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.topbar-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.topbar-nav a:hover,
+.topbar-nav a.active {
+  color: var(--gold);
+}
+
+.topbar-nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.topbar-nav button:hover {
+  color: var(--gold);
+}
+
+/* ── MOBILE NAV (hamburger + drawer) ──
+   Appearance lives here; it is only revealed at ≤768px
+   (see responsive.css). */
+.topbar .nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.topbar .nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.topbar .nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.topbar .nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.topbar .nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(6, 34, 56, 0.97);
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.mobile-nav.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  height: 100%;
+  padding: 2rem;
+}
+
+.mobile-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.mobile-nav a:hover {
+  color: var(--gold);
+}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer {
+  background: var(--d5);
+  border-top: 1px solid var(--border);
+  padding: 4rem 4rem 2.5rem;
+  position: relative;
+  z-index: 6;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand h4 {
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+}
+
+.footer-brand p {
+  font-size: 0.7rem;
+  color: var(--muted);
+  max-width: 22rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.footer-contact {
+  font-size: 0.68rem;
+  color: var(--muted);
+  line-height: 2.2;
+}
+
+.footer-contact span {
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(106, 146, 170, 0.5);
+  margin-right: 0.5rem;
+}
+
+.footer-col h5 {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 0.9rem;
+}
+
+.footer-col a {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: var(--gold);
+}
+
+/* Keep the embedded map from overflowing narrow screens */
+.footer-col iframe {
+  max-width: 100%;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-bottom p {
+  font-size: 0.6rem;
+  color: var(--muted);
+}
