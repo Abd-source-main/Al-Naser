@@ -1,0 +1,140 @@
+/* ════════════════════════════════════════════════════════════
+   TOUCH
+   Interactions & animations for touch devices (phones / tablets),
+   where there is no mouse to :hover with.
+
+   Almost everything here is wrapped in @media (hover: none) so that
+   mouse / trackpad users are completely unaffected. The matching
+   behaviour (swipe, scroll-spotlight, gyro tilt) lives in js/touch.js.
+   ════════════════════════════════════════════════════════════ */
+
+/* Let a horizontal swipe drive the product slider while a vertical
+   drag still scrolls the page. Safe on all devices. */
+.card-slider {
+  touch-action: pan-y;
+}
+
+@media (hover: none) {
+
+  /* ───────────────────────────────────────────────
+     1. TAP FEEDBACK — :active replaces :hover so a tap
+        gives an immediate, tactile response.
+     ─────────────────────────────────────────────── */
+  .btn-primary,
+  .btn-outline,
+  .form-submit button,
+  .card,
+  .slider-arrow,
+  .slider-dot,
+  .topbar-nav a,
+  .topbar-nav button,
+  .mobile-nav a,
+  #float-cta a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-primary:active,
+  .form-submit button:active,
+  #float-cta a:active {
+    transform: translateY(1px) scale(0.97);
+    box-shadow: 0 4px 14px rgba(201, 168, 76, 0.25);
+  }
+
+  .btn-outline:active {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.45);
+  }
+
+  .card:active {
+    transform: scale(0.985);
+  }
+
+  .slider-arrow:active {
+    background: rgba(201, 168, 76, 0.3);
+    border-color: var(--gold);
+    transform: translateY(-50%) scale(0.92);
+  }
+
+  .slider-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .mobile-nav a:active {
+    color: var(--gold);
+  }
+
+  /* ───────────────────────────────────────────────
+     2. SCROLL SPOTLIGHT — touch users can't hover to
+        discover the design, so whichever element is
+        crossing the centre of the screen gets the same
+        emphasis a hover gives. js/touch.js toggles
+        `.in-view` as you scroll.
+     ─────────────────────────────────────────────── */
+
+  /* product cards */
+  .card.in-view {
+    background: rgba(4, 24, 40, 0.85);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  /* lift needs to beat the reveal rule's `transform:none`
+     (same specificity → later source wins) */
+  .reveal-group .card.in-view {
+    transform: translateY(-4px);
+  }
+
+  .card.in-view::before {
+    height: 100%;
+  }
+
+  .card.in-view::after {
+    opacity: 1;
+  }
+
+  .card.in-view h3 {
+    color: var(--gold-lt);
+  }
+
+  .card.in-view .card-icon {
+    transform: scale(1.12) rotate(-3deg);
+    opacity: 1;
+  }
+
+  /* slow Ken-Burns drift on the visible slide for liveliness */
+  .card.in-view .card-slider img.active {
+    animation: touchKenBurns 7s ease-in-out infinite alternate;
+  }
+
+  /* about pillars */
+  .pillar.in-view {
+    padding-left: 0.5rem;
+  }
+
+  .pillar.in-view .pillar-num {
+    opacity: 0.9;
+  }
+
+  /* process steps */
+  .process-step.in-view .step-outer {
+    border-color: rgba(201, 168, 76, 0.6);
+    transform: scale(1.06);
+  }
+
+  .process-step.in-view .step-inner {
+    background: rgba(201, 168, 76, 0.08);
+    border-color: var(--gold);
+  }
+}
+
+/* Ken-Burns keyframes (disabled automatically for users who set
+   prefers-reduced-motion via the rule in responsive.css) */
+@keyframes touchKenBurns {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.06);
+  }
+}

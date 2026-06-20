@@ -13,11 +13,13 @@
        base      → variables, reset, typography, buttons, reveal
        layout    → sidebar, top bar, mobile drawer, footer
        sections  → hero, capabilities, about, process, routes, contact
-       responsive→ all phone / tablet / aspect-ratio rules (loaded last) -->
+       responsive→ all phone / tablet / aspect-ratio rules (loaded last)
+       touch     → tap feedback, scroll spotlight & gyro (touch devices) -->
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/sections.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/touch.css" />
 </head>
 
 <body>
@@ -699,6 +701,9 @@
 
   <!-- Main site behaviour: scroll effects, waves, particles, sliders, mobile menu -->
   <script src="js/main.js"></script>
+
+  <!-- Touch-device interactions: swipe sliders, scroll spotlight, gyro tilt -->
+  <script src="js/touch.js"></script>
 
   <div id="google_translate_element" style="display:none"></div>
 
