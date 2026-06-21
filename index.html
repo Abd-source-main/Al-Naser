@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Declare the site as natively dark so mobile browsers (Android Chrome
+       "Auto Dark Theme", etc.) don't force-invert the colors -->
+  <meta name="color-scheme" content="dark" />
 
     <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/upscaledLogo (1).png" />
@@ -36,34 +39,22 @@
   <!-- Scroll progress bar -->
   <div id="scroll-bar"></div>
 
-  <!-- ══ SIDEBAR (desktop / tablet-landscape) ══ -->
-  <aside class="sidebar">
-    <div class="mark" style="width: 100%;">
-      <img src="images/upscaledLogo (1).png" style="width: 100%; height: auto;" alt="Al-Naser logo">
-    </div>
-    <nav>
-      <a href="#hero" class="active">Home</a>
-      <a href="#capabilities">Products</a>
-      <a href="#about">About</a>
-      <a href="#process">Process</a>
-      <a href="#routes">Routes</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </aside>
-
   <main>
     <!-- ══ TOP BAR ══ -->
     <header class="topbar">
       <div class="topbar-brand">
-        <a href="#hero" style="text-decoration: none;">
+        <a href="#hero" class="brand-link">
+          <img class="brand-logo" src="images/upscaledLogo (1).png" alt="Al-Naser logo" />
           <span class="brand-name">Al-Naser</span>
         </a>
-        <div class="brand-sep"></div>
-        <span class="brand-sub">For general trading L.L.C.</span>
       </div>
       <nav class="topbar-nav">
-        <a href="#about" class="active">About us</a>
-        <a href="#contact">Contact us</a>
+        <a href="#hero" class="active">Home</a>
+        <a href="#capabilities">Products</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#routes">Routes</a>
+        <a href="#contact">Contact</a>
         <button aria-label="Language">
           <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -103,12 +94,18 @@
     <!-- ══ HERO ══ -->
     <section id="hero">
       <div id="hero-reactive-bg"></div>
-      <div class="hero-bg-img">
-        <div class="hero-bg-img-half">
-          <img id="heroBgImg" src="images/Farm-tractor-pesticides-crops.jpg" alt="" />
-        </div>
-        <div class="hero-bg-img-half">
-          <img id="heroBgImg2" src="images/Solar_field.jpg" alt="" />
+      <div class="hero-bg-img" id="heroSwap">
+        <!-- bottom layer: agricultural machinery (revealed on hover / click) -->
+        <img class="hero-layer hero-layer-bottom" id="heroLayerBottom"
+          src="images/Farm-tractor-pesticides-crops.jpg" alt="Agricultural machinery" />
+        <!-- top layer: solar panels (fades away to expose the machinery below) -->
+        <img class="hero-layer hero-layer-top" id="heroLayerTop"
+          src="images/Solar_field.jpg" alt="Solar panels" />
+        <!-- cursor-following spotlight that reveals the machinery in a
+             soft, dithered circle around the mouse (positioned by main.js) -->
+        <div class="hero-flash" id="heroFlash" aria-hidden="true">
+          <div class="hero-flash-core"></div>
+          <div class="hero-flash-dither"></div>
         </div>
       </div>
       <div class="hero-grid"></div>
@@ -117,14 +114,30 @@
       <div class="hero-ring"></div>
       <div class="hero-ring"></div>
 
-      <div class="hero-content">
-        <span class="label-tag">Institutional Commerce</span>
+      <!-- SOLAR view (default) -->
+      <div class="hero-content hero-content-solar">
+        <span class="label-tag">Clean Energy Supply</span>
         <h1 class="hero-title">
-          Al-Naser<br>
-          <em>For General Trading</em>
+          Solar Power<br>
+          <em>Panels &amp; Systems</em>
         </h1>
-        <p class="hero-sub">Al-Naser LLC specializes in global procurement and import of  agricultural
-          machinery ,spare parts and solar panels and its supplements.</p>
+        <p class="hero-sub">High-efficiency photovoltaic panels, inverters and storage —
+          powering homes, businesses and farms across Iraq.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Establish Connection</a>
+          <a href="#capabilities" class="btn-outline">View Products</a>
+        </div>
+      </div>
+
+      <!-- MACHINERY view (after switching) — different copy & layout -->
+      <div class="hero-content hero-content-machinery">
+        <span class="label-tag">Field-Ready Equipment</span>
+        <h1 class="hero-title">
+          Agricultural Machinery<br>
+          <em>Spare Parts</em>
+        </h1>
+        <p class="hero-sub">Tractors, harvesters, disc mowers and genuine spare parts
+          sourced from leading global manufacturers to keep your operations running.</p>
         <div class="hero-buttons">
           <a href="#contact" class="btn-primary">Establish Connection</a>
           <a href="#process" class="btn-outline">Our Workflow</a>
@@ -132,9 +145,10 @@
       </div>
 
       <div class="hero-card" id="heroCard">
-        <img src="images/upscaledLogo (1).png" alt="" />
-        <div class="hero-card-corner"></div>
+        <img src="images/upscaledLogo (1).png" alt="Al-Naser logo" />
       </div>
+
+      <div class="hero-swap-hint" aria-hidden="true">Click / tap to switch view</div>
     </section>
 
     <!-- WAVE 1: hero → capabilities -->

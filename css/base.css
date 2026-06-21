@@ -64,6 +64,8 @@ body {
 
 html {
   scroll-behavior: smooth;
+  /* the design is dark by default; stop mobile browsers from auto-inverting it */
+  color-scheme: dark;
 }
 
 body {

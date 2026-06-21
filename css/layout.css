@@ -88,26 +88,30 @@
 
 /* ── MAIN ── */
 main {
-  margin-left: 3.4rem;
+  margin-left: 0;
 }
 
 /* ── TOP BAR ── */
 .topbar {
   position: fixed;
   top: 0;
-  left: 3.4rem;
+  left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2.5rem;
-  height: 5rem;
-  background: rgba(8, 45, 71, 0.75);
+  /* Compact by default — sits tiny over the hero. */
+  height: 3.6rem;
+  background: rgba(8, 45, 71, 0.55);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   z-index: 100;
   transform: translateY(-100%);
   animation: slideDownTopbar 0.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.45s ease,
+    box-shadow 0.45s ease;
 }
 
 @keyframes slideDownTopbar {
@@ -116,19 +120,49 @@ main {
   }
 }
 
+/* Expanded — JS adds this once you scroll past the hero section. */
+.topbar.topbar-expanded {
+  height: 5rem;
+  background: rgba(8, 45, 71, 0.88);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
+}
+
 .topbar-brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.7rem;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 2rem;
+  width: auto;
+  transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.topbar-expanded .brand-logo {
+  height: 2.8rem;
 }
 
 .brand-name {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   color: var(--gold);
-  font-size: clamp(1.5rem, 4.5vw, 2.85rem);
+  /* Smaller while compact; grows with the bar when expanded. */
+  font-size: clamp(1.15rem, 3.2vw, 1.85rem);
   letter-spacing: 0.03em;
   position: relative;
+  transition: font-size 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.topbar-expanded .brand-name {
+  font-size: clamp(1.5rem, 4.5vw, 2.85rem);
 }
 
 .brand-name::after {
@@ -161,7 +195,7 @@ main {
 .topbar-nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;

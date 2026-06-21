@@ -40,7 +40,16 @@
   }
 
   .hero-content {
-    padding: 3rem 2.5rem 4rem;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  /* keep the six-item nav comfortable on tablet landscape */
+  .topbar-nav {
+    gap: 1rem;
+  }
+
+  .topbar-nav a {
+    font-size: 0.55rem;
   }
 
   .about-inner {
@@ -74,10 +83,15 @@
 
   .topbar {
     left: 0;
-    height: 4.25rem;
+    height: 3.2rem;
+    /* compact over the hero */
     padding: 0 1.25rem;
     z-index: 200;
     /* keep the bar (and its close button) above the drawer */
+  }
+
+  .topbar.topbar-expanded {
+    height: 4.4rem;
   }
 
   /* inline text links move into the drawer */

@@ -98,6 +98,8 @@
   align-items: center;
   padding-top: 3.5rem;
   overflow: hidden;
+  cursor: pointer;
+  /* the whole hero is clickable to switch the image */
 }
 
 #hero::before {
@@ -121,34 +123,115 @@
   transition: background 0.4s ease;
 }
 
+/* Two stacked full-bleed images: solar on top, machinery beneath.
+   Hovering reveals the other layer via the cursor flashlight; clicking
+   the hero crossfades between them (js/main.js toggles #hero.view-machinery). */
 .hero-bg-img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  display: flex;
 }
 
-.hero-bg-img-half {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-}
-
-.hero-bg-img img {
+.hero-layer {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.9;
-  mix-blend-mode: luminosity;
   transform: scale(1.05);
-  will-change: transform;
+  will-change: transform, opacity;
+}
+
+/* bottom layer = agricultural machinery (sits under the solar layer) */
+.hero-layer-bottom {
+  opacity: 1;
+}
+
+/* top layer = solar panels (fades to reveal the machinery beneath) */
+.hero-layer-top {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+/* switched to machinery view: fully crossfade away the solar layer */
+#hero.view-machinery .hero-layer-top {
+  opacity: 0;
 }
 
 .hero-bg-img::after {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 2;
+  /* keep the blue tint above the flashlight so the reveal stays cohesive */
   background: linear-gradient(110deg, rgba(14, 74, 110, 0.92) 0%, rgba(8, 45, 71, 0.7) 50%, rgba(6, 34, 56, 0.4) 100%);
+}
+
+/* ── CURSOR FLASHLIGHT ──
+   Reveals the machinery layer only in a circle around the mouse.
+   A solid (low-opacity) core fades out, and a dithered ring of tiny
+   squares scatters at the edge — like a dissolving spotlight.
+   --mx / --my are set by js/main.js on mousemove. */
+.hero-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#hero:hover .hero-flash {
+  opacity: 1;
+}
+
+.hero-flash-core,
+.hero-flash-dither {
+  position: absolute;
+  inset: 0;
+  background: url("../images/Farm-tractor-pesticides-crops.jpg") center / cover no-repeat;
+}
+
+/* in machinery view the flashlight reveals the OTHER image (solar) */
+#hero.view-machinery .hero-flash-core,
+#hero.view-machinery .hero-flash-dither {
+  background-image: url("../images/Solar_field.jpg");
+}
+
+/* soft solid-ish core (kept at low opacity so the reveal is subtle) */
+.hero-flash-core {
+  opacity: 0.6;
+  -webkit-mask-image: radial-gradient(circle var(--fr, 160px) at var(--mx, 50%) var(--my, 50%),
+      #000 0%, rgba(0, 0, 0, 0.88) 36%, rgba(0, 0, 0, 0) 70%);
+  mask-image: radial-gradient(circle var(--fr, 160px) at var(--mx, 50%) var(--my, 50%),
+      #000 0%, rgba(0, 0, 0, 0.88) 36%, rgba(0, 0, 0, 0) 70%);
+}
+
+/* scattered dithered ring = (tiny-square pattern) ∩ (ring gradient) */
+.hero-flash-dither {
+  display: none;
+  opacity: 0.5;
+  -webkit-mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='5'%3E%3Crect width='2' height='2' fill='black'/%3E%3C/svg%3E"),
+    radial-gradient(circle var(--fr2, 230px) at var(--mx, 50%) var(--my, 50%),
+      transparent 0%, transparent 30%, #000 52%, transparent 90%);
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='5'%3E%3Crect width='2' height='2' fill='black'/%3E%3C/svg%3E"),
+    radial-gradient(circle var(--fr2, 230px) at var(--mx, 50%) var(--my, 50%),
+      transparent 0%, transparent 30%, #000 52%, transparent 90%);
+  -webkit-mask-size: 5px 5px, 100% 100%;
+  mask-size: 5px 5px, 100% 100%;
+  -webkit-mask-repeat: repeat, no-repeat;
+  mask-repeat: repeat, no-repeat;
+  mask-composite: intersect;
+}
+
+/* only enable the dithered ring where mask compositing is supported,
+   otherwise it would tile across the whole spotlight */
+@supports (mask-composite: intersect) {
+  .hero-flash-dither {
+    display: block;
+  }
 }
 
 /* Diagonal scan lines */
@@ -236,6 +319,36 @@
   z-index: 10;
   padding: 4rem 4rem 6rem;
   max-width: 52rem;
+  cursor: default;
+}
+
+/* Two content variants — only one shows at a time. Clicking the hero
+   adds `.view-machinery` to #hero, which swaps the whole block.
+   Re-displaying a block replays its children's entrance animations. */
+.hero-content-machinery {
+  display: none;
+}
+
+#hero.view-machinery .hero-content-solar {
+  display: none;
+}
+
+#hero.view-machinery .hero-content-machinery {
+  display: block;
+}
+
+/* the machinery variant gets a distinct layout (boxed label badge) */
+.hero-content-machinery .label-tag {
+  display: inline-block;
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+/* keep "Agricultural Machinery" on a single line (scales down to fit) */
+.hero-content-machinery .hero-title {
+  white-space: nowrap;
+  font-size: clamp(1.7rem, 5.5vw, 4rem);
 }
 
 .hero-content .label-tag {
@@ -289,38 +402,78 @@
 }
 
 /* Floating card */
+/* Floating logo — no backdrop / box; the bare emblem bobs gently. */
 .hero-card {
   position: absolute;
-  right: 1%;
-  top: 25%;
-  transform: translateY(-40%);
+  right: 4%;
+  top: 22%;
   z-index: 20;
-  width: min(125px, 35vw);
-  height: min(125px, 30vh);
-  backdrop-filter: blur(14px);
-  overflow: hidden;
-  transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: min(150px, 38vw);
+  height: min(150px, 30vh);
   opacity: 0;
-  animation: fadeUp 0.8s 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation:
+    heroCardIn 0.8s 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    heroFloat 5s ease-in-out 2.3s infinite;
 }
 
 .hero-card img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 0.65;
   display: block;
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.45));
 }
 
-.hero-card-corner {
+@keyframes heroCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-13px);
+  }
+}
+
+/* Hint that the hero image is interactive */
+.hero-swap-hint {
   position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
-  width: 1.8rem;
-  height: 1.8rem;
-  border-top: 2px solid var(--gold);
-  border-right: 2px solid var(--gold);
+  bottom: 1.6rem;
+  right: 1.8rem;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(205, 221, 232, 0.7);
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-swap-hint::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: cta-ping 1.6s ease-in-out infinite;
 }
 
 /* ═══════════════════════════════

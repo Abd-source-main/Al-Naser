@@ -14,6 +14,14 @@
   touch-action: pan-y;
 }
 
+/* No cursor on touch, so the hero flashlight has nothing to follow —
+   hide it (tap-to-switch on the hero still works). */
+@media (hover: none) {
+  .hero-flash {
+    display: none;
+  }
+}
+
 @media (hover: none) {
 
   /* ───────────────────────────────────────────────

@@ -129,21 +129,22 @@
      HERO BACKGROUND — REACTIVE TO SCROLL
      As user scrolls down, the hero image lifts and darkens
   ══════════════════════════════ */
-  var heroBgImg = document.getElementById('heroBgImg');
-  var heroBgImg2 = document.getElementById('heroBgImg2');
+  var heroLayerTop = document.getElementById('heroLayerTop');
+  var heroLayerBottom = document.getElementById('heroLayerBottom');
   var heroReactiveBg = document.getElementById('hero-reactive-bg');
   var hero = document.getElementById('hero');
+  var topbar = document.querySelector('.topbar');
 
   function updateHeroParallax() {
-    if (!hero || !heroBgImg) return;
+    if (!hero || !heroLayerTop) return;
     var heroH = hero.offsetHeight;
     var scrollY = window.scrollY;
     var progress = Math.min(scrollY / heroH, 1); // 0..1
 
-    /* Parallax lift */
+    /* Parallax lift (applied to both stacked layers) */
     var shift = scrollY * 0.35;
-    heroBgImg.style.transform = 'scale(1.05) translateY(' + shift + 'px)';
-    if (heroBgImg2) heroBgImg2.style.transform = 'scale(1.05) translateY(' + shift + 'px)';
+    heroLayerTop.style.transform = 'scale(1.05) translateY(' + shift + 'px)';
+    if (heroLayerBottom) heroLayerBottom.style.transform = 'scale(1.05) translateY(' + shift + 'px)';
 
     /* Reactive background tint shifts hue as you scroll */
     var hue1 = Math.round(200 + progress * 20);
@@ -235,18 +236,44 @@
   /* ══════════════════════════════
      HERO CARD 3D TILT
   ══════════════════════════════ */
-  var card = document.getElementById('heroCard');
-  if (card && hero) {
+  /* The hero logo now floats via CSS animation (heroFloat) — no JS tilt,
+     which would otherwise overwrite the float transform. */
+
+  /* ══════════════════════════════
+     HERO IMAGE SWAP
+     Click anywhere on the hero to crossfade solar ⇄ machinery.
+     (Hover-peek is handled in CSS.)
+  ══════════════════════════════ */
+  if (hero) {
+    hero.addEventListener('click', function (e) {
+      // ignore clicks on the CTA buttons / links inside the hero
+      if (e.target.closest('a, button')) return;
+      // swap the whole view: base image, text block AND flashlight target
+      hero.classList.toggle('view-machinery');
+    });
+  }
+
+  /* ══════════════════════════════
+     HERO FLASHLIGHT
+     Point the cursor-following reveal at the mouse position.
+     (Show/hide + masking handled in CSS via #hero:hover.)
+  ══════════════════════════════ */
+  var heroFlash = document.getElementById('heroFlash');
+  if (hero && heroFlash) {
+    var fx = 0, fy = 0, fTick = false;
     hero.addEventListener('mousemove', function (e) {
       var r = hero.getBoundingClientRect();
-      var dx = (e.clientX - (r.left + r.width / 2)) / r.width;
-      var dy = (e.clientY - (r.top + r.height / 2)) / r.height;
-      card.style.transform =
-        'translateY(-40%) rotateY(' + (dx * -8) + 'deg) rotateX(' + (dy * 6) + 'deg) translateZ(10px)';
-    });
-    hero.addEventListener('mouseleave', function () {
-      card.style.transform = 'translateY(-40%) rotateY(0) rotateX(0) translateZ(0)';
-    });
+      fx = e.clientX - r.left;
+      fy = e.clientY - r.top;
+      if (!fTick) {
+        fTick = true;
+        requestAnimationFrame(function () {
+          heroFlash.style.setProperty('--mx', fx + 'px');
+          heroFlash.style.setProperty('--my', fy + 'px');
+          fTick = false;
+        });
+      }
+    }, { passive: true });
   }
 
   /* ══════════════════════════════
@@ -277,19 +304,23 @@
      ACTIVE SIDEBAR ON SCROLL
   ══════════════════════════════ */
   var sections = document.querySelectorAll('section[id]');
-  var sidebarLinks = document.querySelectorAll('.sidebar a');
-  var topbarLinks = document.querySelectorAll('.topbar-nav a');
+  var navLinks = document.querySelectorAll('.topbar-nav a, .mobile-nav a');
 
   function onScroll() {
     updateBar();
     updateHeroParallax();
     updateSectionBgs();
 
+    /* Topbar: tiny while over the hero, expands once you scroll past it */
+    if (topbar && hero) {
+      topbar.classList.toggle('topbar-expanded', hero.getBoundingClientRect().bottom <= 90);
+    }
+
     var current = '';
     sections.forEach(function (s) {
       if (window.scrollY >= s.offsetTop - 140) current = s.id;
     });
-    sidebarLinks.forEach(function (a) {
+    navLinks.forEach(function (a) {
       a.classList.toggle('active', a.getAttribute('href') === '#' + current);
     });
   }
