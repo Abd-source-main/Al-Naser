@@ -101,30 +101,21 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 0 2.5rem;
-  /* Compact by default — sits tiny over the hero. */
+  /* Always compact. */
   height: 3.6rem;
-  background: rgba(8, 45, 71, 0.55);
+  background: rgba(8, 45, 71, 0.9);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
-  z-index: 100;
-  transform: translateY(-100%);
-  animation: slideDownTopbar 0.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-    background 0.45s ease,
-    box-shadow 0.45s ease;
-}
-
-@keyframes slideDownTopbar {
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* Expanded — JS adds this once you scroll past the hero section. */
-.topbar.topbar-expanded {
-  height: 5rem;
-  background: rgba(8, 45, 71, 0.88);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
+  z-index: 100;
+  /* Hidden by default (kept off-screen over the hero); JS slides it in
+     once the hero has scrolled away. */
+  transform: translateY(-100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.topbar.topbar-visible {
+  transform: translateY(0);
 }
 
 .topbar-brand {
@@ -143,26 +134,15 @@ main {
 .brand-logo {
   height: 2rem;
   width: auto;
-  transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.topbar-expanded .brand-logo {
-  height: 2.8rem;
 }
 
 .brand-name {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   color: var(--gold);
-  /* Smaller while compact; grows with the bar when expanded. */
   font-size: clamp(1.15rem, 3.2vw, 1.85rem);
   letter-spacing: 0.03em;
   position: relative;
-  transition: font-size 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.topbar-expanded .brand-name {
-  font-size: clamp(1.5rem, 4.5vw, 2.85rem);
 }
 
 .brand-name::after {

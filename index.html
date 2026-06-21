@@ -15,7 +15,7 @@
 
   <title>Al-Naser </title>
   <meta name="description" content="Iraqi general trading specializes in
-  trading and importing solar panels and agricultural machinery" />
+  trading and importing solar panels and agricultural machinery attachments" />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
@@ -97,7 +97,7 @@
       <div class="hero-bg-img" id="heroSwap">
         <!-- bottom layer: agricultural machinery (revealed on hover / click) -->
         <img class="hero-layer hero-layer-bottom" id="heroLayerBottom"
-          src="images/Farm-tractor-pesticides-crops.jpg" alt="Agricultural machinery" />
+          src="images/Farm-tractor-pesticides-crops.webp" alt="Agricultural machinery" />
         <!-- top layer: solar panels (fades away to expose the machinery below) -->
         <img class="hero-layer hero-layer-top" id="heroLayerTop"
           src="images/Solar_field.jpg" alt="Solar panels" />
@@ -133,11 +133,11 @@
       <div class="hero-content hero-content-machinery">
         <span class="label-tag">Field-Ready Equipment</span>
         <h1 class="hero-title">
-          Agricultural Machinery<br>
-          <em>Spare Parts</em>
+          Machinery Attachments<br>
+          <em>&amp; Spare Parts</em>
         </h1>
-        <p class="hero-sub">Tractors, harvesters, disc mowers and genuine spare parts
-          sourced from leading global manufacturers to keep your operations running.</p>
+        <p class="hero-sub">Harvesters, disc mowers, plows and genuine spare parts —
+          the implements and attachments that extend your machines, sourced from leading global manufacturers.</p>
         <div class="hero-buttons">
           <a href="#contact" class="btn-primary">Establish Connection</a>
           <a href="#process" class="btn-outline">Our Workflow</a>
@@ -163,7 +163,7 @@
       <div class="section-header reveal">
         <div>
           <span class="label-tag">Our Products</span>
-          <h2>Agricultural machinery &amp; Solar panels</h2>
+          <h2>Machinery attachments &amp; Solar panels</h2>
         </div>
 
       </div>
@@ -185,8 +185,8 @@
               <div class="slider-dot"></div>
             </div>
           </div>
-          <h3>Agricultural Machinery</h3>
-          <p> disc mowers, harvesters, and field equipment sourced from leading global manufacturers to power modern farming operations.</p>
+          <h3>Machinery Attachments</h3>
+          <p>Disc mowers, harvesters, plows and field implements that extend the capabilities of your machines, sourced from leading global manufacturers to power modern farming operations.</p>
         </div>
 
         <!-- Card 2: Spare Parts -->
@@ -269,7 +269,7 @@
               </span>
               <div class="pillar-body">
                 <h4>Experience in Global Trade</h4>
-                <p>solar panels, agricultural machinery, and spare parts, with a proven track record of successful international
+                <p>solar panels, machinery attachments, and spare parts, with a proven track record of successful international
                  transactions and satisfied clients.</p>
               </div>
             </div>
@@ -281,7 +281,7 @@
                 <h4>Agricultural Solutions</h4>
                 <p>We provid integrated agricultural solutions, offering high-quality equipment
                    to support farmers and agricultural projects. We are committed to providing modern
-                    machinery and spare parts to ensure robust performance and continuous operation.</p>
+                    machinery attachments and spare parts to ensure robust performance and continuous operation.</p>
               </div>
             </div>
             <div class="pillar">
@@ -376,6 +376,70 @@
           <p class="step-desc">Last-mile coordination ensuring goods arrive safely, on schedule, and fully documented at
             their destination.</p>
         </div>
+
+        <!-- Animated AC-wave connector with a flowing beam and a single
+             ship (reused from the routes map) sailing along it -->
+        <svg class="process-flow" viewBox="0 0 1100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <path id="processFlowPath" pathLength="1000" d="M137.5,50 Q165,45 192.5,50 Q220,55 247.5,50 Q275,45 302.5,50 Q330,55 357.5,50 Q385,45 412.5,50 Q440,55 467.5,50 Q495,45 522.5,50 Q550,55 577.5,50 Q605,45 632.5,50 Q660,55 687.5,50 Q715,45 742.5,50 Q770,55 797.5,50 Q825,45 852.5,50 Q880,55 907.5,50 Q935,45 962.5,50" />
+          </defs>
+          <use href="#processFlowPath" class="flow-base" />
+
+          <!-- multiple light pulses travel the wave; only two of them
+               carries a ship, which sits a little above its light -->
+          <g class="flow-ship">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="0s">
+              <mpath href="#processFlowPath" />
+            </animateMotion>
+            <line class="flow-light" x1="-20" y1="0" x2="20" y2="0" />
+            <use href="#ship" transform="translate(0,-7) scale(1.2)" />
+          </g>
+          
+          <g class="flow-ship">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="-1s">
+              <mpath href="#processFlowPath" />
+            </animateMotion>
+            <line class="flow-light" x1="-20" y1="0" x2="20" y2="0" />
+          </g>
+
+          <g class="flow-ship">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="-2s">
+              <mpath href="#processFlowPath" />
+            </animateMotion>
+            <line class="flow-light" x1="-20" y1="0" x2="20" y2="0" />
+          </g>
+
+          <g class="flow-ship">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="-3s">
+              <mpath href="#processFlowPath" />
+            </animateMotion>
+            <line class="flow-light" x1="-20" y1="0" x2="20" y2="0" />
+            <use href="#ship" transform="translate(0,-7) scale(1.2)" />
+          </g>
+
+          <g class="flow-ship">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="-4s">
+              <mpath href="#processFlowPath" />
+            </animateMotion>
+            <line class="flow-light" x1="-20" y1="0" x2="20" y2="0" />
+          </g>
+
+          <g class="flow-ship">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="-5s">
+              <mpath href="#processFlowPath" />
+            </animateMotion>
+            <line class="flow-light" x1="-20" y1="0" x2="20" y2="0" />
+          </g>
+
+          <g class="flow-ship">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto" begin="-6s">
+              <mpath href="#processFlowPath" />
+            </animateMotion>
+            <line class="flow-light" x1="-20" y1="0" x2="20" y2="0" />
+          </g>
+
+           
+        </svg>
       </div>
     </section>
 

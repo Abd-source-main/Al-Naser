@@ -62,7 +62,7 @@
     row-gap: 3rem;
   }
 
-  .process-steps::before {
+  .process-flow {
     display: none;
   }
 }
@@ -88,10 +88,6 @@
     padding: 0 1.25rem;
     z-index: 200;
     /* keep the bar (and its close button) above the drawer */
-  }
-
-  .topbar.topbar-expanded {
-    height: 4.4rem;
   }
 
   /* inline text links move into the drawer */

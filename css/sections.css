@@ -189,7 +189,7 @@
 .hero-flash-dither {
   position: absolute;
   inset: 0;
-  background: url("../images/Farm-tractor-pesticides-crops.jpg") center / cover no-repeat;
+  background: url("../images/Farm-tractor-pesticides-crops.webp") center / cover no-repeat;
 }
 
 /* in machinery view the flashlight reveals the OTHER image (solar) */
@@ -893,15 +893,48 @@ step-circle-wrap {
   gap: 0;
 }
 
-.process-steps::before {
-  content: '';
+/* Animated connector overlay: a small-amplitude AC wave with a beam
+   flowing along it and a single ship sailing the wave between the numbers.
+   (SVG sits behind the numbered circles; markup is in index.html.) */
+.process-flow {
   position: absolute;
-  top: 3.15rem;
-  left: 12.5%;
-  right: 12.5%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, .45) 15%, rgba(201, 168, 76, .45) 85%, transparent);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6.2rem;
   z-index: 0;
+  opacity: 1;
+  /* override the reveal-group fade-in applied to .process-steps children */
+  transform: none;
+  pointer-events: none;
+  overflow: visible;
+  /* Fade the wave/pulses/ship to nothing over the four numbered circles
+     (at 12.5% / 37.5% / 62.5% / 87.5%), so they "disappear" on contact. */
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 16.5%, #000 18.5%, #000 31.5%, transparent 33.5%,
+      transparent 41.5%, #000 43.5%, #000 56.5%, transparent 58.5%,
+      transparent 66.5%, #000 68.5%, #000 81.5%, transparent 83.5%);
+  mask-image: linear-gradient(to right,
+      transparent 16.5%, #000 18.5%, #000 31.5%, transparent 33.5%,
+      transparent 41.5%, #000 43.5%, #000 56.5%, transparent 58.5%,
+      transparent 66.5%, #000 68.5%, #000 81.5%, transparent 83.5%);
+}
+
+/* faint static wave track */
+.process-flow .flow-base {
+  fill: none;
+  stroke: rgba(201, 168, 76, 0.22);
+  stroke-width: 1.5;
+}
+
+/* glowing light carried by each ship (drawn inside the ship group, so it
+   shares the exact same motion — always directly under the ship) */
+.process-flow .flow-light {
+  stroke: var(--gold-lt);
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 5px rgba(201, 168, 76, 0.9));
 }
 
 .process-step {
