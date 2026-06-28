@@ -3,9 +3,12 @@
    Interactions & animations for touch devices (phones / tablets),
    where there is no mouse to :hover with.
 
-   Almost everything here is wrapped in @media (hover: none) so that
-   mouse / trackpad users are completely unaffected. The matching
-   behaviour (swipe, scroll-spotlight, gyro tilt) lives in js/touch.js.
+   Almost everything here is wrapped in @media (max-width: 768px) so that
+   laptops / desktops (incl. touchscreen laptops) are completely
+   unaffected — only phone-width viewports get these scroll behaviours.
+   Width is used (rather than hover/pointer detection) because some
+   laptops misreport their input capabilities. The matching JS (swipe,
+   scroll-spotlight, gyro tilt) lives in js/touch.js.
    ════════════════════════════════════════════════════════════ */
 
 /* Let a horizontal swipe drive the product slider while a vertical
@@ -16,13 +19,13 @@
 
 /* No cursor on touch, so the hero flashlight has nothing to follow —
    hide it (tap-to-switch on the hero still works). */
-@media (hover: none) {
+@media (max-width: 768px) {
   .hero-flash {
     display: none;
   }
 }
 
-@media (hover: none) {
+@media (max-width: 768px) {
 
   /* ───────────────────────────────────────────────
      1. TAP FEEDBACK — :active replaces :hover so a tap

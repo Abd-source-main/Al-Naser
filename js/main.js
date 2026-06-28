@@ -311,9 +311,9 @@
     updateHeroParallax();
     updateSectionBgs();
 
-    /* Topbar: tiny while over the hero, expands once you scroll past it */
+    /* Topbar: hidden over the hero, slides in (still compact) once past it */
     if (topbar && hero) {
-      topbar.classList.toggle('topbar-expanded', hero.getBoundingClientRect().bottom <= 90);
+      topbar.classList.toggle('topbar-visible', hero.getBoundingClientRect().bottom <= 90);
     }
 
     var current = '';
