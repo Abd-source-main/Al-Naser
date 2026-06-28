@@ -4,12 +4,14 @@
    - Scroll "spotlight": emphasise the element at screen centre
    - Gentle gyroscope tilt on the hero card (where supported)
 
-   Runs ONLY on no-hover (touch) devices so desktop is untouched.
-   Pairs with css/touch.css.
+   Runs ONLY on phone-width viewports (≤768px) so desktops AND
+   touchscreen laptops are untouched. Pairs with css/touch.css.
    ════════════════════════════════════════════════════════════ */
 (function () {
-  // Bail out on devices that can hover (mouse / trackpad).
-  if (!window.matchMedia || !window.matchMedia('(hover: none)').matches) return;
+  // Bail out on anything wider than the phone breakpoint. Width is used
+  // (rather than hover/pointer detection) because some laptops misreport
+  // their input capabilities.
+  if (!window.matchMedia || !window.matchMedia('(max-width: 768px)').matches) return;
 
   /* ──────────────────────────────────────────
      1. SCROLL SPOTLIGHT

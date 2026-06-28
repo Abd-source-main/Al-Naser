@@ -547,22 +547,28 @@
   pointer-events: none;
 }
 
-.card:hover::before {
-  height: 100%;
-}
+/* Hover emphasis — laptops / desktops (wider than the phone breakpoint,
+   incl. touchscreen laptops). Phones (≤768px) get the same emphasis on
+   scroll instead (see touch.css `.in-view`). */
+@media (min-width: 769px) {
 
-.card:hover::after {
-  opacity: 1;
-}
+  .card:hover::before {
+    height: 100%;
+  }
 
-.card:hover {
-  background: rgba(4, 24, 40, 0.85);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-}
+  .card:hover::after {
+    opacity: 1;
+  }
 
-.card:hover h3 {
-  color: var(--gold-lt);
+  .card:hover {
+    background: rgba(4, 24, 40, 0.85);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .card:hover h3 {
+    color: var(--gold-lt);
+  }
 }
 
 .card-icon {
@@ -572,9 +578,11 @@
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
 }
 
-.card:hover .card-icon {
-  transform: scale(1.12) rotate(-3deg);
-  opacity: 1;
+@media (min-width: 769px) {
+  .card:hover .card-icon {
+    transform: scale(1.12) rotate(-3deg);
+    opacity: 1;
+  }
 }
 
 .card h3 {
@@ -640,8 +648,10 @@
   padding: 0;
 }
 
-.card:hover .slider-arrow {
-  opacity: 1;
+@media (min-width: 769px) {
+  .card:hover .slider-arrow {
+    opacity: 1;
+  }
 }
 
 .slider-arrow:hover {
@@ -962,9 +972,11 @@ step-circle-wrap {
   transition: border-color .35s, transform .4s cubic-bezier(.16, 1, .3, 1);
 }
 
-.process-step:hover .step-outer {
-  border-color: rgba(201, 168, 76, .6);
-  transform: scale(1.06);
+@media (min-width: 769px) {
+  .process-step:hover .step-outer {
+    border-color: rgba(201, 168, 76, .6);
+    transform: scale(1.06);
+  }
 }
 
 .step-inner {
@@ -983,9 +995,11 @@ step-circle-wrap {
   transition: background .3s, border-color .3s;
 }
 
-.process-step:hover .step-inner {
-  background: rgba(201, 168, 76, .08);
-  border-color: var(--gold);
+@media (min-width: 769px) {
+  .process-step:hover .step-inner {
+    background: rgba(201, 168, 76, .08);
+    border-color: var(--gold);
+  }
 }
 
 .step-tag {
