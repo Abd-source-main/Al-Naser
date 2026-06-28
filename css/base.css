@@ -30,6 +30,26 @@
   display: none !important;
 }
 
+/* ── Language-specific content ──
+   English is the page default — nothing needs marking. Add class "lang-ar" to
+   an element to show it ONLY in the Arabic view (Google Translate adds
+   .translated-rtl on <html> when Arabic is active). Add "lang-en" to an
+   English element you want hidden in Arabic, so an Arabic-only block can fully
+   overwrite its English twin.
+   (We can't key off the lang attribute: Google stamps lang="ar" on <html> and
+   its translated nodes, which would hide the whole page.) */
+.lang-ar {
+  display: none !important;
+}
+
+html.translated-rtl .lang-ar {
+  display: revert !important;
+}
+
+html.translated-rtl .lang-en {
+  display: none !important;
+}
+
 /* Custom language menu colors */
 #customLangMenu {
   background: var(--d2) !important;
