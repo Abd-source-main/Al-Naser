@@ -21,6 +21,8 @@
   var codeInput = form.querySelector('input[name="code"]');
   var submitBtn = document.getElementById('contactSubmit');
   var statusEl = document.getElementById('contactStatus');
+  var loader = document.getElementById('contactLoader');
+  var loaderText = loader && loader.querySelector('.cl-text');
 
   // 'collect' = waiting for details; 'verify' = code emailed, waiting for code.
   var stage = 'collect';
@@ -34,6 +36,11 @@
   function setBusy(busy, label) {
     submitBtn.disabled = busy;
     submitBtn.textContent = label;
+    if (loader) {
+      if (busy && loaderText) loaderText.textContent = label;
+      loader.classList.toggle('is-active', busy);
+      loader.setAttribute('aria-hidden', busy ? 'false' : 'true');
+    }
   }
 
   // Pull a human-readable message out of a FastAPI error response.

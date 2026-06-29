@@ -798,6 +798,27 @@
             <button type="submit" id="contactSubmit">Initiate Transmission</button>
           </div>
         </form>
+
+        <!-- Compass loader: shown while a request is in flight
+             (sending the OTP, or delivering the verified message) -->
+        <div id="contactLoader" class="contact-loader" aria-hidden="true">
+          <div class="cl-compass">
+            <span class="cl-sweep"></span>
+            <span class="cl-crosshair cl-crosshair--h"></span>
+            <span class="cl-crosshair cl-crosshair--v"></span>
+            <span class="cl-ring"></span>
+            <span class="cl-ring"></span>
+            <span class="cl-ring"></span>
+            <span class="cl-ring"></span>
+            <span class="cl-ring"></span>
+            <svg class="cl-needle" viewBox="0 0 100 100" width="150" height="150" aria-hidden="true">
+              <polygon points="50,14 45,50 55,50" fill="var(--gold-lt)" />
+              <polygon points="50,86 45,50 55,50" fill="var(--gold)" opacity="0.45" />
+            </svg>
+            <span class="cl-dot"></span>
+          </div>
+          <p class="cl-text">Sending…</p>
+        </div>
       </div>
     </section>
 
@@ -842,6 +863,9 @@
 
   <!-- Contact form: email verification (OTP) then message delivery -->
   <script src="js/contact.js"></script>
+
+  <!-- Magnetize: gold particle blobs attracted to the cursor on the submit button -->
+  <script src="js/magnetize.js"></script>
 
   <div id="google_translate_element" style="display:none"></div>
 

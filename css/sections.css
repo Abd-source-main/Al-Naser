@@ -1369,6 +1369,163 @@ step-circle-wrap {
   box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
 }
 
+/* ══ CONTACT LOADER — compass / sonar ══
+   Overlays the contact card while a request is in flight. */
+.contact-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  background: linear-gradient(180deg, rgba(1, 8, 16, 0.82), rgba(6, 34, 56, 0.92));
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.contact-loader.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cl-compass {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* every child is centred on the compass hub */
+.cl-compass > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* expanding sonar rings */
+.cl-ring {
+  border-radius: 50%;
+  border: 1.5px solid rgba(201, 168, 76, 0.5);
+  animation: cl-pulse 3s ease-in-out infinite;
+}
+
+.cl-ring:nth-child(4) { width: 56px;  height: 56px;  animation-delay: 0s; }
+.cl-ring:nth-child(5) { width: 92px;  height: 92px;  animation-delay: 0.3s; }
+.cl-ring:nth-child(6) { width: 128px; height: 128px; animation-delay: 0.6s; }
+.cl-ring:nth-child(7) { width: 164px; height: 164px; animation-delay: 0.9s; }
+.cl-ring:nth-child(8) { width: 200px; height: 200px; animation-delay: 1.2s; }
+
+@keyframes cl-pulse {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 0.15; transform: translate(-50%, -50%) scale(1.12); }
+}
+
+/* faint rotating radar sweep */
+.cl-sweep {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(201, 168, 76, 0.16), transparent 30%);
+  animation: cl-spin 5s linear infinite;
+}
+
+/* compass cross-hairs */
+.cl-crosshair {
+  background: var(--border);
+}
+.cl-crosshair--h { width: 200px; height: 1px; }
+.cl-crosshair--v { width: 1px; height: 200px; }
+
+/* rotating bearing needle */
+.cl-needle {
+  z-index: 2;
+  animation: cl-spin 6s linear infinite;
+}
+
+@keyframes cl-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* compass hub */
+.cl-dot {
+  z-index: 3;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold-lt);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+.cl-text {
+  font-size: 0.58rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-ring,
+  .cl-sweep,
+  .cl-needle {
+    animation-duration: 6s;
+  }
+}
+
+/* ══ MAGNETIZE — gold motes drawn to the cursor around the submit button ══ */
+.form-submit {
+  position: relative;
+}
+
+.mag-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;          /* above the gold button, below the loading overlay (z 5) */
+  pointer-events: none;
+}
+
+.mag-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.mag-particle i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.85) 0%, rgba(201, 168, 76, 0) 70%);
+  box-shadow: 0 0 8px 2px rgba(201, 168, 76, 0.2);
+  animation: mag-float 3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* low base opacity — blobs stay faint, brightening only slightly on the pulse */
+@keyframes mag-float {
+  0%, 100% { transform: translate(0, 0) scale(1);   opacity: 0.1; }
+  50%      { transform: translate(var(--fx, 0), var(--fy, 0)) scale(1.5); opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mag-particle i {
+    animation: none;
+    opacity: 0.16;
+  }
+}
+
 /* ══ FLOATING CTA ══ */
 #float-cta {
   position: fixed;
