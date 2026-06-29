@@ -1302,6 +1302,26 @@ step-circle-wrap {
   resize: none;
 }
 
+.form-status {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.form-status--ok {
+  color: var(--gold-lt, #d9c27a);
+}
+
+.form-status--error {
+  color: #ff8a7a;
+}
+
+.form-submit button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .form-submit {
   text-align: center;
   margin-top: 0.5rem;

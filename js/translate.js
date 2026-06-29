@@ -26,8 +26,20 @@ window.addEventListener('load', function () {
       if (!menu) {
         menu = document.createElement('div');
         menu.id = 'customLangMenu';
-        menu.style.cssText = 'position:fixed;background:white;border:1px solid #ccc;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.1);z-index:10000;min-width:140px';
-        menu.innerHTML = '<div style="padding:5px 0"><div onclick="window.changeLang(\'en\')" style="padding:8px 20px;cursor:pointer">🇬🇧 English</div><div onclick="window.changeLang(\'ar\')" style="padding:8px 20px;cursor:pointer">🇸🇦 Arabic</div><div onclick="window.changeLang(\'zh-CN\')" style="padding:8px 20px;cursor:pointer">🇨🇳 Chinese</div></div>';
+        // Match the site's dark-navy / gold theme (see css/base.css :root).
+        menu.style.cssText = 'position:fixed;background:#041828;border:1px solid rgba(201,168,76,0.25);border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,0.45);z-index:10000;min-width:150px;overflow:hidden;font-family:"DM Sans",sans-serif';
+        var itemStyle = 'padding:10px 18px;cursor:pointer;color:#cddde8;font-size:0.9rem;transition:background .15s,color .15s';
+        var hoverIn = "this.style.background='rgba(201,168,76,0.15)';this.style.color='#e2c278'";
+        var hoverOut = "this.style.background='transparent';this.style.color='#cddde8'";
+        function langItem(code, label) {
+          return '<div onclick="window.changeLang(\'' + code + '\')" onmouseover="' + hoverIn +
+            '" onmouseout="' + hoverOut + '" style="' + itemStyle + '">' + label + '</div>';
+        }
+        menu.innerHTML = '<div style="padding:4px 0">' +
+          langItem('en', '🇬🇧 English') +
+          langItem('ar', '🇸🇦 Arabic') +
+          langItem('zh-CN', '🇨🇳 Chinese') +
+          '</div>';
         document.body.appendChild(menu);
       }
 

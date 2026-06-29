@@ -1,0 +1,19 @@
+# Render deployment for the Al-Naser OTP / contact API.
+# Settings here are version-controlled instead of clicked in the dashboard.
+# Secrets are declared with `sync: false` so you set them in the Render
+# dashboard (Environment tab) — they are NOT stored in this file or git.
+services:
+  - type: web
+    name: al-naser-api
+    runtime: python
+    rootDir: server
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: RESEND_API_KEY
+        sync: false
+      - key: SENDER_EMAIL
+        sync: false
+      - key: OWNER_EMAIL
+        sync: false
