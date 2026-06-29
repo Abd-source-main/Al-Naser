@@ -10,7 +10,7 @@
   if (!btn) return;
 
   var host = btn.closest('.form-submit') || btn.parentElement;
-  var COUNT = 34;          // particle count
+  var COUNT = 60;          // particle count
   var RADIUS = 150;        // attraction radius in px
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -33,8 +33,8 @@
     el.appendChild(inner);
     layer.appendChild(el);
 
-    var bx = Math.random() * 440 - 220;  // scattered wider around the button
-    var by = Math.random() * 260 - 130;
+    var bx = Math.random() * 1000 - 500;  // scattered wider around the button
+    var by = Math.random() * 700 - 350;
     particles.push({ el: el, baseX: bx, baseY: by, x: bx, y: by });
   }
 

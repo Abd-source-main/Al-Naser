@@ -786,12 +786,6 @@
             <textarea name="message" rows="3" placeholder="Transmission Details (Message)" required></textarea>
           </div>
 
-          <!-- OTP step: hidden until a code has been emailed -->
-          <div class="field" id="otpField" style="display:none">
-            <input type="text" name="code" inputmode="numeric" autocomplete="one-time-code"
-              maxlength="6" placeholder="Enter the 6-digit code we emailed you" />
-          </div>
-
           <p id="contactStatus" class="form-status" style="display:none" role="status" aria-live="polite"></p>
 
           <div class="form-submit">
@@ -818,6 +812,76 @@
             <span class="cl-dot"></span>
           </div>
           <p class="cl-text">Sending…</p>
+        </div>
+
+        <!-- OTP verification panel: shown after a code has been emailed -->
+        <div id="otpOverlay" class="otp-overlay" aria-hidden="true">
+          <div class="otp-panel" role="dialog" aria-modal="true" aria-labelledby="otpTitle">
+            <button type="button" class="otp-close" id="otpClose" aria-label="Cancel verification">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round">
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </button>
+
+            <div class="otp-icon" aria-hidden="true">
+              <svg width="120" height="92" viewBox="0 0 140 108" fill="none">
+                <!-- envelope body -->
+                <rect x="42" y="30" width="90" height="60" rx="10" fill="var(--gold)" />
+                <!-- flap -->
+                <path d="M44 35 L130 35 L87 67 Z" fill="var(--gold-lt)" />
+                <path d="M44 88 L74 64 M130 88 L100 64" stroke="rgba(4,24,40,0.35)" stroke-width="2" />
+                <!-- key (handle + shaft + teeth) -->
+                <circle cx="30" cy="52" r="14" fill="#0a3a58" />
+                <circle cx="30" cy="52" r="5" fill="#041828" />
+                <rect x="30" y="48" width="36" height="8" rx="2" fill="#0a3a58" />
+                <rect x="58" y="56" width="4" height="9" rx="1" fill="#0a3a58" />
+                <rect x="49" y="56" width="4" height="7" rx="1" fill="#0a3a58" />
+                <!-- code chip -->
+                <rect x="78" y="66" width="56" height="24" rx="7" fill="#041828"
+                  stroke="var(--gold)" stroke-width="1.5" />
+                <g fill="var(--gold)">
+                  <circle cx="89" cy="78" r="2.4" /><circle cx="98" cy="78" r="2.4" />
+                  <circle cx="107" cy="78" r="2.4" /><circle cx="116" cy="78" r="2.4" />
+                  <circle cx="125" cy="78" r="2.4" />
+                </g>
+              </svg>
+            </div>
+
+            <h3 id="otpTitle">Verify Your Email Address</h3>
+            <p class="otp-sub">We sent a 6-digit verification code to
+              <span id="otpEmail">your inbox</span>. Enter it below to deliver your message.</p>
+
+            <div class="otp-inputs" id="otpInputs">
+              <input class="otp-box" type="text" inputmode="numeric" autocomplete="one-time-code"
+                maxlength="1" aria-label="Digit 1" />
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2" />
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3" />
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4" />
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5" />
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6" />
+            </div>
+
+            <p class="otp-change">Want to change your email address?
+              <button type="button" class="otp-link" id="otpChange">Change here</button>
+            </p>
+
+            <button type="button" class="otp-link otp-resend" id="otpResend">Resend Code</button>
+
+            <button type="button" class="otp-verify" id="otpVerify">Verify Email</button>
+
+            <p id="otpStatus" class="form-status" style="display:none" role="status" aria-live="polite"></p>
+
+            <!-- success state: animated tick draws in, then the message fades up -->
+            <div class="otp-success" aria-hidden="true">
+              <svg class="otp-check" viewBox="0 0 80 80" aria-hidden="true">
+                <circle class="otp-check-ring" cx="40" cy="40" r="36" />
+                <path class="otp-check-mark" d="M24 41 L35 53 L57 28" />
+              </svg>
+              <h3>Verified!</h3>
+              <p>Thank you for your message. We'll get back to you soon.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1306,6 +1306,7 @@ step-circle-wrap {
   margin: 0.25rem 0 0;
   font-size: 0.9rem;
   line-height: 1.4;
+  text-align: center;
 }
 
 .form-status--ok {
@@ -1478,6 +1479,297 @@ step-circle-wrap {
   .cl-needle {
     animation-duration: 6s;
   }
+}
+
+/* ══ OTP VERIFICATION PANEL ══
+   Overlays the contact card after a code has been emailed. */
+.otp-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;          /* above magnetize (3), below the loading overlay (5) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(1, 8, 16, 0.92), rgba(6, 34, 56, 0.96));
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.otp-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.otp-panel {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  text-align: center;
+  background: rgba(4, 24, 40, 0.7);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2.8rem 2rem 2rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  transform: translateY(14px) scale(0.98);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.otp-overlay.is-active .otp-panel {
+  transform: none;
+}
+
+.otp-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.3rem;
+  line-height: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.otp-close:hover {
+  color: var(--gold-lt);
+  transform: rotate(90deg);
+}
+
+.otp-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.otp-panel h3 {
+  font-family: 'Cormorant Garamond', serif;
+  color: #fff;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin-bottom: 0.6rem;
+}
+
+.otp-sub {
+  font-size: 0.74rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 24rem;
+  margin: 0 auto 1.9rem;
+}
+
+.otp-sub #otpEmail {
+  color: var(--gold-lt);
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.otp-box {
+  width: 3rem;
+  height: 3.4rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.otp-box:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--gold-dim);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.18);
+}
+
+.otp-change {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 1.6rem;
+}
+
+.otp-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--gold-lt);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.otp-link:hover {
+  color: var(--gold);
+}
+
+.otp-verify {
+  display: inline-block;
+  background: var(--gold);
+  color: #010810;
+  border: none;
+  cursor: pointer;
+  padding: 0.85rem 3rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border-radius: 40px;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.otp-verify:hover:not(:disabled) {
+  background: var(--gold-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+}
+
+.otp-verify:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.otp-panel .form-status {
+  margin: 1rem 0 0;
+}
+
+.otp-resend {
+  display: block;
+  margin: 0 auto 1.4rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 480px) {
+  .otp-panel {
+    padding: 2.4rem 1.2rem 1.6rem;
+  }
+  .otp-inputs {
+    gap: 0.4rem;
+  }
+  .otp-box {
+    width: 2.5rem;
+    height: 3rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* ── success state: animated tick + message ── */
+.otp-success {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 2rem;
+  border-radius: 6px;
+  background: rgba(4, 24, 40, 0.98);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.otp-panel.is-success .otp-success {
+  opacity: 1;
+  visibility: visible;
+}
+
+.otp-check {
+  width: 86px;
+  height: 86px;
+  margin-bottom: 1rem;
+}
+
+.otp-check-ring,
+.otp-check-mark {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.otp-check-ring {
+  stroke: var(--gold);
+  stroke-dasharray: 226;
+  stroke-dashoffset: 226;
+}
+
+.otp-check-mark {
+  stroke: var(--gold-lt);
+  stroke-dasharray: 52;
+  stroke-dashoffset: 52;
+}
+
+.otp-panel.is-success .otp-check-ring {
+  animation: otp-draw 0.55s ease forwards;
+}
+
+.otp-panel.is-success .otp-check-mark {
+  animation: otp-draw 0.35s ease 0.45s forwards;
+}
+
+.otp-panel.is-success .otp-check {
+  animation: otp-pop 0.4s ease 0.7s both;
+}
+
+.otp-success h3 {
+  font-family: 'Cormorant Garamond', serif;
+  color: #fff;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 0;
+  opacity: 0;
+}
+
+.otp-success p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
+  opacity: 0;
+}
+
+.otp-panel.is-success .otp-success h3 {
+  animation: otp-fade 0.45s ease 0.8s forwards;
+}
+
+.otp-panel.is-success .otp-success p {
+  animation: otp-fade 0.45s ease 0.98s forwards;
+}
+
+@keyframes otp-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes otp-pop {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+@keyframes otp-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .otp-check-ring,
+  .otp-check-mark { stroke-dashoffset: 0; }
+  .otp-panel.is-success .otp-check-ring,
+  .otp-panel.is-success .otp-check-mark,
+  .otp-panel.is-success .otp-check { animation: none; }
+  .otp-success h3,
+  .otp-success p { opacity: 1; }
 }
 
 /* ══ MAGNETIZE — gold motes drawn to the cursor around the submit button ══ */
