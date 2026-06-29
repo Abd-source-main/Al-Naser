@@ -50,6 +50,8 @@ app = FastAPI(title="Al-Naser API")
 ALLOWED_ORIGINS = [
     "https://alnaser-company.com",
     "https://www.alnaser-company.com",
+    "http://127.0.0.1:5500",   # VS Code Live Server (local dev)
+    "http://localhost:5500",
 ]
 app.add_middleware(
     CORSMiddleware,

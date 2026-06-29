@@ -2,14 +2,17 @@
  *   1. Visitor fills the form and submits  -> POST /send-otp (emails a code)
  *   2. Visitor enters the code and submits -> POST /contact  (verifies + delivers)
  *
- * Set API_BASE to your deployed API origin (no trailing slash).
- * After you deploy on Render you'll get a URL like https://al-naser-api.onrender.com
- * Paste that here. For local testing use 'http://localhost:8000'.
+ * The API runs on a different host than this static page:
+ *   - locally (served via Live Server on localhost/127.0.0.1) -> http://localhost:8000
+ *   - in production (alnaser-company.com) -> your deployed Render URL.
+ * After you deploy on Render, paste that URL into PROD_API below.
  */
 (function () {
   'use strict';
 
-  var API_BASE = 'https://REPLACE-WITH-YOUR-RENDER-URL.onrender.com';
+  var PROD_API = 'https://al-naser-api.onrender.com';
+  var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  var API_BASE = isLocal ? 'http://localhost:8000' : PROD_API;
 
   var form = document.getElementById('contactForm');
   if (!form) return;
