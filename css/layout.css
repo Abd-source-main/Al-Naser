@@ -108,14 +108,9 @@ main {
   border-bottom: 1px solid var(--border);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
   z-index: 100;
-  /* Hidden by default (kept off-screen over the hero); JS slides it in
-     once the hero has scrolled away. */
-  transform: translateY(-100%);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.topbar.topbar-visible {
+  /* Always visible, including over the hero. */
   transform: translateY(0);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .topbar-brand {

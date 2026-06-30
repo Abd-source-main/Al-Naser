@@ -311,11 +311,6 @@
     updateHeroParallax();
     updateSectionBgs();
 
-    /* Topbar: hidden over the hero, slides in (still compact) once past it */
-    if (topbar && hero) {
-      topbar.classList.toggle('topbar-visible', hero.getBoundingClientRect().bottom <= 90);
-    }
-
     var current = '';
     sections.forEach(function (s) {
       if (window.scrollY >= s.offsetTop - 140) current = s.id;
